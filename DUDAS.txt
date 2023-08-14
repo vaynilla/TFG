@@ -1,0 +1,10 @@
+- No tengo claro dónde meter los sistemas de ecuaciones diferenciales lineales, ya que se supone que son simplemente pasarlos por encima. He decidido meterlos antes de las aplicaciones.
+- Sobre las ecuaciones Integrodiferenciales en el Cap. 2 de Wazwaz... ¿Entra en el TFG?
+- No sé si hace falta poner la conversión de Volterra de 1er tipo a 2ndo tipo (Igual con los sistemas)
+- En el Cap. 2 de Wazwaz, empiezo directamente por la clasificación, ya que entiendo que la introducción no hace falta por haberlo visto ya en la carrera.
+- No tengo muy claro si el esquema del TFG es correcto, es decir, la forma de ordenar los capitulos y tal que he elegido.
+- El tema de que las ecuaciones sean todas lineales, no sé muy bien donde dejarlo claro, si en los titulos de los capitulos o en la introducción.
+- He metido primero las de segundo tipo y dsps las de primer tipo en la clasificación, porque son las más importantes pero no sé si quedaría mejor al revés o da =
+- En el 2.1.4 de Wazwaz, menciono la ecuación integral generalizada de Abel? Porque se supone que es de primer tipo, de segundo sería la débil
+- En los métodos para resolver las ecuaciones de volterra, ?meto los ejemplos? con 1 es suficiente? yo he metido 1 por si acaso.
+- En el mADM como que repite todo lo que acabo de decir del ADM, entonces no sé si meter directamente los cambios o repetirlo todo.

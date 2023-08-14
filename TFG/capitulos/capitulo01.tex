@@ -1,0 +1,131 @@
+% !TeX root = ../libro.tex
+% !TeX encoding = utf8
+
+\setchapterpreamble[c][0.75\linewidth]{%
+	\sffamily
+  Podemos encontrar ecuaciones integrales de muchos tipos distintos. Esto depende principalmente de los límites de integración y del núcleo de la ecuación. A continuación nos enfocaremos en los distintos tipos de ecuaciones integrales.
+	\par\bigskip
+}
+\chapter{Clasificación de ecuaciones integrales (lineales)}\label{ch:primer-capitulo}
+
+\section{Introducción}
+Primero vamos a entender el modelo de ecuación integral con el que vamos a trabajar, siendo de la siguiente forma:
+\begin{equation}\label{}
+	u(x) = f(x) + \lambda \int_{g(x)}^{h(x)} K(x,t)u(t)dt,
+\end{equation}
+donde $g(x)$ y $h(x)$ son los límites de integración, $\lambda$ es una constante, y $K(x,t)$ es una función conocida de dos variables, \textit{x} y \textit{t}, que llamaremos el \textit{núcleo} de la ecuación integral. Podemos ver cómo la función desconocida $u(x)$, que queremos determinar,  aparece tanto dentro como fuera de la integral, sin embargo, también nos podrá aparecer sólo dentro de la misma. Esto será lo que determine si estamos ante una ecuación de primera o segunda clase, pero nosotros nos centraremos en las de segunda clase.\\
+
+Las funciones $f(x)$ y $K(x,t)$ son conocidas de antemano, y los límites de integración pueden ser ambos variables, constantes, o ambos.\\
+\begin{observacion}
+	Nótese que si la función $f(x)$ es idénticamente nula, la ecuación resultante 
+	\begin{equation}\label{}
+		u(x) = \lambda \int_{g(x)}^{h(x)} K(x,t)u(t)dt
+	\end{equation}
+	se dirá que es \textit{homogénea}.
+\end{observacion}
+
+\section{Ecuaciones integrales de Volterra}
+\begin{definicion}
+	En las ecuaciones integrales de Volterra, al menos uno de los límites de integración es una variable. Para las ecuaciones integrales de Volterra de \textit{segunda clase}, la función desconocida $u(x)$ aparece tanto dentro como fuera de la integral. Se representa de la siguiente forma:
+	\begin{equation}\label{eq:volterra}
+		u(x) = f(x) + \lambda \int_0^x K(x,t)u(t)dt.
+	\end{equation}
+	Sin embargo, en las ecuaciones integrales de Volterra de \textit{primera clase}, la función desconocida $u(x)$ aparece sólo dentro de la integral como se muestra a continuación:
+	\begin{equation}\label{}
+		f(x) = \int_0^x K(x,t)u(t)dt
+	\end{equation}
+\end{definicion}
+\begin{ejemplo}
+	A continuación mostramos un ejemplo de una ecuación integral de Volterra de segunda clase:
+	\begin{equation}\label{}
+		u(x) = x + \int_0^x (x-t)u(t)dt
+	\end{equation}
+	Un ejemplo de primera clase sería el siguiente:
+	\begin{equation}\label{}
+	xe^{-x} = \int_0^x e^{t-x}u(t)dt
+	\end{equation}	
+\end{ejemplo}
+
+\section{Ecuaciones integrales de Fredholm}
+\begin{definicion}
+	En las ecuaciones integrales de Fredholm, los límites de integración son fijos. Además, la función desconocida $u(x)$ aparece tanto dentro como fuera de la integral. Se representan de la siguiente forma:
+	\begin{equation}\label{}
+		u(x) = f(x) + \lambda \int_a^b K(x,t)u(t)dt
+	\end{equation}
+	A esto le llamamos ecuación integral de Fredholm de \textit{segunda clase}. Sin embargo, para las de \textit{primera clase}, tenemos que la función $u(x)$ puede aparecer sólo dentro de la ecuación integral:
+	\begin{equation}\label{}
+		f(x) = \int_a^b K(x,t)u(t)dt
+	\end{equation}
+\end{definicion}
+\begin{ejemplo}
+	Un ejemplo de una ecuación de segunda clase puede ser el siguiente:
+	\begin{equation}\label{}
+		u(x) = x + \dfrac{1}{2}\int_{-1}^1 (x-t)u(t)dt,
+	\end{equation}
+	y de primera clase:
+	\begin{equation}\label{}
+		\dfrac{sinx - xcosx}{x^2} = \int_0^1 sin(xt)u(t)dt.
+	\end{equation}
+\end{ejemplo}
+
+\section{Ecuaciones integrales de Volterra-Fredholm}
+Como curiosidad, estas ecuaciones surgieron de problemas de valores en límites parabólicos, del modelo matemático del desarrollo del espacio-tiempo de una epidemia, y de varios modelos físicos y biológicos. En la literatura nos aparecen de dos formas:
+\begin{equation}\label{eq:volt-fred1}
+	u(x) = f(x) + \lambda_1 \int_a^x K_1(x,t)u(t)dt + \lambda_2 \int_a^b K_2(x,t)u(t)dt
+\end{equation}
+y
+\begin{equation}\label{eq:volt-fred2}
+	u(x,t) = f(x,t) + \lambda \int_0^t \int_\Omega F(x,t,\xi, \tau, u(\xi, \tau))d\xi d\tau, \qquad (x,t) \in \Omega \times [0,T]
+\end{equation}
+donde $f(x,t)$ y $F(x,t,\xi, \tau, u(\xi, \tau))$ son funciones analíticas en $D = \Omega \times [0,T]$, y $\Omega$ es un subconjunto cerrado de $\R^n, n = 1,2,3.$
+
+Es interesante ver que~\eqref{eq:volt-fred1} contiene ecuaciones integrales disjuntas de Volterra y Fredholm, ya que la primera integral tiene un límite variable y la segunda tiene ambos límites fijos, sin embargo, en~\eqref{eq:volt-fred2} ambas integrales están combinadas. Además, las funciones $u(x)$ y $u(x,t)$ aparecen dentro y fuera de la integral, que es una característica de las ecuaciones de segunda clase, nuestro principal enfoque.
+\begin{ejemplo}
+	Un ejemplo de ambas formas es el siguiente:
+	\begin{equation}\label{}
+		u(x) = 6x + 3x^2 + 2 - \int_0^x xu(t)dt - \int_0^1 tu(t)dt,
+	\end{equation}
+	\begin{equation}\label{}
+		u(x,t) = x + t^3 + \dfrac{1}{2}t^2 - \dfrac{1}{2}t - \int_0^t \int_0^1 (\tau - \xi)d\xi d\tau.
+	\end{equation}
+\end{ejemplo}
+\section{Ecuaciones integrales singulares}
+\begin{definicion}
+	Una ecuación integral de Volterra de segunda clase 
+	\begin{equation}\label{}
+		u(x) = f(x) + \int_{g(x)}^{h(x)} K(x,t)u(t)dt
+	\end{equation}
+	o de primera clase
+	\begin{equation}\label{}
+		f(x) = \lambda \int_{g(x)}^{h(x)} K(x,t)u(t)dt
+	\end{equation}
+	se llama \textit{singular} si uno de los límites de integración $g(x)$, $h(x)$ o ambos, son infinitos. Además, las ecuaciones anteriores se llaman singulares si el núcleo $K(x,t)$ no está acotado en algún punto del intervalo de integración.
+\end{definicion}
+A continuación nos centraremos en las ecuaciones de la forma:
+\begin{equation}\label{}
+	u(x) = f(x) + \int_0^x \dfrac{1}{(x-t)^\alpha}u(t)dt, \qquad 0 < \alpha < 1.
+\end{equation}
+o de primera clase
+\begin{equation}\label{}
+	f(x) = \int_0^x \dfrac{1}{(x-t)^\alpha}u(t)dt, \qquad 0 < \alpha < 1.
+\end{equation}
+Estas dos formas anteriores se conocen como \textit{ecuación integral singular débil} y \textit{ecuación integral generalizada de Abel}, respectivamente. Para el valor de $\alpha = \dfrac{1}{2}$, la ecuación:
+\begin{equation}\label{}
+	f(x) = \int_0^x \dfrac{1}{\sqrt{x-t}}u(t)dt
+\end{equation}
+se llama \textit{ecuación integral singular de Abel}. Nótese que el núcleo no está acotado en el límite superior $t = x$. 
+\begin{ejemplo}
+	Ejemplos de una ecuación integral de Abel, generalizada de Abel, y singular débil serían los siguientes:
+	\begin{equation}\label{}
+		\sqrt{x} = \int_0^x \dfrac{1}{\sqrt{x-t}}u(t)dt,
+	\end{equation}
+		\begin{equation}\label{}
+		x^3 = \int_0^x \dfrac{1}{(x-t)^{\scaleto{\dfrac{1}{3}}{12pt}}}u(t)dt,
+	\end{equation}
+		\begin{equation}\label{}
+		u(x) = 1 + \sqrt{x} + \int_0^x \dfrac{1}{(x-t)^{\scaleto{\dfrac{1}{3}}{12pt}}}u(t)dt,
+	\end{equation}
+	respectivamente.
+\end{ejemplo}
+
+\endinput

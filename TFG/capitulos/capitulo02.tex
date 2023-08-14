@@ -1,0 +1,196 @@
+% !TeX root = ../libro.tex
+% !TeX encoding = utf8
+\setchapterpreamble[c][0.75\linewidth]{%
+	\sffamily
+	Volterra empezó a trabajar en las ecuaciones integrales en 1884, pero el nombre de \textit{ecuación integral} se lo dio Bois-Reymond en 1888. Sin embargo, el término \textit{ecuación integral de Volterra} se utilizó por primera vez en 1908 por el matemático rumano Traian Lalesco.
+	\par\bigskip
+}
+\chapter{Ecuaciones integrales de Volterra de segunda clase}
+
+\section{Introducción}
+ESTO SE PUEDE MEJORAR CREOExisten una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación de splines, Runge-Kutta, y otros han sido utilizados para manejar las ecuaciones integrales de Volterra.
+
+A continuación veremos los últimos métodos desarrollados:
+\begin{itemize}
+	\item Método de descomposición de Adomian (ADM)
+	\item Método de descomposición modificado (mADM)
+	\item Método de iteración variacional (VIM)
+\end{itemize}
+Además, estudiaremos algunos de los métodos tradicionales mencionados al principio. Nos vamos a centrar en el uso de estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ de la ecuación integral de Volterra de segunda clase.
+\section{Método de descomposición de Adomian}
+Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha realizado mucho trabajo de investigación para aplicar este método a una amplia clase de ecuaciones diferenciales ordinarias, parciales, y también ecuaciones integrales.
+
+Consiste en descomponer una función $u(x)$ de cualquier ecuación en una suma de un número infinito de componentes definidas por la serie de descomposición
+\begin{equation}\label{eq:sum_adomian}
+	u(x) = \sum_{n=0}^{\infty} u_n(x),
+\end{equation} 
+o equivalentemente 
+\begin{equation}
+	u(x) = u_0(x) + u_1(x) + u_2(x) + ... ,
+\end{equation} 
+donde las componentes $u_n(x), n \geqslant 0$ tienen que ser determinadas de una forma recursiva. El método se ocupa de encontrar las componentes $u_0, u_1, u_2, ...$ individualmente. Como ya veremos más adelante, se pueden encontrar estas componentes de una forma sencilla a través de una relación de recurrencia que normalmente implica integrales simples que pueden ser fácilmente evaluadas.
+
+Para establecer la relación de recurrencia, sustituimos~\eqref{eq:sum_adomian} en la ecuación integral de Volterra~\eqref{eq:volterra} para obtener 
+\begin{equation}
+	\sum_{n=0}^{\infty} u_n(x) = f(x) + \lambda \int_{0}^{x} K(x,t)(\sum_{n=0}^{\infty} u_n(t))dt,
+\end{equation}
+o equivalentemente
+\begin{equation}
+	u_0(x) + u_1(x) + u_2(x) + ... = f(x) + \lambda \int_{0}^{x} K(x,t)[u_0(t) + u_1(t) + ...]dt.
+\end{equation}
+La primera componente $u_0(x)$ se identifica con todos los términos que no están incluidos dentro de la integral. Por lo tanto, las componentes $u_j(x), j \geqslant 1$ de la función desconocida $u(x)$ están completamente determinados a través de la siguiente relación de recurrencia:
+\begin{align}
+	u_0(x) &= f(x),      &   \\
+	u_{n+1}(x) &= \lambda \int_{0}^{x} K(x,t)u_n(t)dt, \qquad n \geqslant 0,         & 
+\end{align}
+que es equivalente a 
+\begin{align}\label{eq:recurrencia1}
+	u_0(x)&=f(x),          &  u_1(x) &=\lambda \int_{0}^{x} K(x,t)u_0(t)dt,      \\
+	u_2(x)&=\lambda \int_{0}^{x} K(x,t)u_1(t)dt,   &  u_3(x)&=\lambda \int_{0}^{x} K(x,t)u_2(t)dt, 
+\end{align}
+y análogamente para las demás componentes. Como podemos ver en~\eqref{eq:recurrencia1}, las componentes $u_0(x), u_1(x), u_2(x), u_3(x),...$ están completamente determinadas. Como resultado, la solución $u(x)$ de la ecuación integral de Volterra~\eqref{eq:volterra} en forma de serie se obtiene fácilmente utilizando~\eqref{eq:sum_adomian}.
+
+\begin{observacion}
+Se ha visto cómo el método de descomposición ha transformado la ecuación integral en una elegante determinación de componentes calculables. Muchos investigadores formalizaron que si existe una solución exacta para el problema, entonces la serie obtenida converge muy rápidamente a esa solución.
+
+Sin embargo, para problemas concretos donde no se puede obtener una solución, generalmente se utiliza un número truncado de términos con fines numéricos. Cuantos más componentes usemos, mayor precisión obtendremos.
+\end{observacion}
+
+\begin{ejemplo}
+	Resuelve la siguiente ecuación integral de Volterra:
+	\begin{equation}
+		u(x) = 1 - \int_{0}^{x} u(t)dt.
+	\end{equation}
+	En este caso, $f(x) = 1, \lambda = -1, K(x,t) = 1.$ Se asume que la solución $u(x)$ tiene una forma en series como la dada en~\eqref{eq:sum_adomian}. Sustituyendo la serie en ambos lados de nuestra ecuación, obtenemos:
+	\begin{equation}
+		\sum_{n=0}^{\infty} u_n(x) = 1 - \int_{0}^{x} \sum_{n=0}^{\infty} u_n(t)dt
+	\end{equation}
+	o equivalentemente
+	\begin{equation}
+		u_0(x) + u_1(x) + u_2(x) + ... = 1 - \int_0^x [u_0(t) + u_1(t) + u_2(t) + ...]dt.
+	\end{equation}
+	La primera componente corresponde con todos los términos que no están incluidos dentro de la integral, por tanto, obtenemos la siguiente recurrencia:
+	\begin{align}
+		u_0(x) &= 1,      &   \\
+		u_{k+1}(x) &= - \int_{0}^{x} u_k(t)dt, \qquad k \geqslant 0,         & 
+	\end{align}
+	Así,
+	\begin{align}
+		u_0(x) &= 1,      &   \\
+		u_{1}(x) &= - \int_{0}^{x} u_0(t)dt = -\int_{0}^{x} 1dt = -x,    &  \\
+		u_{2}(x) &= - \int_{0}^{x} u_1(t)dt = -\int_{0}^{x} (-t)dt = \dfrac{1}{2!}x^2,    &  \\
+		u_{3}(x) &= - \int_{0}^{x} u_2(t)dt = -\int_{0}^{x} \dfrac{1}{2!}t^2dt = \dfrac{1}{3!}x^3,    & 
+	\end{align}	
+	Así, obtenemos la solución en serie:
+	\begin{equation}
+		u(x) = 1 - x + \dfrac{1}{2!}x^2 - \dfrac{1}{3!}x^3 + ...,
+	\end{equation}
+	que converge a la solución:
+	\begin{equation}
+		u(x) = e^{-x}.
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de descomposición modificado}
+Una modificación importante del ADM fue desarrollada por Wazwaz. Este método facilitará el proceso de cálculo y acelerará la convergencia de la solución en series. Se aplicará, siempre que se pueda, a cualquier ecuación integral y diferencial de cualquier orden.
+\begin{observacion}
+	Este método depende principalmente de dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada sólo por un término.
+\end{observacion}
+El método de descomposición modificado introduce una pequeña variación a la relación de recurrencia que vimos en el ADM, y esto nos llevará a la determinación de las componentes de $u(x)$ de una forma más fácil y rápida.
+
+En muchos casos, la función $f(x)$ se puede escribir como una suma de dos funciones parciales, llamadas $f_1(x)$ y $f_2(x)$:
+\begin{equation}
+	f(x) = f_1(x) + f_2(x).
+\end{equation}
+Gracias a esto, se introducirá un cambio importante en la formación de la relación de recurrencia. Para minimizar el tamaño de los cálculos, identificamos la primera componente $u_0(x)$ como una de las partes de $f(x)$, que será $f_1(x)$ o $f_2(x)$. La otra parte se puede añadir a la componente $u_1(x)$ junto a los demás términos. En resumen, obtenemos la siguiente relación de recurrencia:
+\begin{align}
+	u_0(x) &= f_1(x),      &   \\
+	u_{1}(x) &= f_2(x) + \lambda \int_{0}^{x} K(x,t)u_0(t)dt,    &  \\
+	u_{k+1}(x) &= \lambda \int_{0}^{x} K(x,t)u_k(t)dt, \qquad k \geqslant 1.    &
+\end{align}	
+\begin{observacion}
+	Esto muestra que la diferencia entre la relación de recurrencia estándar y la modificada se basa únicamente en la formación de las dos primeras componentes $u_0(x)$ y $u_1(x)$. Las demás componentes se mantienen igual.
+\end{observacion}
+Aunque este variación en las dos primeras componentes es pequeña, juega un papel muy importante en acelerar la convergencia de la solución y en minimizar la cantidad de trabajo computacional. Además, varios trabajos de investigación han confirmado que reducir el número de componentes en $f_1(x)$ afecta a todas las componentes, no sólo a $u_1(x)$.
+
+A continuación vamos a ver dos observaciones importantes a cerca de este método:
+\begin{observacion}
+	Si elegimos correctamente las funciones $f_1(x)$ y $f_2(x)$, la solución exacta $u(x)$ se puede obtener utilizando muy pocas iteraciones, incluso algunas veces evaluando sólo dos componentes. De hecho, el éxito de esta modificación depende de hacer una buena elección de las funciones $f_1(x)$ y $f_2(x)$, y la forma de obtenerlas adecuadamente es a través de pruebas, ya que no se ha encontrado todavía una regla para facilitar esta elección.
+\end{observacion}
+
+\begin{observacion}
+	Si $f(x)$ está formada sólo por un término, podemos utilizar el método de descomposición estándar.
+\end{observacion}
+
+Vamos a utilizar este método para las ecuaciones integrales tanto de Volterra como de Fredholm, lineales en nuestro caso. Veamos algún ejemplo:
+
+\begin{ejemplo}
+	Resolver la ecuación integral de Volterra:
+	\begin{equation}
+		u(x) = 2x + \sin x + x^2 - \cos x + 1 - \int_{0}^{x} u(t)dt.
+	\end{equation}
+	La función $f(x)$ se compone de 5 términos, que están fuera de la integral, y vamos a dividirlos en dos partes de la siguiente forma:
+	\begin{align}
+		f_1(x) &= 2x + \sin x,      &   \\
+		f_2(x) &= x^2 - \cos x + 1.    &
+	\end{align}
+	Y ahora utilizamos la fórmula de recurrencia modificada, obteniendo:
+	\begin{align}
+		u_0(x) &= 2x + \sin x,      &   \\
+		u_{1}(x) &= x^2 - \cos x + 1 - \int_{0}^{x} u_0(t)dt = 0,    &  \\
+		u_{k+1}(x) &= - \int_{0}^{x} u_k(t)dt = 0, \qquad k \geqslant 1.    &
+	\end{align}
+	Es obvio que cada componente $u_j, j \geqslant 1$ es cero. Luego la solución exacta es
+	\begin{equation}
+		u(x) = 2x + \sin x.
+	\end{equation}
+\end{ejemplo}
+
+\section{Fenómeno de los términos de ruido}
+La nueva técnica depende principalmente de los llamados \textit{términos de ruido}, y ha demostrado una rápida convergencia a la solución, se puede utilizar tanto para ecuaciones integrales como para ecuaciones diferenciales.
+
+Los términos con ruido, si existen entre las componentes $u_0(x)$ y $u_1(x)$, nos proporcionarán la solución exacta utilizando sólo las dos primeras iteraciones. Vamos a revisar los conceptos principales de estos términos:
+\begin{enumerate}
+	\item Los \textit{términos de ruido} se definen como los términos idénticos con signos opuestos en las componentes $u_0(x)$ y $u_1(x)$. Otros términos de ruido pueden aparecer entre otras componentes. Es importante saber que no tienen por qué existir para todas las ecuaciones.
+	\item Al cancelar los términos de ruido entre $u_0(x)$ y $u_1(x)$, incluso si $u_1(x)$ contiene términos adicionales, los términos no cancelados restantes de $u_0(x)$ podrían proporcionar la solución exacta de la ecuación integral. La aparición de los términos de ruido entre $u_0(x)$ y $u_1(x)$ no siempre es suficiente para obtener la solución exacta. Por lo tanto, es necesario demostrar que los términos no cancelados de $u_0(x)$ satisfacen la ecuación integral dada. 
+	
+	Por otro lado, si los términos no cancelados de $u_0(x)$ no cumplieran con la ecuación integral dada, o los términos de ruido no aparecieran entre $u_0(x)$ y $u_1(x)$, entonces sería necesario determinar más componentes de $u(x)$ para obtener la solución en una forma de serie.
+	\item Los términos de ruido aparecen en tipos específicos de ecuaciones no homogéneas, sin embargo, no aparecen en ecuaciones homogéneas.
+	\item Hay una condición necesaria para que se produzca la aparición de los términos de ruido, la primera componente $u_0(x)$ debe contener la solución exacta $u(x)$ entre otros términos. Además, se demostró que la condición de no homogeneidad de la ecuación no siempre garantiza la aparición de los términos de ruido.
+\end{enumerate}
+Vamos a ilustrar la utilidad de los términos de ruido con un ejemplo:
+\begin{ejemplo}
+	Resolveremos la siguiente ecuación integral de Volterra:
+	\begin{equation}
+		u(x) = 8x + x^3 - \dfrac{3}{8} \int_{0}^{x} tu(t)dt.
+	\end{equation}
+	Establecemos la relación de recurrencia siguiendo el método estándar de Adomian:
+	\begin{align}
+		u_0(x) &= 8x + x^3,      &   \\
+		u_1(x) &= - \dfrac{3}{8} \int_{0}^{x} tu(t)dt = - \dfrac{3}{40}x^5-x^3.    &
+	\end{align}
+	Podemos ver que $\pm x^3$ aparecen en $u_0(x)$ y $u_1(x)$, además con signos opuestos, por tanto es un término de ruido. Cancelando este término de la primera componente $u_0(x)$ obtenemos la solución exacta:
+	\begin{equation}
+		u(x) = 8x,
+	\end{equation}
+	que satisface la ecuación integral.
+	\begin{observacion}
+		Si hubiéramos elegido el método modificado, seleccionamos $u_0(x) = 8x$, por lo tanto, tenemos que $u_1(x) = 0$. Por tanto, obtenemos el mismo resultado.
+	\end{observacion}
+\end{ejemplo}
+
+\section{Método de iteración variacional (VIM)}
+Este método ha sido recientemente desarrollado, y ha demostrado ser eficaz y confiable para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Este método es capaz de manejar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Además, la serie obtenida se puede utilizar para fines numéricos si no se puede obtener la solución exacta. Vamos a presentar los pasos principales del método:
+
+Considera la ecuación diferencial:
+\begin{equation}
+	Lu + Nu = g(t),
+\end{equation}
+donde \textit{L y N} son operadores lineales y no lineales, respectivamente
+
+
+
+\endinput
+%------------------------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%------------------------------------------------------------------------------------
