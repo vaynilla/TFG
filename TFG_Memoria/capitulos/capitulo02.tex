@@ -183,10 +183,33 @@ Vamos a ilustrar la utilidad de los términos de ruido con un ejemplo:
 Este método ha sido recientemente desarrollado, y ha demostrado ser eficaz y confiable para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Este método es capaz de manejar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Además, la serie obtenida se puede utilizar para fines numéricos si no se puede obtener la solución exacta. Vamos a presentar los pasos principales del método:
 
 Considera la ecuación diferencial:
-\begin{equation}
+\begin{equation}\label{eq:miv1}
 	Lu + Nu = g(t),
 \end{equation}
-donde \textit{L y N} son operadores lineales y no lineales, respectivamente PRUEBASAAAAA
+donde \textit{L y N} son operadores lineales y no lineales respectivamente , y $g(t)$ es el término no homogéneo.
+
+El método de iteración variacional presenta una funcional corrección para la ecuación~\eqref{eq:miv1} en la forma:
+\begin{equation}\label{eq:miv2}
+	u_{n+1}(x) = u_n(x) + \int_{0}^{x} \lambda(\xi)(Lu_n(\xi) + Nu'_n(\xi) - g(\xi))d\xi,
+\end{equation}
+donde $\lambda$ es un multiplicador de Lagrange general.
+\begin{observacion}
+	Nótese que en este método, $\lambda$ puede ser una constante o una función, y $û_n$ es un valor restringido, por tanto se comporta como una constante, luego $\delta û_n = 0$, donde $\delta$ es la derivada variacional.
+\end{observacion}
+Para un uso completo de este método, deberíamos seguir dos pasos:
+\begin{enumerate}
+	\item Determinar el multiplicador de Lagrange $\lambda(\xi)$ que será identificado de forma óptima.
+	\item Una vez determinado $\lambda$, sustituimos el resultado en~\eqref{eq:miv2} donde se deberían omitir las restricciones.
+\end{enumerate}
+Tomando la variación de~\eqref{eq:miv2} con respecto a la variable independiente $û_n$, encontramos
+\begin{equation}
+	\dfrac{\delta u_{n+1}}{\delta u_n} = 1 + \dfrac{\delta}{\delta u_n}(\int_{0}^{x} \lambda(\xi)(Lu_n(\xi)+Nu'_n(\xi)-g(\xi))d\xi),
+\end{equation}
+o equivalentemente
+\begin{equation}
+	\delta u_{n+1} = \delta u_n + \delta (\int_{0}^{x} \lambda (\xi)(Lu_n(\xi))d\xi).
+\end{equation}
+
 
 
 
