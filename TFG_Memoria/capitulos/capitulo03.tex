@@ -1,0 +1,112 @@
+% !TeX root = ../libro.tex
+% !TeX encoding = utf8
+\chapter{Sistemas de ecuaciones integrales de Volterra de segunda clase}
+\section{Introducción}
+Los sistemas de ecuaciones integrales, lineales y no lineales, aparecen en muchas aplicaciones de ingeniería, física, química y modelos de crecimiento de poblaciones. Las ideas generales y las características esenciales de estos sistemas son de una gran aplicación.
+
+Una gran variedad de métodos numéricos y analíticos se usan para manejar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior. El método de descomposición de Adomian y el método de la transformada de Laplace serán los que veremos.
+
+Vamos a estudiar sistemas de ecuaciones integrales de Volterra de segunda clase dadas por
+\begin{equation}
+	u(x) = f_1(x) + \int_{0}^{x}(K_1(x,t)u(t) + \tilde{K}_1(x,t)v(t)+...),
+\end{equation}
+\begin{equation}
+	v(x) = f_2(x) + \int_{0}^{x}(K_2(x,t)u(t) + \tilde{K}_2(x,t)v(t)+...).
+\end{equation}
+Las funciones desconocidas $u(x), v(x), .... ,$ que se determinarán, aparecen dentro y fuera de la integral. Los núcleos $K_i(x,t)$ y $\tilde{K}_i(x,t)$ y la función $f_i(x)$ son funciones reales dadas. A continuación veremos los métodos para resolver estos sistemas.
+\section{Método de descomposición de Adomian}
+Como ya vimos anteriormente, este método descompone cada solución en una suma infinita de componentes, donde cada componente se determinar de forma recursiva. Este método puede utilizarse en su forma estándar o combinando los términos de ruido. Además, el método de descomposición modificado se utilizará donde sea apropiado. Veamos un ejemplo para resolver un sistema de ecuaciones integrales de Volterra utilizando este método.
+\begin{ejemplo}
+	Partimos del siguiente sistema:
+	\begin{equation}
+		u(x) = x - \dfrac{1}{6}x^4 + \int_{0}^{x}((x-t)^2u(t) + (x-t)v(t))dt,
+	\end{equation}
+	\begin{equation}
+		v(x) = x^2 - \dfrac{1}{12}x^5 + \int_{0}^{x}((x-t)^3u(t) + (x-t)^2v(t))dt.
+	\end{equation}
+	El método nos sugiere que los términos lineales $u(x)$ y $v(x)$ se descompongan como una suma infinita de componentes
+	\begin{equation}
+		u(x) = \sum_{n=0}^{\infty}u_n(x), \qquad v(x) = \sum_{n=0}^{\infty}v_n(x),
+	\end{equation}
+	donde $u_n(x)$ y $v_n(x)$, $n \geqslant 0$ son las componentes de $u(x)$ y $v(x)$ que encontraremos de forma recursiva.
+	
+	Sustituyendo las series en el sistema obtenemos
+	\begin{equation}
+		\sum_{n=0}^{\infty}u_n(x) = x - \dfrac{1}{6}x^4 + \int_{0}^{x}((x-t)^2\sum_{n=0}^{\infty}u_n(t) + (x-t)\sum_{n=0}^{\infty}v_n(t))dt,
+	\end{equation}
+	\begin{equation}
+		\sum_{n=0}^{\infty}v_n(x) = x^2 - \dfrac{1}{12}x^5 + \int_{0}^{x}((x-t)^3\sum_{n=0}^{\infty}u_n(t) + (x-t)^2\sum_{n=0}^{\infty}v_n(t))dt.
+	\end{equation}
+	
+	Las primeras componentes $u_0(x)$ y $v_0(x)$ se definen como todos los términos que no están dentro de la integral, luego transformamos el sistema en un conjunto de relaciones recursivas dadas por
+	\begin{align}
+		u_0(x) &= x - \dfrac{1}{6}x^4,      &   \\
+		u_{k+1}(x) &= \int_{0}^{x} ((x-t)^2u_k(t) + (x-t)v_k(t))dt, \qquad k \geqslant0 ,   &
+	\end{align}
+	y
+	\begin{align}
+		v_0(x) &= x^2 - \dfrac{1}{12}x^5,      &   \\
+		v_{k+1}(x) &= \int_{0}^{x} ((x-t)^3u_k(t) + (x-t)^2v_k(t))dt, \qquad k \geqslant0 .   &
+	\end{align}
+	Si hacemos la primera iteración obtenemos
+	\begin{equation}
+		u_0(x) = x - \dfrac{1}{6}x^4, \qquad u_1(x) = \dfrac{1}{6}x^4 - \dfrac{1}{280}x^7,
+	\end{equation}
+	y
+	\begin{equation}
+		v_0(x) = x^2 - \dfrac{1}{12}x^5, \qquad v_1(x) = \dfrac{1}{12}x^5 - \dfrac{11}{10080}x^8.
+	\end{equation}
+	Es obvio que los términos de ruido $\pm \dfrac{1}{6}x^4$ aparecen entre $u_0(x)$ y $u_1(x)$. Además, los términos de ruido $\pm \dfrac{1}{12}x^5$ aparecen entre $v_0(x)$ y $v_1(x)$. Si cancelamos estos términos de ruido en $u_0(x)$ y $v_0(x)$, el resto de términos restantes nos dan la solución exacta
+	\begin{equation}
+		(u(x), v(x)) = (x,x^2).
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de la transformada de Laplace}
+Puesto que ya hemos explicado este método en profundidad en el capítulo anterior, vamos a mostrar directamente un ejemplo en el que veremos cómo se aplica a un sistema de ecuaciones integrales de Volterra.
+\begin{ejemplo}
+	Sea
+	\begin{equation}
+		u(x) = 1 - x^2 + x^3 + \int_{0}^{x}((x-t)u(t) + (x-t)v(t))dt,
+	\end{equation}
+	\begin{equation}
+		v(x) = 1 - x^3 - \dfrac{1}{10}x^5 + \int_{0}^{x}((x-t)u(t) - (x-t)v(t))dt.
+	\end{equation}
+	Es importante darse cuenta que ambos núcleos son iguales, es decir, $K_1(x-t) = K_2(x-t) = x-t$. Tomando la transformada de Laplace en ambos lados de cada ecuación obtenemos
+	\begin{equation}
+		U(s) = \mathcal{L}\{u(x)\} = \mathcal{L}\{1 - x^2 + x^3\} + \mathcal{L}\{(x-t)\ast u(x) + (x-t) \ast v(x)\},
+	\end{equation}
+	\begin{equation}
+		V(s) = \mathcal{L}\{v(x)\} = \mathcal{L}\{1 - x^3 - \dfrac{1}{10}x^5\} + 	\mathcal{L}\{(x-t)\ast u(x) - (x-t) \ast v(x)\}.
+	\end{equation}
+	Esto al mismo tiempo nos da
+	\begin{equation}
+		U(s) = \dfrac{1}{s} - \dfrac{2}{s^3} + \dfrac{6}{s^4} + \dfrac{1}{s^2}U(s) + \dfrac{1}{s^2}V(s),
+	\end{equation}
+	\begin{equation}
+		V(s) = \dfrac{1}{s} - \dfrac{6}{s^4} - \dfrac{12}{s^6} + \dfrac{1}{s^2}U(s) 	- \dfrac{1}{s^2}V(s),
+	\end{equation}
+	Reorganizando un poco el sistema obtenemos
+	\begin{equation}
+		(1-\dfrac{1}{s^2})U(s) - \dfrac{1}{s^2}V(s) = \dfrac{1}{s} - \dfrac{2}{s^3} + \dfrac{6}{s^4},
+	\end{equation}
+	\begin{equation}
+		(1+\dfrac{1}{s^2})V(s) - \dfrac{1}{s^2}U(s) = \dfrac{1}{s} - \dfrac{6}{s^4}	- \dfrac{12}{s^6}.
+	\end{equation}
+	Resolviendo el sistema para $U(s)$ y $V(s)$ tenemos como resultado
+	\begin{equation}
+		U(s) = \dfrac{1}{s} + \dfrac{3!}{s^4},
+	\end{equation}
+	\begin{equation}
+		V(s) = \dfrac{1}{s} - \dfrac{3!}{s^4}.
+	\end{equation}
+	Tomando la inversa de la transformada de Laplace en ambos lados de cada ecuación, la solución exacta viene dada por
+	\begin{equation}
+		(u(x),v(x)) = (1 + x^3, 1 - x^3).
+	\end{equation}
+\end{ejemplo}
+
+\endinput
+%------------------------------------------------------------------------------------
+% FIN DEL CAPÍTULO. 
+%------------------------------------------------------------------------------------

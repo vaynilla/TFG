@@ -17,7 +17,7 @@ A continuación veremos los últimos métodos desarrollados:
 	\item Método de iteración variacional (VIM)
 \end{itemize}
 Además, estudiaremos algunos de los métodos tradicionales mencionados al principio. Nos vamos a centrar en el uso de estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ de la ecuación integral de Volterra de segunda clase.
-\section{Método de descomposición de Adomian}
+\section{Método de descomposición de Adomian (ADM)}
 Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha realizado mucho trabajo de investigación para aplicar este método a una amplia clase de ecuaciones diferenciales ordinarias, parciales, y también ecuaciones integrales.
 
 Consiste en descomponer una función $u(x)$ de cualquier ecuación en una suma de un número infinito de componentes definidas por la serie de descomposición
@@ -91,7 +91,7 @@ Sin embargo, para problemas concretos donde no se puede obtener una solución, g
 	\end{equation}
 \end{ejemplo}
 
-\section{Método de descomposición modificado}
+\section{Método de descomposición modificado (mADM)}
 Una modificación importante del ADM fue desarrollada por Wazwaz. Este método facilitará el proceso de cálculo y acelerará la convergencia de la solución en series. Se aplicará, siempre que se pueda, a cualquier ecuación integral y diferencial de cualquier orden.
 \begin{observacion}
 	Este método depende principalmente de dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada sólo por un término.
@@ -188,9 +188,9 @@ Considera la ecuación diferencial:
 \end{equation}
 donde \textit{L y N} son operadores lineales y no lineales respectivamente , y $g(t)$ es el término no homogéneo.
 
-El método de iteración variacional presenta una funcional corrección para la ecuación~\eqref{eq:miv1} en la forma:
+El método de iteración variacional presenta un funcional de corrección para la ecuación~\eqref{eq:miv1} en la forma:
 \begin{equation}\label{eq:miv2}
-	u_{n+1}(x) = u_n(x) + \int_{0}^{x} \lambda(\xi)(Lu_n(\xi) + Nu'_n(\xi) - g(\xi))d\xi,
+	u_{n+1}(x) = u_n(x) + \int_{0}^{x} \lambda(\xi)(Lu_n(\xi) + N\tilde{u}_n(\xi) - g(\xi))d\xi,
 \end{equation}
 donde $\lambda$ es un multiplicador de Lagrange general.
 \begin{observacion}
@@ -203,13 +203,288 @@ Para un uso completo de este método, deberíamos seguir dos pasos:
 \end{enumerate}
 Tomando la variación de~\eqref{eq:miv2} con respecto a la variable independiente $û_n$, encontramos
 \begin{equation}
-	\dfrac{\delta u_{n+1}}{\delta u_n} = 1 + \dfrac{\delta}{\delta u_n}(\int_{0}^{x} \lambda(\xi)(Lu_n(\xi)+Nu'_n(\xi)-g(\xi))d\xi),
+	\dfrac{\delta u_{n+1}}{\delta u_n} = 1 + \dfrac{\delta}{\delta u_n}(\int_{0}^{x} \lambda(\xi)(Lu_n(\xi)+N\tilde{u}_n(\xi)-g(\xi))d\xi),
+\end{equation}
+o equivalentemente
+\begin{equation}\label{eq:miv3}
+	\delta u_{n+1} = \delta u_n + \delta (\int_{0}^{x} \lambda (\xi)(Lu_n(\xi))d\xi).
+\end{equation}
+Para determinar el multiplicador de Lagrange $\lambda(\xi)$ normalmente se utiliza la integración por partes. Por ejemplo, si tenemos $Lu_n(\xi) = u'_n(\xi)$ en ~\eqref{eq:miv3}, entonces se convierte en
+\begin{equation}
+	\delta u_{n+1} = \delta u_n + \delta (\int_{0}^{x} \lambda (\xi)(u'_n(\xi))d\xi).
+\end{equation}
+Integrando por partes obtenemos
+\begin{equation}
+	\delta u_{n+1} = \delta u_n + \delta \lambda(\xi)u_n(\xi) - \int_{0}^{x} \lambda'(\xi) \delta u_n(\xi)d\xi.
 \end{equation}
 o equivalentemente
 \begin{equation}
-	\delta u_{n+1} = \delta u_n + \delta (\int_{0}^{x} \lambda (\xi)(Lu_n(\xi))d\xi).
+	\delta u_{n+1} = \delta u_n(\xi)(1 + \lambda |_{\xi = x}) - \int_{0}^{x} \lambda'\delta u_nd\xi.
+\end{equation}
+La condición final de $u_{n+1}$ requiere que $\delta u_{n+1} = 0$. Esto significa que la parte izquierda vale cero, y por tanto la parte derecha también debería valer cero, lo que nos lleva a las condiciones:
+\begin{equation}
+	1 + \lambda |_{\xi = x} = 0, \qquad \lambda'|_{\xi = x} = 0.
+\end{equation}
+Lo que al final nos da
+\begin{equation}
+	\lambda = -1.
+\end{equation}
+Una vez hemos determinado el multiplicador de Lagrange $\lambda(\xi)$, las sucesivas aproximaciones $u_{n+1}, n \geqslant 0$, de la solución $u(x)$ se obtendrán fácilmente al usar la función selectiva $u_0(x)$. Sin embargo, para una rápida convergencia, la función $u_0(x)$ se debe seleccionar utilizando las primeras condiciones como siguen:
+\begin{align}
+	u_0(x) &= u(0),  \shorteqnote{para la primera derivada $u'_n$}  &   \\
+	u_0(x) &= u(0) + xu'(0),  \shorteqnote{para la segunda derivada $u''_n$}  &   \\
+	u_0(x) &= u(0) + xu'(0) + \dfrac{1}{2!}x^2u''(0), \qquad \qquad \qquad \shorteqnote{para la tercera derivada $u'''_n$}
+\end{align}
+y así sucesivamente. Por tanto, la solución 
+\begin{equation}
+	u(x) = \lim_{n\rightarrow \infty} u_n(x).
+\end{equation}
+Es decir, la correción funcional nos dará varias aproximaciones, y por tanto, la solución exacta se obtiene como el límite de todas estas sucesivas aproximaciones.
+
+La determinación del multiplicador de Lagrange juega un papel muy importante para llegar a la solución del problema. A continuación, mostramos un esquema correspondiente al multiplicador de Lagrange y su funcional de corrección para un caso general de orden n:
+	\begin{align}
+	u^{(n)} + f(u(\xi),u'(\xi&),...,u^{(n)}(\xi)) = 0, \lambda = (-1)^n\dfrac{1}{(n-1)!}(\xi - x)^{(n-1)},      &   \\
+	u_{n+1} = u_n + (-1)^n & \int_{0}^{x} \dfrac{1}{(n-1)!}(\xi - x)^{(n-1)}[u'''_n + f(u_n,...,u^{(n)}_n)]d\xi,    &
+\end{align}
+para todo $n \geqslant 1$.
+
+Para utilizar el método de iteración variacional y resolver ecuaciones integrales de Volterra, es necesario convertir la ecuación integral a un problema de valores iniciales equivalente o a una ecuación integro-diferencial.
+
+Vamos a examinar el problema de valores iniciales obtenido utilizando el método de iteración variacional como veremos en el siguiente ejemplo:
+\begin{ejemplo}
+	Resolveremos la siguiente ecuación integral de Volterra usando el método de iteración variacional:
+	\begin{equation}
+		u(x) = 1 + \int_{0}^{x}u(t)dt.
+	\end{equation}
+	Usando la regla de Leibnitz para derivar ambos lados de la ecuación, obtenemos
+	\begin{equation}\label{eq:miv4}
+		u'(x) - u(x) = 0.
+	\end{equation}
+	Sustituyendo $x = 0$, tenemos la condición inicial $u(0) = 1.$ Ahora, utilizando el método de iteración variacional, el funcional de corrección para la ecuación~\eqref{eq:miv4} es
+	\begin{equation}\label{eq:miv5}
+		u_{n+1}(x) = u_n(x) + \int_{0}^{x} \lambda (\xi) (u'_n(\xi) - \tilde{u}_n(\xi))d\xi.
+	\end{equation}
+	Usando la fórmula del esquema visto anteriormente para el caso $n = 1$ llegamos a que 
+	\begin{equation}
+		\lambda = -1.
+	\end{equation}
+	Sustituyendo el valor del multiplicador de Lagrange $\lambda = -1$ en el funcional nos da la fórmula iterativa:
+	\begin{equation}
+		u_{n+1}(x) = u_n(x) - \int_{0}^{x} (u'_n(\xi) - u_n(\xi))d\xi.
+	\end{equation}
+	Como dijimos anteriormente, podemos usar la condición inicial $u_0(x) = u(0) = 1.$ Usando esta selección en~\eqref{eq:miv5} obtenemos las siguientes aproximaciones sucesivas:
+	\begin{align}
+		u_0(x) &= 1,      &   \\
+		u_1(x) &= 1 - \int_{0}^{x} (u'_0(\xi) - u_0(\xi))d\xi = 1 + x,    & \\
+		u_2(x) &= 1 + x - \int_{0}^{x} (u'_1(\xi) - u_1(\xi))d\xi = 1 + x + \dfrac{1}{2!}x^2,    & \\
+		u_3(x) &= 1 + x + \dfrac{1}{2!}x^2 - \int_{0}^{x} (u'_2(\xi) - u_2(\xi))d\xi = 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3,    &
+	\end{align}
+	y así sucesivamente. El VIM admite el uso de 
+	\begin{align}
+		u(x) &= \lim_{n \rightarrow \infty} u_n(x),      &   \\
+		&= \lim_{n \rightarrow \infty} (1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + ... + \dfrac{1}{n!}x^n)
+	\end{align}
+	con lo que obtenemos la solución exacta
+	\begin{equation}
+		u(x) = e^x.
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de aproximaciones sucesivas}
+El método de aproximaciones sucesivas, también conocido como el \textit{método de iteración de Picard}, nos proporciona un esquema que puede ser utilizado para resolver problemas de valores iniciales o ecuaciones integrales. Este método resuelve cualquier problema encontrando aproximaciones sucesivas que convergen a la solución a partir de una inicial, llamada la \textit{aproximación cero}. Como veremos, la aproximación cero puede ser cualquier función real que se utilizará en una relación recurrente para determinar las otras aproximaciones.
+
+Dada la ecuación integral lineal de Volterra de segunda clase
+\begin{equation}
+	u(x) = f(x) + \lambda \int_{0}^{x} K(x,t)u(t)dt,
+\end{equation}
+donde $u(x)$ es la función desconocida a determinar, $K(x,t)$ es el núcleo, y $\lambda$ un parámetro. El método de las aproximaciones sucesivas introduce la siguiente relación de recurrencia
+\begin{equation}\label{eq:aprox1}
+	u_n(x) = f(x) + \lambda \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
+\end{equation}
+donde la aproximación cero $u_0(x)$ puede ser cualquier función real. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0, 1$ ó $x$.
+
+La convergencia de $u_n(x)$ está justificada con el siguiente teorema.
+\begin{teorema}
+	Si $f(x)$, dada en~\eqref{eq:aprox1}, es una función continua en el intervalo $0 \leqslant x \leqslant a$, y el núcleo $K(x,t)$ también es continuo en el triángulo $0 \leqslant x \leqslant a$, $0 \leqslant t \leqslant x$, la secuencia de aproximaciones sucesivas $u_n(x), n \geqslant 0$ converge a la solución $u(x)$ de la ecuación integral bajo estudio.
+\end{teorema}
+\begin{observacion}
+	Es interesante notar que el método de iteración variacional admite el uso de la fórmula iterativa:
+	\begin{equation}
+		u_{n+1} = u_n(x) + \int_{0}^{x} \lambda(\xi)(\dfrac{\partial u_n(\xi)}{\partial \xi}-\tilde{u}_n(\xi))d\xi.
+	\end{equation}
+	mientras que el método de aproximaciones sucesivas utiliza la fórmula iterativa
+	\begin{equation}
+		u_n(x) = f(x) + \lambda \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
+	\end{equation}
+\end{observacion}
+La diferencia entre ambas fórmulas se basa principalmente en:
+\begin{enumerate}
+	\item La primera fórmula contiene el multiplicador de Lagrange $\lambda$ que debería ser determinado antes de aplicar la fórmula. Sin embargo, la fórmula de aproximaciones sucesivas no requiere el uso de $\lambda$.
+	\item La fórmula de iteración variacional permite el uso de la restricción $\tilde{u}_n(\xi)$ donde $\delta \tilde{u}_n(\xi) = 0.$ La segunda fórmula no requiere esta restricción.
+	\item La primera fórmula se aplica a un ODE equivalente a la ecuación integral, mientras que la segunda fórmula se aplica directamente a la fórmula iterativa de la propia ecuación integral.
+\end{enumerate}
+
+Vamos a ilustrar este método con un ejemplo para que se vea más claro.
+\begin{ejemplo}
+	Vamos a resolver la siguiente ecuación integral de Volterra:
+	\begin{equation}
+		u(x) = 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u(t)dt.
+	\end{equation}
+	Para la aproximación cero $u_0(x)$, seleccionamos
+	\begin{equation}
+		u_0(x) = 0.
+	\end{equation}
+	El método de las aproximaciones sucesivas nos permite el uso de la siguiente fórmula iterativa
+	\begin{equation}
+		u_{n+1}(x) = 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u_n(t)dt, \qquad n \geqslant 0.
+	\end{equation}
+	Sustituyendo la aproximación cero obtenemos:
+	\begin{align}
+		u_1(x) &= 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u_0(t)dt = 1 + x + \dfrac{1}{2!}x^2,   & \\
+		u_2(x) &= 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \dfrac{1}{4!}x^4, + \dfrac{1}{5!}x^5,   & \\
+		u_3(x) &= 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \dfrac{1}{4!}x^4, + \dfrac{1}{5!}x^5 + \dfrac{1}{6!}x^6 + \dfrac{1}{7!}x^7 + \dfrac{1}{8!}x^8,     &
+	\end{align}
+	y así sucesivamente. La solución $u(x)$ viene dada por
+	\begin{equation}
+		u(x) = \lim_{n \rightarrow \infty} u_{n+1}(x) = e^x.
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de la Transformada de Laplace}
+Es una técnica muy potente que también es capaz de resolver problemas de valores iniciales y ecuaciones integrales. Antes de aplicar el método, vamos a ver algunos conceptos importantes.
+
+Si el núcleo $K(x,t)$ de la ecuación integral depende de la diferencia $x - t$, entonces se llama \textit{Núcleo de diferencia}. Y podemos expresar la ecuación integral de la siguiente forma:
+\begin{equation}\label{eq:lap1}
+	u(x) = f(x) + \lambda \int_0^x K(x - t)u(t)dt.
+\end{equation}
+Considerando dos funciones $f_1(x)$ y $f_2(x)$ que poseen las condiciones necesarias para la existencia de la transformada de Laplace. Sean las transformadas de Laplace para las funciones $f_1(x)$ y $f_2(x)$ dadas por:
+\begin{equation}
+	\mathcal{L}\{f_1(x)\} = F_1(s), \qquad \mathcal{L}\{f_2(x)\} = F_2(s).
+\end{equation}
+El \textit{producto de convolución de Laplace} de estas dos funciones se define como
+\begin{equation}
+	(f_1 \ast f_2)(x) = \int_{0}^{x} f_1(x-t)f_2(t)dt,
+\end{equation}
+ó
+\begin{equation}
+	(f_2 \ast f_1)(x) = \int_{0}^{x} f_2(x-t)f_1(t)dt,
+\end{equation}
+\begin{observacion}
+	Recalcamos que
+	\begin{equation}
+		(f_1 \ast f_2)(x) = (f_2 \ast f_1)(x).
+	\end{equation}
+\end{observacion}
+Podemos fácilmente ver que la transformada de Laplace del producto de convolución viene dada por:
+\begin{equation}
+	\mathcal{L}\{(f_1 \ast f_2)(x)\} = \mathcal{L}\{\int_{0}^{x}f_1(x-t)f_2(t)dt\} = F_1(s)F_2(s).
+\end{equation}
+Basándonos en este resumen, vamos a examinar ecuaciones integrales de Volterra específicas donde el núcleo es un núcleo de diferencia. Utilizaremos tanto la transformada de Laplace como su inversa.
+
+Tomando la transformada de Laplace de ambos lados en~\eqref{eq:lap1} tenemos
+\begin{equation}
+	U(s) = F(s) + \lambda \mathcal{K}(s)U(s),
+\end{equation}
+donde
+\begin{equation}
+	U(s) = \mathcal{L}\{u(x)\}, \qquad \mathcal{K}(s) = \mathcal{L}\{K(x)\}, \qquad F(s) = \mathcal{L}\{f(x)\}.
+\end{equation}
+Resolviendo la ecuación para $U(s)$ obtenemos
+\begin{equation}
+	U(s) = \dfrac{F(s)}{1-\lambda \mathcal{K}(s)}, \qquad \lambda \mathcal{K}(s) \neq 1.
+\end{equation}
+La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace en la ecuación anterior donde obtenemos:
+\begin{equation}
+	u(x) = \mathcal{L}^{-1}\{\dfrac{F(s)}{1-\lambda \mathcal{K}(s)}\}.
+\end{equation}
+Ahora veremos un ejemplo para ilustrar este método.
+\begin{ejemplo}
+	Resolveremos la siguiente ecuación integral de Volterra utilizando el nuevo método:
+	\begin{equation}
+		u(x) = \sin x + \cos x + 2 \int_{0}^{x} \sin (x-t)u(t)dt.
+	\end{equation}
+	Vamos a aplicar la transformada de Laplace, y nos apoyaremos en su linealidad para obtener
+	\begin{equation}
+		\mathcal{L}\{u(x)\} = \mathcal{L}\{\sin x + \cos x\} + 2\mathcal{L}\{\sin (x-t) \ast u(x)\},
+	\end{equation}
+	y por tanto
+	\begin{equation}
+		U(s) = \dfrac{1}{s^2+1}+\dfrac{s}{s^2+1}+\dfrac{2}{s^2+1}U(s),
+	\end{equation}
+	o equivalentemente
+	\begin{equation}
+		U(s) = \dfrac{1}{s-1}.
+	\end{equation}
+	Tomando la inversa de Laplace en ambos lados obtenemos la solución exacta
+	\begin{equation}
+		u(x) = e^x.
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de la solución en series}
+\begin{definicion}
+	Una función real $u(x)$ se llama analítica si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto b de su dominio
+	\begin{equation}
+		u(x) = \sum_{k=0}^{n}\dfrac{f^{(k)}(b)}{k!}(x-b)^k,
+	\end{equation}
+	converge a $f(x)$ en un entorno de b.
+\end{definicion}
+Por simplicidad, escribiremos la forma genérica de la serie de Taylor en $x = 0$ como
+\begin{equation}\label{eq:serie1}
+	u(x) = \sum_{n=0}^{\infty}a_nx^n.
 \end{equation}
 
+Vamos a presentar un método muy útil, que se basa principalmente en la serie de Taylor para funciones analíticas, y resolverá ecuaciones integrales de Volterra. Asumimos que la solución $u(x)$ de la ecuación integral de Volterra
+\begin{equation}
+	u(x) = f(x) + \lambda \int_0^x K(x,t)u(t)dt,
+\end{equation}
+es analítica, y por tanto posee una forma en serie de Taylor, donde los coeficientes $a_n$ se determinará de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
+\begin{equation}\label{eq:serie2}
+	\sum_{n=0}^{\infty}a_nx^n = T(f(x)) + \lambda \int_{0}^{x}K(x,t)(\sum_{n=0}^{\infty}a_nt^n)dt,
+\end{equation}
+o por simplicidad usamos
+\begin{equation}
+	a_o + a_1x + a_2x^2 + ... = T(f(x)) + \lambda \int_{0}^{x}K(x,t) (a_0+a_1t+a_2t^2+...)dt,
+\end{equation}
+donde $T(f(x))$ es la serie de Taylor para $f(x)$. La ecuación integral se convertirá en una integral tradicional donde en vez de integrar la función desconocida $u(x)$, se integrarán términos de la forma $t^n,n\geqslant0$. Al estar en búsqueda de una solución en series, si la función $f(x)$ incluye funciones elementales, deberemos incluir sus expansiones en forma de Taylor.
+
+Primero integramos la parte derecha de la integral en~\eqref{eq:serie2} y tomamos los coeficientes de las potencias de $x$. Después igualamos los coeficientes de ambos lados para obtener una relación de recurrencia con $a_j, j\geqslant0$. Resolver la recurrencia nos llevará a determinar completamente los coeficientes $a_j, j\geqslant0$.
+
+Ahora la solución en series se sigue inmediatamente sustituyendo estos coeficientes. La solución exacta se obtendrá si existe, y si no, entonces la serie obtenida se puede utilizar con objetivos numéricos. En este caso, a más términos evaluemos, mayor precisión obtendremos.
+
+Veamos un ejemplo para dejar claro este método:
+\begin{ejemplo}
+	Vamos a resolver la ecuación integral de Volterra
+	\begin{equation}
+		u(x) = 1 - x \sin x + \int_{0}^{x} tu(t)dt.
+	\end{equation}
+	Sustituyendo la serie en ambos lados y utilizando la expansión en serie de Taylor para el seno obtenemos:
+	\begin{equation}
+		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1 - x(x-\dfrac{x^3}{3!} + ...) + \int_{0}^{x}t(a_0+a_1t+a_2t^2+...)dt.
+	\end{equation}
+	Integrando el lado derecho y quedándonos con los coeficientes encontramos
+	\begin{equation}
+		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1+(\dfrac{1}{2}a_0-1)x^2+\dfrac{1}{3}a_1x^3+(\dfrac{1}{6}+\dfrac{1}{4}a_2)x^4+...
+	\end{equation}
+	Igualando los coeficientes de las potencias de $x$,
+	\begin{align}
+		a_0&=1,          &  a_1&=0,      \\
+		a_2&=\dfrac{1}{2}a_0-1,   &  a_3&=\dfrac{1}{3}a_1 = 0, \\
+		a_4&=\dfrac{1}{6}+\dfrac{1}{4}a_2 = \dfrac{1}{4!},
+	\end{align}
+	y para $n, n\geqslant0$,
+	\begin{equation}
+		a_{2n+1} = 0, \qquad a_{2n} = \dfrac{(-1)^n}{(2n)!}, \qquad n \geqslant 0.
+	\end{equation}
+	La solución en forma de serie viene dada por
+	\begin{equation}
+		u(x) = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4-\dfrac{1}{6!}x^6+...
+	\end{equation}
+	que nos da la solución exacta
+	\begin{equation}
+		u(x) = \cos x.
+	\end{equation}
+\end{ejemplo}
 
 
 

@@ -6,7 +6,7 @@ Qué tiene cada libro?
 TIPS
 - SIEMPRE después de una definición, poner un ejemplo.
 - CAMBIAR el orden de las cosas de los libros, es decir, no copiar tal cual, cambiar ejemplos y lo que vea que puede seguir teniendo sentido.
-
+- REVISAR todo lo que he escrito, entenderlo y modificarlo para que sea más fácil de entender si es necesario.
 
 RESUMEN LIBROS
 - 2011, Campos Sancho
@@ -21,7 +21,7 @@ Viene muy bien explicada la introducción a la aplicación del calentamiento de 
 Es más amplio y más general sobre las ecuaciones diferenciales que Campos Sancho, yo creo que con lo de Campos Sancho hay de sobra.
 Se puede mirar aquí por si hay mejores ejemplos o está explicado de una forma mejor.
 
-- 2009, Atkinson (11.5 paginas)
+- 2009, Atkinson (11.5 paginas) HE UTILIZADO ESTE LIBRO
 
 Teorema de la serie geométrica + dem + observacion + ejemplo
 Generalización del teorema utilizando una ecuación integral de Volterra de segundo tipo
@@ -62,11 +62,20 @@ Sistemas de volterra Integrodiferenciales y un par de métodos como el de Laplac
 
 Aqui viene la demostracion del teorema de existencia y unicidad de la solución para las ecuaciones de Volterra (No sé si viene en algún otro lado)
 
+Respecto a la aplicación:
+En el libro de 2011, viene como el cambio de temperatura de una habitación a otra, y en nagle viene mejor yo creo.
+
 INDICE TFG
 Yo creo que de las ecuaciones diferenciales deberíamos verlas para la aplicación, decir un poco algo de los sistemas y ver por qué los necesitamos en nuestra aplicación.
 - ECUACIONES INTEGRALES (Libros de Atkinson y WazWaz)
 Primero Wazwaz y después Atkinson
 - SISTEMAS DE ECUACIONES DIFERENCIALES LINEALES
 - NUESTRA APLICACION
+
+LIBROS USADOS
+- Wazwaz
+- Atkinson
+- Nagle
+- Campos Sancho
 
 

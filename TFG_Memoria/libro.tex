@@ -163,6 +163,7 @@
 % Cargamos un archivo externo donde hemos incluido todos los comandos
 % propios que vamos a usar en el documento.
 \input{paquetes/comandos-entornos.tex}
+\newcommand{\shorteqnote}[1]{ & \text{\small\llap{#1}}}
 
 % --------------------------------------------------------------------
 % INFORMACIÓN DEL TFG Y EL AUTOR
@@ -191,6 +192,7 @@
 \usepackage{xurl}
 \usepackage{hyperref}
 \input{paquetes/hyperref}
+\usepackage{gensymb}
 
 \begin{document}
 
@@ -221,6 +223,14 @@
 \input{capitulos/capitulo01}
 
 \input{capitulos/capitulo02}
+
+\input{capitulos/capitulo03}
+
+\input{capitulos/capitulo04}
+
+\input{capitulos/ecdiferenciales}
+
+\input{capitulos/aplicacion}
 
 % --------------------------------------------------------------------
 % APPENDIX: Opcional
