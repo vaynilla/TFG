@@ -3,10 +3,9 @@
 \chapter{Aplicación: Calentamiento y enfriamiento de edificios}
 Como aplicación sobre lo estudiado anteriormente, vamos a formular un modelo matemático que describa la temperatura dentro de un edificio, como función de la temperatura exterior, el calor generado dentro del edificio y el calefactor o el aire acondicionado.
 
-Un enfoque natural para modelar la temperatura dentro de un edificio es el uso del análisis por compartimentos. Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edificio como un único compartimento, es decir, sin estar dividido en varias habitaciones. Entonces la razón de cambio en la temperatura
-queda determinada por todos los factores que generan o disipan calor.
+Un enfoque natural para modelar la temperatura dentro de un edificio es el uso del análisis por compartimentos.
 \section{Edificio como habitación única}
-En este caso, veremos el edificio como si fuera una única habitación. Tomaremos en cuenta tres factores principales que afectan la temperatura dentro del edificio:
+Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edificio como un único compartimento, es decir, sin estar dividido en varias habitaciones. Entonces la razón de cambio en la temperatura queda determinada por todos los factores que generan o disipan calor. Tomaremos en cuenta tres factores principales que afectan la temperatura dentro del edificio:
 \begin{itemize}
 	\item En primer lugar está el calor generado por las personas, las luces y las máquinas dentro del edificio. Esto causa una razón de incremento en la temperatura que denotaremos por $H(t)$.
 	\item En segundo lugar está el calentamiento (o enfriamiento) proporcionado por la calefacción (o el aire acondicionado).  Esta razón de incremento (o decremento) en temperatura será representada por $U(t)$.
@@ -29,7 +28,7 @@ En definitiva, vemos que
 \begin{equation}
 	\dfrac{\partial T}{\partial t} = K[M(t) - T(t)] + H(t) + U(t),
 \end{equation}
-cuando la razón de calentamiento adicional $H(t)$ siempre es no negativa y $U(t)$ es positiva para la calefacción y negativa para el aire acondicionado. Como la ecuación es lineal, la resolveremos fácilmente escribiéndola en la forma canónica
+cuando la razón de calentamiento adicional $H(t)$ es siempre no negativa y $U(t)$ es positiva para la calefacción y negativa para el aire acondicionado. Como la ecuación es lineal, la resolveremos fácilmente escribiéndola en la forma canónica
 \begin{equation}
 	\dfrac{\partial T}{\partial t}(t) + P(t)T(t) = Q(t),
 \end{equation}
@@ -58,7 +57,7 @@ Al despejar $T(t)$ se tiene
 \begin{equation}
 	= e^{-Kt}\{\int e^{Kt}[KM(t) + H(t) + U(t)]dt + C\}.
 \end{equation}
-A continuación vamos a resolver un ejercicio sobre calentamiento y enfriamiento de edificios en el que tenemos solamente 1 habitación:
+A continuación vamos a resolver un ejercicio sobre calentamiento y enfriamiento de edificios en el que tenemos solamente una habitación:
 \begin{ejemplo}
 	Determinar la temperatura del edificio $T(t)$ si la razón de calentamiento adicional $H(t)$ es igual a la constante $H_0$, no hay calentamiento ni enfriamiento $(U(t) = 0)$ y la temperatura exterior $M$ varía como una onda senoidal en un periodo de 24 horas, con un mínimo en $t = 0$ (medianoche) y un máximo en $t = 12$ (mediodía). Es decir, 
 	\begin{equation}

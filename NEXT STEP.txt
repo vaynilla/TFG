@@ -3,3 +3,8 @@ dejarlo para preguntarle al profe y indicarlo.
 - Acordarme de poner definiciones, ejemplos, observaciones, etc...
 
 - ANTES DE MANDARSELO A MANOLO, REVISAR TODAS LAS DUDAS Y LEER EL TFG Y ARREGLAR LO QUE VEA RARETE.
+
+Para ecs. diferenciales
+Meter: Def. 4.1 y 4.2 + Teo 4.1 + teo 4.2 + introduccion sistemas homogeneos con coefs constantes, los distintos casos de valores propios quizás es mucho?¿
+Def 4.3 no creo, preguntar
+wronskiano hace falta?

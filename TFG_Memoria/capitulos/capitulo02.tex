@@ -8,17 +8,17 @@
 \chapter{Ecuaciones integrales de Volterra de segunda clase}
 
 \section{Introducción}
-ESTO SE PUEDE MEJORAR CREOExisten una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación de splines, Runge-Kutta, y otros han sido utilizados para manejar las ecuaciones integrales de Volterra.
+Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación de splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra.
 
-A continuación veremos los últimos métodos desarrollados:
+A parte de estudiar algunos de estos métodos tradicionales, veremos los últimos métodos desarrollados:
 \begin{itemize}
 	\item Método de descomposición de Adomian (ADM)
 	\item Método de descomposición modificado (mADM)
 	\item Método de iteración variacional (VIM)
 \end{itemize}
-Además, estudiaremos algunos de los métodos tradicionales mencionados al principio. Nos vamos a centrar en el uso de estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ de la ecuación integral de Volterra de segunda clase.
+Nos vamos a centrar principalmente en cómo se aplican estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ para la ecuación integral de Volterra de segunda clase.
 \section{Método de descomposición de Adomian (ADM)}
-Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha realizado mucho trabajo de investigación para aplicar este método a una amplia clase de ecuaciones diferenciales ordinarias, parciales, y también ecuaciones integrales.
+Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha investigado mucho sobre este método para poder aplicarlo a una amplia clase de ecuaciones diferenciales ordinarias, parciales, y también ecuaciones integrales.
 
 Consiste en descomponer una función $u(x)$ de cualquier ecuación en una suma de un número infinito de componentes definidas por la serie de descomposición
 \begin{equation}\label{eq:sum_adomian}
@@ -38,7 +38,7 @@ o equivalentemente
 \begin{equation}
 	u_0(x) + u_1(x) + u_2(x) + ... = f(x) + \lambda \int_{0}^{x} K(x,t)[u_0(t) + u_1(t) + ...]dt.
 \end{equation}
-La primera componente $u_0(x)$ se identifica con todos los términos que no están incluidos dentro de la integral. Por lo tanto, las componentes $u_j(x), j \geqslant 1$ de la función desconocida $u(x)$ están completamente determinados a través de la siguiente relación de recurrencia:
+La primera componente $u_0(x)$ se identifica con todos los términos que no están incluidos dentro de la integral. Por lo tanto, las componentes $u_j(x), j \geqslant 1$, de la función desconocida $u(x),$ están completamente determinadas a través de la siguiente relación de recurrencia:
 \begin{align}
 	u_0(x) &= f(x),      &   \\
 	u_{n+1}(x) &= \lambda \int_{0}^{x} K(x,t)u_n(t)dt, \qquad n \geqslant 0,         & 
@@ -57,7 +57,7 @@ Sin embargo, para problemas concretos donde no se puede obtener una solución, g
 \end{observacion}
 
 \begin{ejemplo}
-	Resuelve la siguiente ecuación integral de Volterra:
+	Resolveremos la siguiente ecuación integral de Volterra utilizando el ADM:
 	\begin{equation}
 		u(x) = 1 - \int_{0}^{x} u(t)dt.
 	\end{equation}
@@ -94,7 +94,7 @@ Sin embargo, para problemas concretos donde no se puede obtener una solución, g
 \section{Método de descomposición modificado (mADM)}
 Una modificación importante del ADM fue desarrollada por Wazwaz. Este método facilitará el proceso de cálculo y acelerará la convergencia de la solución en series. Se aplicará, siempre que se pueda, a cualquier ecuación integral y diferencial de cualquier orden.
 \begin{observacion}
-	Este método depende principalmente de dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada sólo por un término.
+	Este método depende principalmente de dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada por un sólo término.
 \end{observacion}
 El método de descomposición modificado introduce una pequeña variación a la relación de recurrencia que vimos en el ADM, y esto nos llevará a la determinación de las componentes de $u(x)$ de una forma más fácil y rápida.
 
@@ -102,7 +102,7 @@ En muchos casos, la función $f(x)$ se puede escribir como una suma de dos funci
 \begin{equation}
 	f(x) = f_1(x) + f_2(x).
 \end{equation}
-Gracias a esto, se introducirá un cambio importante en la formación de la relación de recurrencia. Para minimizar el tamaño de los cálculos, identificamos la primera componente $u_0(x)$ como una de las partes de $f(x)$, que será $f_1(x)$ o $f_2(x)$. La otra parte se puede añadir a la componente $u_1(x)$ junto a los demás términos. En resumen, obtenemos la siguiente relación de recurrencia:
+Gracias a esto, se introducirá un cambio importante a la hora de formar la relación de recurrencia. Para minimizar el tamaño de los cálculos, identificamos la primera componente $u_0(x)$ como una de las partes de $f(x)$, que será $f_1(x)$ o $f_2(x)$. La otra parte se puede añadir a la componente $u_1(x)$ junto a los demás términos. En resumen, obtenemos la siguiente relación de recurrencia:
 \begin{align}
 	u_0(x) &= f_1(x),      &   \\
 	u_{1}(x) &= f_2(x) + \lambda \int_{0}^{x} K(x,t)u_0(t)dt,    &  \\
@@ -115,21 +115,21 @@ Aunque este variación en las dos primeras componentes es pequeña, juega un pap
 
 A continuación vamos a ver dos observaciones importantes a cerca de este método:
 \begin{observacion}
-	Si elegimos correctamente las funciones $f_1(x)$ y $f_2(x)$, la solución exacta $u(x)$ se puede obtener utilizando muy pocas iteraciones, incluso algunas veces evaluando sólo dos componentes. De hecho, el éxito de esta modificación depende de hacer una buena elección de las funciones $f_1(x)$ y $f_2(x)$, y la forma de obtenerlas adecuadamente es a través de pruebas, ya que no se ha encontrado todavía una regla para facilitar esta elección.
+	Si elegimos correctamente las funciones $f_1(x)$ y $f_2(x)$, podremos obtener la solución exacta $u(x)$ utilizando muy pocas iteraciones, incluso algunas veces evaluando sólo dos componentes. De hecho, el éxito de esta modificación depende de hacer una buena elección de las funciones $f_1(x)$ y $f_2(x)$, y la forma de obtenerlas adecuadamente es a través de prueba y error, ya que no se ha encontrado todavía una regla para facilitar esta elección.
 \end{observacion}
 
 \begin{observacion}
 	Si $f(x)$ está formada sólo por un término, podemos utilizar el método de descomposición estándar.
 \end{observacion}
 
-Vamos a utilizar este método para las ecuaciones integrales tanto de Volterra como de Fredholm, lineales en nuestro caso. Veamos algún ejemplo:
+Podemos utilizar este método para las ecuaciones integrales tanto de Volterra como de Fredholm, lineales en nuestro caso. Veamos algún ejemplo:
 
 \begin{ejemplo}
 	Resolver la ecuación integral de Volterra:
 	\begin{equation}
 		u(x) = 2x + \sin x + x^2 - \cos x + 1 - \int_{0}^{x} u(t)dt.
 	\end{equation}
-	La función $f(x)$ se compone de 5 términos, que están fuera de la integral, y vamos a dividirlos en dos partes de la siguiente forma:
+	La función $f(x)$ está compuesta por 5 términos, que están fuera de la integral, y vamos a dividirlos en dos partes de la siguiente forma:
 	\begin{align}
 		f_1(x) &= 2x + \sin x,      &   \\
 		f_2(x) &= x^2 - \cos x + 1.    &
@@ -147,14 +147,14 @@ Vamos a utilizar este método para las ecuaciones integrales tanto de Volterra c
 \end{ejemplo}
 
 \section{Fenómeno de los términos de ruido}
-La nueva técnica depende principalmente de los llamados \textit{términos de ruido}, y ha demostrado una rápida convergencia a la solución, se puede utilizar tanto para ecuaciones integrales como para ecuaciones diferenciales.
+Esta nueva técnica depende principalmente de los llamados \textit{términos de ruido}, y ha demostrado una rápida convergencia hacia la solución, se puede utilizar tanto para ecuaciones integrales como para ecuaciones diferenciales.
 
 Los términos con ruido, si existen entre las componentes $u_0(x)$ y $u_1(x)$, nos proporcionarán la solución exacta utilizando sólo las dos primeras iteraciones. Vamos a revisar los conceptos principales de estos términos:
 \begin{enumerate}
 	\item Los \textit{términos de ruido} se definen como los términos idénticos con signos opuestos en las componentes $u_0(x)$ y $u_1(x)$. Otros términos de ruido pueden aparecer entre otras componentes. Es importante saber que no tienen por qué existir para todas las ecuaciones.
 	\item Al cancelar los términos de ruido entre $u_0(x)$ y $u_1(x)$, incluso si $u_1(x)$ contiene términos adicionales, los términos no cancelados restantes de $u_0(x)$ podrían proporcionar la solución exacta de la ecuación integral. La aparición de los términos de ruido entre $u_0(x)$ y $u_1(x)$ no siempre es suficiente para obtener la solución exacta. Por lo tanto, es necesario demostrar que los términos no cancelados de $u_0(x)$ satisfacen la ecuación integral dada. 
 	
-	Por otro lado, si los términos no cancelados de $u_0(x)$ no cumplieran con la ecuación integral dada, o los términos de ruido no aparecieran entre $u_0(x)$ y $u_1(x)$, entonces sería necesario determinar más componentes de $u(x)$ para obtener la solución en una forma de serie.
+	Por otro lado, si los términos no cancelados de $u_0(x)$ no cumplieran con la ecuación integral dada, o los términos de ruido no aparecieran entre $u_0(x)$ y $u_1(x)$, entonces sería necesario determinar más componentes de $u(x)$ para obtener la solución en forma de serie.
 	\item Los términos de ruido aparecen en tipos específicos de ecuaciones no homogéneas, sin embargo, no aparecen en ecuaciones homogéneas.
 	\item Hay una condición necesaria para que se produzca la aparición de los términos de ruido, la primera componente $u_0(x)$ debe contener la solución exacta $u(x)$ entre otros términos. Además, se demostró que la condición de no homogeneidad de la ecuación no siempre garantiza la aparición de los términos de ruido.
 \end{enumerate}
@@ -175,14 +175,14 @@ Vamos a ilustrar la utilidad de los términos de ruido con un ejemplo:
 	\end{equation}
 	que satisface la ecuación integral.
 	\begin{observacion}
-		Si hubiéramos elegido el método modificado, seleccionamos $u_0(x) = 8x$, por lo tanto, tenemos que $u_1(x) = 0$. Por tanto, obtenemos el mismo resultado.
+		Si hubiéramos elegido el método modificado, seleccionamos $u_0(x) = 8x$, luego tenemos que $u_1(x) = 0$. Por tanto, obtenemos el mismo resultado.
 	\end{observacion}
 \end{ejemplo}
 
 \section{Método de iteración variacional (VIM)}
-Este método ha sido recientemente desarrollado, y ha demostrado ser eficaz y confiable para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Este método es capaz de manejar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Además, la serie obtenida se puede utilizar para fines numéricos si no se puede obtener la solución exacta. Vamos a presentar los pasos principales del método:
+Este método ha sido recientemente desarrollado, y ha demostrado ser eficaz y seguro para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Este método es capaz de manejar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Además, la serie obtenida se puede utilizar para fines numéricos si no se puede obtener la solución exacta. Vamos a presentar los pasos principales del método:
 
-Considera la ecuación diferencial:
+Consideramos la ecuación diferencial:
 \begin{equation}\label{eq:miv1}
 	Lu + Nu = g(t),
 \end{equation}
@@ -194,14 +194,14 @@ El método de iteración variacional presenta un funcional de corrección para l
 \end{equation}
 donde $\lambda$ es un multiplicador de Lagrange general.
 \begin{observacion}
-	Nótese que en este método, $\lambda$ puede ser una constante o una función, y $û_n$ es un valor restringido, por tanto se comporta como una constante, luego $\delta û_n = 0$, donde $\delta$ es la derivada variacional.
+	Nótese que en este método, $\lambda$ puede ser una constante o una función, y $\tilde{u}_n$ es un valor restringido, por tanto se comporta como una constante, luego $\delta \tilde{u}_n = 0$, donde $\delta$ es la derivada variacional.
 \end{observacion}
 Para un uso completo de este método, deberíamos seguir dos pasos:
 \begin{enumerate}
 	\item Determinar el multiplicador de Lagrange $\lambda(\xi)$ que será identificado de forma óptima.
 	\item Una vez determinado $\lambda$, sustituimos el resultado en~\eqref{eq:miv2} donde se deberían omitir las restricciones.
 \end{enumerate}
-Tomando la variación de~\eqref{eq:miv2} con respecto a la variable independiente $û_n$, encontramos
+Tomando la variación de~\eqref{eq:miv2} con respecto a la variable independiente $\tilde{u}_n$, encontramos
 \begin{equation}
 	\dfrac{\delta u_{n+1}}{\delta u_n} = 1 + \dfrac{\delta}{\delta u_n}(\int_{0}^{x} \lambda(\xi)(Lu_n(\xi)+N\tilde{u}_n(\xi)-g(\xi))d\xi),
 \end{equation}
@@ -239,7 +239,7 @@ y así sucesivamente. Por tanto, la solución
 \begin{equation}
 	u(x) = \lim_{n\rightarrow \infty} u_n(x).
 \end{equation}
-Es decir, la correción funcional nos dará varias aproximaciones, y por tanto, la solución exacta se obtiene como el límite de todas estas sucesivas aproximaciones.
+Es decir, el funcional de corrección nos dará varias aproximaciones, y por tanto, la solución exacta se obtiene como el límite de todas estas sucesivas aproximaciones.
 
 La determinación del multiplicador de Lagrange juega un papel muy importante para llegar a la solución del problema. A continuación, mostramos un esquema correspondiente al multiplicador de Lagrange y su funcional de corrección para un caso general de orden n:
 	\begin{align}
@@ -305,7 +305,7 @@ donde la aproximación cero $u_0(x)$ puede ser cualquier función real. Siempre 
 
 La convergencia de $u_n(x)$ está justificada con el siguiente teorema.
 \begin{teorema}
-	Si $f(x)$, dada en~\eqref{eq:aprox1}, es una función continua en el intervalo $0 \leqslant x \leqslant a$, y el núcleo $K(x,t)$ también es continuo en el triángulo $0 \leqslant x \leqslant a$, $0 \leqslant t \leqslant x$, la secuencia de aproximaciones sucesivas $u_n(x), n \geqslant 0$ converge a la solución $u(x)$ de la ecuación integral bajo estudio.
+	Si $f(x)$, dada en~\eqref{eq:aprox1}, es una función continua para $x \in [0,a]$, y el núcleo $K(x,t)$ también es continuo para $x \in [0,a]$, $t \in [0,x]$, la secuencia de aproximaciones sucesivas $u_n(x), n \geqslant 0$ converge a la solución $u(x)$ de la ecuación integral bajo estudio.
 \end{teorema}
 \begin{observacion}
 	Es interesante notar que el método de iteración variacional admite el uso de la fórmula iterativa:
@@ -317,7 +317,7 @@ La convergencia de $u_n(x)$ está justificada con el siguiente teorema.
 		u_n(x) = f(x) + \lambda \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
 	\end{equation}
 \end{observacion}
-La diferencia entre ambas fórmulas se basa principalmente en:
+Podemos resumir las diferencias entre ambas fórmulas de la siguiente forma:
 \begin{enumerate}
 	\item La primera fórmula contiene el multiplicador de Lagrange $\lambda$ que debería ser determinado antes de aplicar la fórmula. Sin embargo, la fórmula de aproximaciones sucesivas no requiere el uso de $\lambda$.
 	\item La fórmula de iteración variacional permite el uso de la restricción $\tilde{u}_n(\xi)$ donde $\delta \tilde{u}_n(\xi) = 0.$ La segunda fórmula no requiere esta restricción.
@@ -353,7 +353,7 @@ Vamos a ilustrar este método con un ejemplo para que se vea más claro.
 \section{Método de la Transformada de Laplace}
 Es una técnica muy potente que también es capaz de resolver problemas de valores iniciales y ecuaciones integrales. Antes de aplicar el método, vamos a ver algunos conceptos importantes.
 
-Si el núcleo $K(x,t)$ de la ecuación integral depende de la diferencia $x - t$, entonces se llama \textit{Núcleo de diferencia}. Y podemos expresar la ecuación integral de la siguiente forma:
+Si el núcleo $K(x,t)$ de la ecuación integral depende de la diferencia $x - t$, entonces se llama \textit{núcleo de diferencia}. Y podemos expresar la ecuación integral de la siguiente forma:
 \begin{equation}\label{eq:lap1}
 	u(x) = f(x) + \lambda \int_0^x K(x - t)u(t)dt.
 \end{equation}
@@ -397,7 +397,7 @@ La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace 
 \begin{equation}
 	u(x) = \mathcal{L}^{-1}\{\dfrac{F(s)}{1-\lambda \mathcal{K}(s)}\}.
 \end{equation}
-Ahora veremos un ejemplo para ilustrar este método.
+
 \begin{ejemplo}
 	Resolveremos la siguiente ecuación integral de Volterra utilizando el nuevo método:
 	\begin{equation}
@@ -423,11 +423,11 @@ Ahora veremos un ejemplo para ilustrar este método.
 
 \section{Método de la solución en series}
 \begin{definicion}
-	Una función real $u(x)$ se llama analítica si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto b de su dominio
+	Una función real $u(x)$ se llama \textit{analítica} si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto $b$ de su dominio
 	\begin{equation}
 		u(x) = \sum_{k=0}^{n}\dfrac{f^{(k)}(b)}{k!}(x-b)^k,
 	\end{equation}
-	converge a $f(x)$ en un entorno de b.
+	converge a $f(x)$ en un entorno de $b$.
 \end{definicion}
 Por simplicidad, escribiremos la forma genérica de la serie de Taylor en $x = 0$ como
 \begin{equation}\label{eq:serie1}
@@ -438,7 +438,7 @@ Vamos a presentar un método muy útil, que se basa principalmente en la serie d
 \begin{equation}
 	u(x) = f(x) + \lambda \int_0^x K(x,t)u(t)dt,
 \end{equation}
-es analítica, y por tanto posee una forma en serie de Taylor, donde los coeficientes $a_n$ se determinará de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
+es analítica, y por tanto posee una solución en forma de serie de Taylor, donde los coeficientes $a_n$ se determinarán de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
 \begin{equation}\label{eq:serie2}
 	\sum_{n=0}^{\infty}a_nx^n = T(f(x)) + \lambda \int_{0}^{x}K(x,t)(\sum_{n=0}^{\infty}a_nt^n)dt,
 \end{equation}
@@ -450,7 +450,7 @@ donde $T(f(x))$ es la serie de Taylor para $f(x)$. La ecuación integral se conv
 
 Primero integramos la parte derecha de la integral en~\eqref{eq:serie2} y tomamos los coeficientes de las potencias de $x$. Después igualamos los coeficientes de ambos lados para obtener una relación de recurrencia con $a_j, j\geqslant0$. Resolver la recurrencia nos llevará a determinar completamente los coeficientes $a_j, j\geqslant0$.
 
-Ahora la solución en series se sigue inmediatamente sustituyendo estos coeficientes. La solución exacta se obtendrá si existe, y si no, entonces la serie obtenida se puede utilizar con objetivos numéricos. En este caso, a más términos evaluemos, mayor precisión obtendremos.
+Ahora la solución en series se sigue inmediatamente de sustituir estos coeficientes. La solución exacta se obtendrá si existe, y si no, la serie obtenida se podrá utilizar con objetivos numéricos. En este caso, a más términos evaluemos, mayor precisión obtendremos.
 
 Veamos un ejemplo para dejar claro este método:
 \begin{ejemplo}
