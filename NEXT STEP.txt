@@ -1,10 +1,6 @@
-- Poner todo lo que viene en la guía, y lo que no viene explícitamente en la guía pero está en los capítulos, ver qué puede ser muy importante y meterlo y lo que no,
-dejarlo para preguntarle al profe y indicarlo.
-- Acordarme de poner definiciones, ejemplos, observaciones, etc...
 
-- ANTES DE MANDARSELO A MANOLO, REVISAR TODAS LAS DUDAS Y LEER EL TFG Y ARREGLAR LO QUE VEA RARETE.
 
-Para ecs. diferenciales
-Meter: Def. 4.1 y 4.2 + Teo 4.1 + teo 4.2 + introduccion sistemas homogeneos con coefs constantes, los distintos casos de valores propios quizás es mucho?¿
-Def 4.3 no creo, preguntar
-wronskiano hace falta?
+
+IMPORTANTE
+
+- En las introducciones, dejar el menor número de fórmulas, que todo sea texto, y hacerlas más extensas y más amenas.

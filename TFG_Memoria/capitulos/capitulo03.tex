@@ -4,9 +4,14 @@
 \section{Introducción}
 Los sistemas de ecuaciones integrales, lineales y no lineales, aparecen en muchas aplicaciones de ingeniería, física, química y modelos de crecimiento de poblaciones. Las ideas generales y las características esenciales de estos sistemas se pueden aplicar en muchos ámbitos.
 
-Una gran variedad de métodos numéricos y analíticos se usan para manejar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior. El método de descomposición de Adomian y el método de la transformada de Laplace serán los que veremos.
+Una gran variedad de métodos numéricos y analíticos se usan para manejar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior. Los tres métodos que vamos a estudiar en este capitulo son los siguientes:
+\begin{itemize}
+	\item Método de descomposición de Adomian
+	\item Método de la transformada de Laplace
+	\item Método de las aproximaciones sucesivas
+\end{itemize}
 
-Vamos a estudiar sistemas de ecuaciones integrales de Volterra de segunda clase dadas por
+Los sistemas de ecuaciones integrales lineales de Volterra de segunda clase, vienen dados por
 \begin{equation}
 	u(x) = f_1(x) + \int_{0}^{x}(K_1(x,t)u(t) + \tilde{K}_1(x,t)v(t)+...),
 \end{equation}
@@ -105,6 +110,8 @@ Puesto que ya hemos explicado este método en profundidad en el capítulo anteri
 		(u(x),v(x)) = (1 + x^3, 1 - x^3).
 	\end{equation}
 \end{ejemplo}
+
+\section{Método de aproximaciones sucesivas}
 
 \endinput
 %------------------------------------------------------------------------------------

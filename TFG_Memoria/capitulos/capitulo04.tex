@@ -4,11 +4,11 @@
 \section{Teorema de la serie geométrica y sus variantes}
 El siguiente resultado se usa muy a menudo en análisis numérico y matemática aplicada. También es la forma que tenemos para analizar si tienen solución los problemas que están $"$cerca$"$ a otros problemas que sabemos que tienen solución única.
 \begin{teorema}
-	(Teorema de la serie geométrica) Sea V un espacio de Banach, $L \in \mathcal{L}(V)$. Suponemos
+	(Teorema de la serie geométrica) Sea X un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos
 	\begin{equation}
 		\lVert L \rVert \leq 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en V, su inversa es un operador lineal acotado,
+	Entonces $I - L$ es una biyección en X, su inversa es un operador lineal continuo,
 	\begin{equation}
 		(I-L)^{-1} = \sum_{n=0}^{\infty}L^n,
 	\end{equation}
@@ -18,7 +18,7 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Definimos una sucesión en $\mathcal{L}(V): M_n = \sum_{i=0}^{n}L^i, n \geqslant 0$. Para $p \geqslant 1$, 
+	Definimos una sucesión en $\mathcal{L}(X): M_n = \sum_{i=0}^{n}L^i, n \geqslant 0$. Para $p \geqslant 1$, 
 	\begin{equation}
 		\lVert M_{n+p} - M_n \rVert = \lVert \sum_{i=n+1}^{n+p}L^i \rVert \leqslant \sum_{i=n+1}^{n+p} \lVert L^i \rVert \leqslant \sum_{i=n+1}^{n+p} \lVert L \rVert^i.
 	\end{equation}
@@ -30,7 +30,7 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 	\begin{equation}
 		\sup_{p \geqslant 1} \lVert M_{n+p} - M_n \rVert \rightarrow 0, \qquad n \rightarrow \infty,
 	\end{equation}
-	y \{$M_n$\} es una sucesión de Cauchy en $\mathcal{L}(V)$. Como $\mathcal{L}(V)$ es completo, hay un $M \in \mathcal{L}(V)$ tal que
+	y \{$M_n$\} es una sucesión de Cauchy en $\mathcal{L}(X)$. Como $\mathcal{L}(X)$ es completo, hay un $M \in \mathcal{L}(X)$ tal que
 	\begin{equation}
 		\lVert M_{n} - M \rVert \rightarrow 0, \qquad n \rightarrow \infty.
 	\end{equation}
@@ -53,11 +53,11 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 	Tomando el límite en $n \rightarrow \infty$, obtenemos~\eqref{eq:teo1}.
 \end{proof}
 \begin{observacion}
-	El teorema dice que bajo las hipótesis que hemos marcado, para cualquier $f \in V$, la ecuación
+	El teorema dice que bajo las hipótesis que hemos marcado, para cualquier $f \in X$, la ecuación
 	\begin{equation}\label{eq:teo2}
 		(I-L)u = f
 	\end{equation}
-	tiene solución única $u = (I-L)^{-1}f \in V$. Además, la solución depende continuamente de la parte derecha $f$: Siendo $(I-L)u_1 = f_1$ y $(I-L)u_2 = f_2$, de esto se sigue que
+	tiene solución única $u = (I-L)^{-1}f \in X$. Además, la solución depende continuamente de la parte derecha $f$: Siendo $(I-L)u_1 = f_1$ y $(I-L)u_2 = f_2$, de esto se sigue que
 	\begin{equation}
 		u_1 - u_2 = (I-L)^{-1}(f_1 - f_2),
 	\end{equation}
@@ -83,7 +83,7 @@ Veamos a continuación un ejemplo en el que, gracias al teorema de la serie geom
 	\begin{equation}
 		\lambda u(x) - \int_{a}^{b}k(x,t)u(t)dy = f(x), \qquad a \leqslant x \leqslant b
 	\end{equation}
-	con $\lambda \neq 0$, $k(x,y)$ continua para $x,y \in [a,b]$, y $f \in \mathcal{C}[a,b]$. Sea $V = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Simbólicamente, escribimos la ecuación como
+	con $\lambda \neq 0$, $k(x,y)$ continua para $x,y \in [a,b]$, y $f \in \mathcal{C}[a,b]$. Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Simbólicamente, escribimos la ecuación como
 	\begin{equation}
 		(\lambda I-K)u = f,
 	\end{equation}
@@ -115,7 +115,7 @@ Veamos a continuación un ejemplo en el que, gracias al teorema de la serie geom
 	\end{equation}
 \end{ejemplo}
 \begin{observacion}
-	Gracias a la demostración del teorema podemos ver que para un operador lineal $L \in \mathcal{L}(V)$ sobre un espacio de Banach $V$, si $\lVert L \rVert \leq 1$, entonces la serie $\sum_{n=0}^{\infty}L^n$ converge en $\mathcal{L}(V)$ y el valor de la serie es el operador $(I-L)^{-1}$.
+	Gracias a la demostración del teorema podemos ver que para un operador lineal $L \in \mathcal{L}(X)$ sobre un espacio de Banach $V$, si $\lVert L \rVert \leq 1$, entonces la serie $\sum_{n=0}^{\infty}L^n$ converge en $\mathcal{L}(X)$ y el valor de la serie es el operador $(I-L)^{-1}$.
 \end{observacion}
 \subsection{Generalización del teorema}
 Para motivar la generalización del teorema, vamos a considerar la ecuación integral de Volterra de segunda clase
@@ -128,21 +128,21 @@ donde $B \geq 0$ y suponemos que el núcleo $K(x,t)$ es continuo para $0 \leqsla
 \end{equation}
 Sin embargo, podemos usar una variante del teorema de la serie geométrica sin importar el tamaño del núcleo $K(x,t)$, y garantizando la existencia de solución única. Simbólicamente, escribimos la ecuación integral como $(I-L)u = f$.
 \begin{corolario}
-	Sea V un espacio de Banach, $L \in \mathcal{L}(V)$. Suponemos que para algún entero $m \geqslant 1$ se cumple
+	Sea X un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos que para algún entero $m \geqslant 1$ se cumple
 	\begin{equation}
 		\lVert L^m \rVert \leq 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en $V$, su inversa es un operador lineal acotado, y 
+	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal acotado, y 
 	\begin{equation}\label{eq:teo3}
 		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^m \rVert} \sum_{i=0}^{m - 1}\lVert L^i \rVert.
 	\end{equation}
 \end{corolario}
 \begin{proof}
-	Gracias al teorema de la serie geométrica, sabemos que $(I-L^m)^{-1}$ existe como un operador biyectivo acotado de $V$ en $V$,
+	Gracias al teorema de la serie geométrica, sabemos que $(I-L^m)^{-1}$ existe como un operador biyectivo acotado de $X$ en sí mismo,
 	\begin{equation}
 		(I - L^m)^{-1} = \sum_{j=0}^{\infty}L^{mj} 
 	\end{equation}
-	en $\mathcal{L}(V)$, y
+	en $\mathcal{L}(X)$, y
 	\begin{equation}
 		\lVert (I - L^m)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^m \rVert}.
 	\end{equation}
@@ -160,11 +160,11 @@ Sin embargo, podemos usar una variante del teorema de la serie geométrica sin i
 La \textit{perturbación} es una técnica en matemática aplicada que estudia una ecuación relacionándola con otra ecuación ``cercana'' para la cual existe un resultado que nos proporciona una solución. El siguiente teorema es una de las herramientas más utilizadas.
 
 \begin{teorema}
-	Sea $V$ y $W$ espacios normados, siendo al menos uno de ellos completo. Suponemos que $L \in \mathcal{L}(V,W)$ tiene inversa acotada $L^{-1}: W \rightarrow V.$ Suponemos $M \in \mathcal{L}(V,W)$ satisface
+	Sea $X$ y $Y$ espacios normados, siendo al menos uno de ellos completo. Suponemos que $L \in \mathcal{L}(X,Y)$ tiene inversa acotada $L^{-1}: Y \rightarrow X.$ Suponemos $M \in \mathcal{L}(X,Y)$ satisface
 	\begin{equation}\label{eq:teo7}
 		\lVert M-L \rVert < \dfrac{1}{\lVert L^{-1} \rVert}.
 	\end{equation}
-	Entonces $M:V\rightarrow W$ es una biyección, $M^{-1} \in \mathcal{L}(W,V)$ y 
+	Entonces $M:X\rightarrow Y$ es una biyección, $M^{-1} \in \mathcal{L}(Y,X)$ y 
 	\begin{equation}\label{eq:teo5}
 		\lVert M^{-1} \rVert \leqslant \dfrac{\lVert L^{-1} \rVert}{1 - \lVert L^{-1} \rVert \lVert L-M \rVert}.
 	\end{equation}
@@ -172,22 +172,22 @@ La \textit{perturbación} es una técnica en matemática aplicada que estudia un
 	\begin{equation}\label{eq:teo4}
 		\lVert L^{-1} - M^{-1} \rVert \leqslant \dfrac{\lVert L^{-1} \rVert^2 \lVert L-M \rVert}{1 - \lVert L^{-1} \rVert \lVert L-M \rVert}.
 	\end{equation}
-	Para soluciones de las ecuaciones $Lv_1 = w$ y $Mv_2 = w,$ tenemos la acotación
+	Para soluciones de las ecuaciones $Lx_1 = y$ y $Mx_2 = y,$ tenemos la acotación
 	\begin{equation}\label{eq:teo6}
-		\lVert v_1 - v_2 \rVert \leqslant \lVert M^{-1} \rVert \lVert (L-M)v_1 \rVert.
+		\lVert x_1 - x_2 \rVert \leqslant \lVert M^{-1} \rVert \lVert (L-M)x_1 \rVert.
 	\end{equation}
 \end{teorema}
 \begin{proof}
-	Escribimos $M$ como una perturbación de $L$. Si $W$ es completo, escribimos
+	Escribimos $M$ como una perturbación de $L$. Si $Y$ es completo, escribimos
 	\begin{equation}
 		M = [I - (L - M)L^{-1}]L;
 	\end{equation}
-	mientras que si $V$ es completo, escribiremos
+	mientras que si $X$ es completo, escribiremos
 	\begin{equation}
 		M = L[I - L^{-1}(L - M)].
 	\end{equation}
-	Vamos a hacer la demostración en el caso de que $W$ sea completo.
-	El operador $(L-M)L^{-1} \in \mathcal{L}(W)$ satisface
+	Vamos a hacer la demostración en el caso de que $Y$ sea completo.
+	El operador $(L-M)L^{-1} \in \mathcal{L}(Y)$ satisface
 	\begin{equation}
 		\lVert (L - M)L^{-1} \rVert \leqslant \lVert L - M \rVert \lVert L^{-1 \rVert} < 1.
 	\end{equation}
@@ -211,11 +211,13 @@ La \textit{perturbación} es una técnica en matemática aplicada que estudia un
 	
 	Para~\eqref{eq:teo6},
 	\begin{equation}
-		v_1 - v_2 = (L^{-1} - M^{-1})w = M^{-1}(M-L)L^{-1}w = M^{-1}(M-L)v_1
+		x_1 - x_2 = (L^{-1} - M^{-1})y = M^{-1}(M-L)L^{-1}y = M^{-1}(M-L)x_1
 	\end{equation}
 	y aplicamos normas y acotaciones.
 \end{proof}
 Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a otro operador con inversa acotada, también tendrá inversa acotada.} Este es el marco de trabajo para innumerables resultados de existencia de soluciones para ecuaciones integrales y diferenciales.
+
+\textbf{Pensar: consistencia, estabilidad y convergencia.}
 
 \begin{ejemplo}
 	Vamos a examinar si la ecuación integral tiene solución

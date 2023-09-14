@@ -8,9 +8,10 @@
 \chapter{Ecuaciones integrales de Volterra de segunda clase}
 
 \section{Introducción}
-Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación de splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra.
+El diseño de métodos numéricos para ecuaciones integrales en general, y en particular de Volterra, es un campo de investigación vigente actualmente.
+Vamos a trabajar con una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra.
 
-A parte de estudiar algunos de estos métodos tradicionales, veremos los últimos métodos desarrollados:
+A parte de estudiar algunos de estos métodos tradicionales, veremos otros métodos algo más recientes tales como:
 \begin{itemize}
 	\item Método de descomposición de Adomian (ADM)
 	\item Método de descomposición modificado (mADM)
@@ -18,7 +19,7 @@ A parte de estudiar algunos de estos métodos tradicionales, veremos los último
 \end{itemize}
 Nos vamos a centrar principalmente en cómo se aplican estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ para la ecuación integral de Volterra de segunda clase.
 \section{Método de descomposición de Adomian (ADM)}
-Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha investigado mucho sobre este método para poder aplicarlo a una amplia clase de ecuaciones diferenciales ordinarias, parciales, y también ecuaciones integrales.
+Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha investigado mucho sobre este método para poder aplicarlo a una amplia clase de ecuaciones diferenciales ordinarias en derivadas parciales, y también ecuaciones integrales.
 
 Consiste en descomponer una función $u(x)$ de cualquier ecuación en una suma de un número infinito de componentes definidas por la serie de descomposición
 \begin{equation}\label{eq:sum_adomian}
@@ -28,7 +29,7 @@ o equivalentemente
 \begin{equation}
 	u(x) = u_0(x) + u_1(x) + u_2(x) + ... ,
 \end{equation} 
-donde las componentes $u_n(x), n \geqslant 0$ tienen que ser determinadas de una forma recursiva. El método se ocupa de encontrar las componentes $u_0, u_1, u_2, ...$ individualmente. Como ya veremos más adelante, se pueden encontrar estas componentes de una forma sencilla a través de una relación de recurrencia que normalmente implica integrales simples que pueden ser fácilmente evaluadas.
+donde las componentes $u_n(x), n \geqslant 0$ tienen que ser determinadas de una forma recursiva. El método se ocupa de encontrar las componentes $u_0, u_1, u_2, ...$ individualmente. Como ya veremos más adelante, se pueden hallar estas componentes de una forma sencilla a través de una relación de recurrencia que normalmente implica integrales simples que pueden ser fácilmente evaluadas.
 
 Para establecer la relación de recurrencia, sustituimos~\eqref{eq:sum_adomian} en la ecuación integral de Volterra~\eqref{eq:volterra} para obtener 
 \begin{equation}
@@ -143,6 +144,73 @@ Podemos utilizar este método para las ecuaciones integrales tanto de Volterra c
 	Es obvio que cada componente $u_j, j \geqslant 1$ es cero. Luego la solución exacta es
 	\begin{equation}
 		u(x) = 2x + \sin x.
+	\end{equation}
+\end{ejemplo}
+
+\section{Método de la solución en series}
+\begin{definicion}
+	Una función real $u(x)$ se llama \textit{analítica} si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto $b$ de su dominio
+	\begin{equation}
+		u(x) = \sum_{k=0}^{\infty}\dfrac{f^{(k)}(b)}{k!}(x-b)^k,
+	\end{equation}
+	converge a $f(x)$ en un entorno de $b$.
+\end{definicion}
+Por simplicidad, escribiremos la forma genérica de la serie de Taylor en $x = 0$ como
+\begin{equation}\label{eq:serie1}
+	u(x) = \sum_{n=0}^{\infty}a_nx^n.
+\end{equation}
+
+Vamos a presentar un método muy útil, que se basa principalmente en la serie de Taylor para funciones analíticas, y resolverá ecuaciones integrales de Volterra. Podemos apreciar que guarda cierta similitud con Adomian, ya que de igual forma expresamos $u$ como la suma de cierta serie.
+
+Asumimos que la solución $u(x)$ de la ecuación integral de Volterra
+\begin{equation}
+	u(x) = f(x) + \lambda \int_0^x K(x,t)u(t)dt,
+\end{equation}
+es analítica, y por tanto posee una solución en forma de serie de Taylor, donde los coeficientes $a_n$ se determinarán de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
+\begin{equation}\label{eq:serie2}
+	\sum_{n=0}^{\infty}a_nx^n = T(f(x)) + \lambda \int_{0}^{x}K(x,t)(\sum_{n=0}^{\infty}a_nt^n)dt,
+\end{equation}
+o por simplicidad usamos
+\begin{equation}
+	a_o + a_1x + a_2x^2 + ... = T(f(x)) + \lambda \int_{0}^{x}K(x,t) (a_0+a_1t+a_2t^2+...)dt,
+\end{equation}
+donde $T(f(x))$ es la serie de Taylor para $f(x)$. La ecuación integral se convertirá en una integral tradicional donde en vez de integrar la función desconocida $u(x)$, se integrarán términos de la forma $t^n,n\geqslant0$. Al estar en búsqueda de una solución en series, si la función $f(x)$ incluye funciones elementales, deberemos incluir sus expansiones en forma de Taylor.
+
+Primero integramos la parte derecha de la integral en~\eqref{eq:serie2} y tomamos los coeficientes de las potencias de $x$. Después igualamos los coeficientes de ambos lados para obtener una relación de recurrencia con $a_j, j\geqslant0$. Resolver la recurrencia nos llevará a determinar completamente los coeficientes $a_j, j\geqslant0$.
+
+Ahora la solución en series se sigue inmediatamente de sustituir estos coeficientes. La solución exacta se obtendrá si existe, y si no, la serie obtenida se podrá utilizar con objetivos numéricos. En este caso, a más términos evaluemos, mayor precisión obtendremos.
+
+Veamos un ejemplo para dejar claro este método:
+\begin{ejemplo}
+	Vamos a resolver la ecuación integral de Volterra
+	\begin{equation}
+		u(x) = 1 - x \sin x + \int_{0}^{x} tu(t)dt.
+	\end{equation}
+	Sustituyendo la serie en ambos lados y utilizando la expansión en serie de Taylor para el seno obtenemos:
+	\begin{equation}
+		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1 - x(x-\dfrac{x^3}{3!} + ...) + \int_{0}^{x}t(a_0+a_1t+a_2t^2+...)dt.
+	\end{equation}
+	Integrando el lado derecho y quedándonos con los coeficientes encontramos
+	\begin{equation}
+		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1+(\dfrac{1}{2}a_0-1)x^2+\dfrac{1}{3}a_1x^3+(\dfrac{1}{6}+\dfrac{1}{4}a_2)x^4+...
+	\end{equation}
+	Igualando los coeficientes de las potencias de $x$,
+	\begin{align}
+		a_0&=1,          &  a_1&=0,      \\
+		a_2&=\dfrac{1}{2}a_0-1,   &  a_3&=\dfrac{1}{3}a_1 = 0, \\
+		a_4&=\dfrac{1}{6}+\dfrac{1}{4}a_2 = \dfrac{1}{4!},
+	\end{align}
+	y para $n, n\geqslant0$,
+	\begin{equation}
+		a_{2n+1} = 0, \qquad a_{2n} = \dfrac{(-1)^n}{(2n)!}, \qquad n \geqslant 0.
+	\end{equation}
+	La solución en forma de serie viene dada por
+	\begin{equation}
+		u(x) = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4-\dfrac{1}{6!}x^6+...
+	\end{equation}
+	que nos da la solución exacta
+	\begin{equation}
+		u(x) = \cos x.
 	\end{equation}
 \end{ejemplo}
 
@@ -291,7 +359,7 @@ Vamos a examinar el problema de valores iniciales obtenido utilizando el método
 \end{ejemplo}
 
 \section{Método de aproximaciones sucesivas}
-El método de aproximaciones sucesivas, también conocido como el \textit{método de iteración de Picard}, nos proporciona un esquema que puede ser utilizado para resolver problemas de valores iniciales o ecuaciones integrales. Este método resuelve cualquier problema encontrando aproximaciones sucesivas que convergen a la solución a partir de una inicial, llamada la \textit{aproximación cero}. Como veremos, la aproximación cero puede ser cualquier función real que se utilizará en una relación recurrente para determinar las otras aproximaciones.
+El método de aproximaciones sucesivas, también conocido como el \textit{método de iteración de Picard}, nos proporciona un esquema que puede ser utilizado para resolver problemas de valores iniciales o ecuaciones integrales. Este método resuelve cualquier problema encontrando aproximaciones sucesivas que convergen a la solución a partir de una inicial, llamada la \textit{aproximación inicial}. Como veremos, la aproximación inicial puede ser cualquier función real que se utilizará en una relación recurrente para determinar las otras aproximaciones.
 
 Dada la ecuación integral lineal de Volterra de segunda clase
 \begin{equation}
@@ -301,7 +369,7 @@ donde $u(x)$ es la función desconocida a determinar, $K(x,t)$ es el núcleo, y 
 \begin{equation}\label{eq:aprox1}
 	u_n(x) = f(x) + \lambda \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
 \end{equation}
-donde la aproximación cero $u_0(x)$ puede ser cualquier función real. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0, 1$ ó $x$.
+donde la aproximación inicial $u_0(x)$ puede ser cualquier función real. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0, 1$ ó $x$.
 
 La convergencia de $u_n(x)$ está justificada con el siguiente teorema.
 \begin{teorema}
@@ -330,7 +398,7 @@ Vamos a ilustrar este método con un ejemplo para que se vea más claro.
 	\begin{equation}
 		u(x) = 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u(t)dt.
 	\end{equation}
-	Para la aproximación cero $u_0(x)$, seleccionamos
+	Para la aproximación inicial $u_0(x)$, seleccionamos
 	\begin{equation}
 		u_0(x) = 0.
 	\end{equation}
@@ -338,7 +406,7 @@ Vamos a ilustrar este método con un ejemplo para que se vea más claro.
 	\begin{equation}
 		u_{n+1}(x) = 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u_n(t)dt, \qquad n \geqslant 0.
 	\end{equation}
-	Sustituyendo la aproximación cero obtenemos:
+	Sustituyendo la aproximación inicial obtenemos:
 	\begin{align}
 		u_1(x) &= 1 + x + \dfrac{1}{2}x^2 + \dfrac{1}{2}\int_{0}^{x}(x-t)^2u_0(t)dt = 1 + x + \dfrac{1}{2!}x^2,   & \\
 		u_2(x) &= 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \dfrac{1}{4!}x^4, + \dfrac{1}{5!}x^5,   & \\
@@ -420,73 +488,6 @@ La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace 
 		u(x) = e^x.
 	\end{equation}
 \end{ejemplo}
-
-\section{Método de la solución en series}
-\begin{definicion}
-	Una función real $u(x)$ se llama \textit{analítica} si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto $b$ de su dominio
-	\begin{equation}
-		u(x) = \sum_{k=0}^{n}\dfrac{f^{(k)}(b)}{k!}(x-b)^k,
-	\end{equation}
-	converge a $f(x)$ en un entorno de $b$.
-\end{definicion}
-Por simplicidad, escribiremos la forma genérica de la serie de Taylor en $x = 0$ como
-\begin{equation}\label{eq:serie1}
-	u(x) = \sum_{n=0}^{\infty}a_nx^n.
-\end{equation}
-
-Vamos a presentar un método muy útil, que se basa principalmente en la serie de Taylor para funciones analíticas, y resolverá ecuaciones integrales de Volterra. Asumimos que la solución $u(x)$ de la ecuación integral de Volterra
-\begin{equation}
-	u(x) = f(x) + \lambda \int_0^x K(x,t)u(t)dt,
-\end{equation}
-es analítica, y por tanto posee una solución en forma de serie de Taylor, donde los coeficientes $a_n$ se determinarán de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
-\begin{equation}\label{eq:serie2}
-	\sum_{n=0}^{\infty}a_nx^n = T(f(x)) + \lambda \int_{0}^{x}K(x,t)(\sum_{n=0}^{\infty}a_nt^n)dt,
-\end{equation}
-o por simplicidad usamos
-\begin{equation}
-	a_o + a_1x + a_2x^2 + ... = T(f(x)) + \lambda \int_{0}^{x}K(x,t) (a_0+a_1t+a_2t^2+...)dt,
-\end{equation}
-donde $T(f(x))$ es la serie de Taylor para $f(x)$. La ecuación integral se convertirá en una integral tradicional donde en vez de integrar la función desconocida $u(x)$, se integrarán términos de la forma $t^n,n\geqslant0$. Al estar en búsqueda de una solución en series, si la función $f(x)$ incluye funciones elementales, deberemos incluir sus expansiones en forma de Taylor.
-
-Primero integramos la parte derecha de la integral en~\eqref{eq:serie2} y tomamos los coeficientes de las potencias de $x$. Después igualamos los coeficientes de ambos lados para obtener una relación de recurrencia con $a_j, j\geqslant0$. Resolver la recurrencia nos llevará a determinar completamente los coeficientes $a_j, j\geqslant0$.
-
-Ahora la solución en series se sigue inmediatamente de sustituir estos coeficientes. La solución exacta se obtendrá si existe, y si no, la serie obtenida se podrá utilizar con objetivos numéricos. En este caso, a más términos evaluemos, mayor precisión obtendremos.
-
-Veamos un ejemplo para dejar claro este método:
-\begin{ejemplo}
-	Vamos a resolver la ecuación integral de Volterra
-	\begin{equation}
-		u(x) = 1 - x \sin x + \int_{0}^{x} tu(t)dt.
-	\end{equation}
-	Sustituyendo la serie en ambos lados y utilizando la expansión en serie de Taylor para el seno obtenemos:
-	\begin{equation}
-		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1 - x(x-\dfrac{x^3}{3!} + ...) + \int_{0}^{x}t(a_0+a_1t+a_2t^2+...)dt.
-	\end{equation}
-	Integrando el lado derecho y quedándonos con los coeficientes encontramos
-	\begin{equation}
-		a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + ... = 1+(\dfrac{1}{2}a_0-1)x^2+\dfrac{1}{3}a_1x^3+(\dfrac{1}{6}+\dfrac{1}{4}a_2)x^4+...
-	\end{equation}
-	Igualando los coeficientes de las potencias de $x$,
-	\begin{align}
-		a_0&=1,          &  a_1&=0,      \\
-		a_2&=\dfrac{1}{2}a_0-1,   &  a_3&=\dfrac{1}{3}a_1 = 0, \\
-		a_4&=\dfrac{1}{6}+\dfrac{1}{4}a_2 = \dfrac{1}{4!},
-	\end{align}
-	y para $n, n\geqslant0$,
-	\begin{equation}
-		a_{2n+1} = 0, \qquad a_{2n} = \dfrac{(-1)^n}{(2n)!}, \qquad n \geqslant 0.
-	\end{equation}
-	La solución en forma de serie viene dada por
-	\begin{equation}
-		u(x) = 1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4-\dfrac{1}{6!}x^6+...
-	\end{equation}
-	que nos da la solución exacta
-	\begin{equation}
-		u(x) = \cos x.
-	\end{equation}
-\end{ejemplo}
-
-
 
 \endinput
 %------------------------------------------------------------------------------------
