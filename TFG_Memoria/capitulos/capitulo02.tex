@@ -18,7 +18,10 @@ A parte de estudiar algunos de estos métodos tradicionales, veremos otros méto
 	\item Método de iteración variacional (VIM)
 \end{itemize}
 Nos vamos a centrar principalmente en cómo se aplican estos métodos siendo nuestro objetivo principal, encontrar una solución $u(x)$ para la ecuación integral de Volterra de segunda clase.
-\section{Método de descomposición de Adomian (ADM)}
+
+Para apreciar mejor en qué estan basados cada uno de los métodos, vamos a distinguir entre los métodos que utilizan series, los métodos iterativos, y otros métodos especiales que no se parecen tanto a los anteriores.
+\section{Métodos basados en series}
+\subsection{Método de descomposición de Adomian (ADM)}
 Fue desarrollado por George Adomian y está muy bien abordado en muchas referencias. Se ha investigado mucho sobre este método para poder aplicarlo a una amplia clase de ecuaciones diferenciales ordinarias en derivadas parciales, y también ecuaciones integrales.
 
 Consiste en descomponer una función $u(x)$ de cualquier ecuación en una suma de un número infinito de componentes definidas por la serie de descomposición
@@ -92,7 +95,7 @@ Sin embargo, para problemas concretos donde no se puede obtener una solución, g
 	\end{equation}
 \end{ejemplo}
 
-\section{Método de descomposición modificado (mADM)}
+\subsection{Método de descomposición modificado (mADM)}
 Una modificación importante del ADM fue desarrollada por Wazwaz. Este método facilitará el proceso de cálculo y acelerará la convergencia de la solución en series. Se aplicará, siempre que se pueda, a cualquier ecuación integral y diferencial de cualquier orden.
 \begin{observacion}
 	Este método depende principalmente de dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada por un sólo término.
@@ -147,7 +150,7 @@ Podemos utilizar este método para las ecuaciones integrales tanto de Volterra c
 	\end{equation}
 \end{ejemplo}
 
-\section{Método de la solución en series}
+\subsection{Método de la solución en series}
 \begin{definicion}
 	Una función real $u(x)$ se llama \textit{analítica} si existe derivada de cualquier orden de forma que la serie de Taylor en cualquier punto $b$ de su dominio
 	\begin{equation}
@@ -214,40 +217,9 @@ Veamos un ejemplo para dejar claro este método:
 	\end{equation}
 \end{ejemplo}
 
-\section{Fenómeno de los términos de ruido}
-Esta nueva técnica depende principalmente de los llamados \textit{términos de ruido}, y ha demostrado una rápida convergencia hacia la solución, se puede utilizar tanto para ecuaciones integrales como para ecuaciones diferenciales.
+\section{Métodos iterativos}
 
-Los términos con ruido, si existen entre las componentes $u_0(x)$ y $u_1(x)$, nos proporcionarán la solución exacta utilizando sólo las dos primeras iteraciones. Vamos a revisar los conceptos principales de estos términos:
-\begin{enumerate}
-	\item Los \textit{términos de ruido} se definen como los términos idénticos con signos opuestos en las componentes $u_0(x)$ y $u_1(x)$. Otros términos de ruido pueden aparecer entre otras componentes. Es importante saber que no tienen por qué existir para todas las ecuaciones.
-	\item Al cancelar los términos de ruido entre $u_0(x)$ y $u_1(x)$, incluso si $u_1(x)$ contiene términos adicionales, los términos no cancelados restantes de $u_0(x)$ podrían proporcionar la solución exacta de la ecuación integral. La aparición de los términos de ruido entre $u_0(x)$ y $u_1(x)$ no siempre es suficiente para obtener la solución exacta. Por lo tanto, es necesario demostrar que los términos no cancelados de $u_0(x)$ satisfacen la ecuación integral dada. 
-	
-	Por otro lado, si los términos no cancelados de $u_0(x)$ no cumplieran con la ecuación integral dada, o los términos de ruido no aparecieran entre $u_0(x)$ y $u_1(x)$, entonces sería necesario determinar más componentes de $u(x)$ para obtener la solución en forma de serie.
-	\item Los términos de ruido aparecen en tipos específicos de ecuaciones no homogéneas, sin embargo, no aparecen en ecuaciones homogéneas.
-	\item Hay una condición necesaria para que se produzca la aparición de los términos de ruido, la primera componente $u_0(x)$ debe contener la solución exacta $u(x)$ entre otros términos. Además, se demostró que la condición de no homogeneidad de la ecuación no siempre garantiza la aparición de los términos de ruido.
-\end{enumerate}
-Vamos a ilustrar la utilidad de los términos de ruido con un ejemplo:
-\begin{ejemplo}
-	Resolveremos la siguiente ecuación integral de Volterra:
-	\begin{equation}
-		u(x) = 8x + x^3 - \dfrac{3}{8} \int_{0}^{x} tu(t)dt.
-	\end{equation}
-	Establecemos la relación de recurrencia siguiendo el método estándar de Adomian:
-	\begin{align}
-		u_0(x) &= 8x + x^3,      &   \\
-		u_1(x) &= - \dfrac{3}{8} \int_{0}^{x} tu(t)dt = - \dfrac{3}{40}x^5-x^3.    &
-	\end{align}
-	Podemos ver que $\pm x^3$ aparecen en $u_0(x)$ y $u_1(x)$, además con signos opuestos, por tanto es un término de ruido. Cancelando este término de la primera componente $u_0(x)$ obtenemos la solución exacta:
-	\begin{equation}
-		u(x) = 8x,
-	\end{equation}
-	que satisface la ecuación integral.
-	\begin{observacion}
-		Si hubiéramos elegido el método modificado, seleccionamos $u_0(x) = 8x$, luego tenemos que $u_1(x) = 0$. Por tanto, obtenemos el mismo resultado.
-	\end{observacion}
-\end{ejemplo}
-
-\section{Método de iteración variacional (VIM)}
+\subsection{Método de iteración variacional (VIM)}
 Este método ha sido recientemente desarrollado, y ha demostrado ser eficaz y seguro para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Este método es capaz de manejar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Además, la serie obtenida se puede utilizar para fines numéricos si no se puede obtener la solución exacta. Vamos a presentar los pasos principales del método:
 
 Consideramos la ecuación diferencial:
@@ -358,7 +330,7 @@ Vamos a examinar el problema de valores iniciales obtenido utilizando el método
 	\end{equation}
 \end{ejemplo}
 
-\section{Método de aproximaciones sucesivas}
+\subsection{Método de aproximaciones sucesivas}
 El método de aproximaciones sucesivas, también conocido como el \textit{método de iteración de Picard}, nos proporciona un esquema que puede ser utilizado para resolver problemas de valores iniciales o ecuaciones integrales. Este método resuelve cualquier problema encontrando aproximaciones sucesivas que convergen a la solución a partir de una inicial, llamada la \textit{aproximación inicial}. Como veremos, la aproximación inicial puede ser cualquier función real que se utilizará en una relación recurrente para determinar las otras aproximaciones.
 
 Dada la ecuación integral lineal de Volterra de segunda clase
@@ -373,7 +345,7 @@ donde la aproximación inicial $u_0(x)$ puede ser cualquier función real. Siemp
 
 La convergencia de $u_n(x)$ está justificada con el siguiente teorema.
 \begin{teorema}
-	Si $f(x)$, dada en~\eqref{eq:aprox1}, es una función continua para $x \in [0,a]$, y el núcleo $K(x,t)$ también es continuo para $x \in [0,a]$, $t \in [0,x]$, la secuencia de aproximaciones sucesivas $u_n(x), n \geqslant 0$ converge a la solución $u(x)$ de la ecuación integral bajo estudio.
+	Si $f(x)$, dada en~\eqref{eq:aprox1}, es una función continua para $x \in [0,a]$, y el núcleo $K(x,t)$ también es continuo para $x \in [0,a]$, $t \in [0,x]$, la sucesión de aproximaciones sucesivas $u_n(x), n \geqslant 0$ converge a la solución $u(x)$ de la ecuación integral bajo estudio.
 \end{teorema}
 \begin{observacion}
 	Es interesante notar que el método de iteración variacional admite el uso de la fórmula iterativa:
@@ -418,7 +390,42 @@ Vamos a ilustrar este método con un ejemplo para que se vea más claro.
 	\end{equation}
 \end{ejemplo}
 
-\section{Método de la Transformada de Laplace}
+\section{Otros métodos}
+
+\subsection{Fenómeno de los términos de ruido}
+Esta nueva técnica depende principalmente de los llamados \textit{términos de ruido}, y ha demostrado una rápida convergencia hacia la solución, se puede utilizar tanto para ecuaciones integrales como para ecuaciones diferenciales.
+
+Los términos con ruido, si existen entre las componentes $u_0(x)$ y $u_1(x)$, nos proporcionarán la solución exacta utilizando sólo las dos primeras iteraciones. Vamos a revisar los conceptos principales de estos términos:
+\begin{enumerate}
+	\item Los \textit{términos de ruido} se definen como los términos idénticos con signos opuestos en las componentes $u_0(x)$ y $u_1(x)$. Otros términos de ruido pueden aparecer entre otras componentes. Es importante saber que no tienen por qué existir para todas las ecuaciones.
+	\item Al cancelar los términos de ruido entre $u_0(x)$ y $u_1(x)$, incluso si $u_1(x)$ contiene términos adicionales, los términos no cancelados restantes de $u_0(x)$ podrían proporcionar la solución exacta de la ecuación integral. La aparición de los términos de ruido entre $u_0(x)$ y $u_1(x)$ no siempre es suficiente para obtener la solución exacta. Por lo tanto, es necesario demostrar que los términos no cancelados de $u_0(x)$ satisfacen la ecuación integral dada. 
+	
+	Por otro lado, si los términos no cancelados de $u_0(x)$ no cumplieran con la ecuación integral dada, o los términos de ruido no aparecieran entre $u_0(x)$ y $u_1(x)$, entonces sería necesario determinar más componentes de $u(x)$ para obtener la solución en forma de serie.
+	\item Los términos de ruido aparecen en tipos específicos de ecuaciones no homogéneas, sin embargo, no aparecen en ecuaciones homogéneas.
+	\item Hay una condición necesaria para que se produzca la aparición de los términos de ruido, la primera componente $u_0(x)$ debe contener la solución exacta $u(x)$ entre otros términos. Además, se demostró que la condición de no homogeneidad de la ecuación no siempre garantiza la aparición de los términos de ruido.
+\end{enumerate}
+Vamos a ilustrar la utilidad de los términos de ruido con un ejemplo:
+\begin{ejemplo}
+	Resolveremos la siguiente ecuación integral de Volterra:
+	\begin{equation}
+		u(x) = 8x + x^3 - \dfrac{3}{8} \int_{0}^{x} tu(t)dt.
+	\end{equation}
+	Establecemos la relación de recurrencia siguiendo el método estándar de Adomian:
+	\begin{align}
+		u_0(x) &= 8x + x^3,      &   \\
+		u_1(x) &= - \dfrac{3}{8} \int_{0}^{x} tu(t)dt = - \dfrac{3}{40}x^5-x^3.    &
+	\end{align}
+	Podemos ver que $\pm x^3$ aparecen en $u_0(x)$ y $u_1(x)$, además con signos opuestos, por tanto es un término de ruido. Cancelando este término de la primera componente $u_0(x)$ obtenemos la solución exacta:
+	\begin{equation}
+		u(x) = 8x,
+	\end{equation}
+	que satisface la ecuación integral.
+	\begin{observacion}
+		Si hubiéramos elegido el método modificado, seleccionamos $u_0(x) = 8x$, luego tenemos que $u_1(x) = 0$. Por tanto, obtenemos el mismo resultado.
+	\end{observacion}
+\end{ejemplo}
+
+\subsection{Método de la Transformada de Laplace}
 Es una técnica muy potente que también es capaz de resolver problemas de valores iniciales y ecuaciones integrales. Antes de aplicar el método, vamos a ver algunos conceptos importantes.
 
 Si el núcleo $K(x,t)$ de la ecuación integral depende de la diferencia $x - t$, entonces se llama \textit{núcleo de diferencia}. Y podemos expresar la ecuación integral de la siguiente forma:
