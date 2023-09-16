@@ -1,19 +1,4 @@
-- Sobre las ecuaciones Integrodiferenciales en el Cap. 2 de Wazwaz... ¿Entra en el TFG?
-- No tengo muy claro si el esquema del TFG es correcto, es decir, la forma de ordenar los capitulos y tal que he elegido.
-- En la clasificacion he metido las de primera clase muy brevemente aunque no las trabajemos para que se vea la diferencia a las de segunda clase, esta bien?
-- En el 2.1.4 de Wazwaz, menciono la ecuación integral generalizada de Abel? Porque se supone que es de primer tipo, de segundo sería la débil
-- En los métodos para resolver las ecuaciones de volterra, ?meto los ejemplos? con 1 es suficiente? yo he metido 1 por si acaso.
-- En el VIM, me suena raro traducir the correction functional como la correción funcional o la funcional corrección, pero no sé exactamente cómo se traduciría bien.
-- En el VIM, para el ejemplo, simplmemente he puesto el ejemplo del VIM, el de la comparación con el ODE tradicional no lo he puesto porque entiendo que no es relevante, pero no sé si debería ponerlo.
-- No sé si meter al principio de los capítulos un apartado "introduccion" o meter el texto introductorio a pelo.
-- El método de Laplace para sistemas, toda la teoría es un copy paste del capitulo anterior, asi que solo he puesto el ejemplo. ?Meto dos ejemplos?=
-- Hay algunas generalizaciones del final del teorema de la serie geométrica que no he puesto, porque no he considerado importantes, deberia?
-- He metido todas las demostraciones de los teoremas que he visto en atkinson, los que estaban en la sección, no sé si hace falta pero weno.
-- Antes del último ejemplo en atkinson, hay un texto acerca de la estimación del error y la convergencia, que está bien, pero no lo uso en ningún sitio y no sé si es necesario ponerlo.
-- He visto la bibliografía de la aplicación, y las soluciones que dan son demasiado simples para la teoría de ecuaciones integrales que hemos visto antes, entiendo
-que nosotros vamos a ver ejemplos más complejos donde sí usaremos estos métodos de resolver ecuaciones integrales, pero en ese caso, debería haber metido los ejemplos
-que he metido de 1 y 2 habitaciones que venían en los libros?
-- En el ejemplo 2 de nagle hay una errata? en la solucion dice... AL hacer B_0 = ... Seria Q(t) = K(B_0 - B cos...) en vez de M_0 ???
-- Los gráficos los he puesto como capturas de pantalla del libro para ponerlos y ver cómo quedaría, pero entiendo que lo óptimo sería hacerlos con algun programa y ponerlos yo.
-- En el ejemplo de 2 habitaciones, el sistema de ecs. que sale es no homogéneo, debería hacerlo homogéneo? Porque creo recordar que me dijistes que ibamos a trabajar con sistemas homogéneos. 
-- Qué debería poner exactamente de los sistemas de ecs. diferenciales, porque no sé realmente que es lo importante de todo lo que viene. (sistemas homogéneos, no homogéneos, algunos conceptos básicos, etc...)
+- En el cap. 2, me habias dicho que la existencia de soluciión única la pusiese como corolario en vez de ejemplo y que cambiase la notación a la de volterra,
+la cosa es que eso está hecho más adelante en la generalización del teorema
+- Para la existencia y unicidad en el caso vectorial, tengo que volver a escribir el corolario entero del caso escalar simplemente cambiando la nootación? O con el cambio de notacion 
+es suficiente, no sé si sería repetitivo o estaría bien asi.

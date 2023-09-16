@@ -77,50 +77,53 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 		u_n = \sum_{j=0}^{n}L^jf.
 	\end{equation}
 \end{observacion}
-Veamos a continuación un ejemplo en el que, gracias al teorema de la serie geométrica, veremos que una ecuación lineal integral tiene solución única.
-\begin{ejemplo}\label{ej:1}
-	Sea la siguiente ecuación:
-	\begin{equation}
-		\lambda u(x) - \int_{a}^{b}k(x,t)u(t)dy = f(x), \qquad a \leqslant x \leqslant b
-	\end{equation}
-	con $\lambda \neq 0$, $k(x,y)$ continua para $x,y \in [a,b]$, y $f \in \mathcal{C}[a,b]$. Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Simbólicamente, escribimos la ecuación como
-	\begin{equation}
-		(\lambda I-K)u = f,
-	\end{equation}
-	donde $K$ es un operador integral lineal gerenado por el núcleo $k(\cdot , \cdot )$. Nosotros también lo escribiremos a menudo como $(\lambda - K)u = f$, para aclarar la notación.
-	
-	Escribimos la ecuación de esta manera puesto que así se puede convertir en la forma que necesitamos para aplicar el teorema de la serie geométrica:
-	\begin{equation}
-		(I-L)u = \dfrac{1}{\lambda}f, \qquad L = \dfrac{1}{\lambda}K.
-	\end{equation}
-	Aplicando el teorema de la serie geométrica, afirmamos que si
-	\begin{equation}
-		\lVert L \rVert = \dfrac{1}{|\lambda |}\lVert K \rVert \leq 1,
-	\end{equation}
-	entonces $(I-L)^{-1}$ existe y
-	\begin{equation}
-		\lVert(I-L)^{-1}\rVert \leqslant \dfrac{1}{1 - \lVert L \rVert}.
-	\end{equation}
-	Equivalentemente, si
-	\begin{equation}
-		\lVert K \rVert = \max_{a\leqslant x\leqslant b}\int_{a}^{b}|K(x,t)|dt \leq |\lambda|,
-	\end{equation}
-	entonces $(\lambda I - K)^{-1}$ existe y 
-	\begin{equation}
-		\lVert (\lambda I - K)^{-1}\rVert \leqslant \dfrac{1}{|\lambda| - \lVert K \rVert }.
-	\end{equation}
-	Luego, para cualquier $f \in \mathcal{C}[a,b]$, la ecuación integral tiene solución única $u \in \mathcal{C}[a,b]$ y 
-	\begin{equation}
-		\lVert u \rVert_\infty \leqslant \lVert (\lambda I - K)^{-1} \rVert \lVert f \rVert_\infty \leqslant \dfrac{\lVert f \rVert_\infty}{|\lambda| - \lVert K \rVert }.
-	\end{equation}
-\end{ejemplo}
+A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de una ecuación lineal integral, y en particular, nos sirve para las ecuaciones de Volterra de segunda clase.
+\begin{corolario}\label{ej:1}
+	Toda ecuación lineal integral tiene solución única.
+	\begin{proof}
+		Sea la siguiente ecuación:
+			\begin{equation}
+			u(x) = f(x) + \lambda \int_{a}^{b}K(x,t)u(t)dt, \qquad x \in [a,b],
+		\end{equation}
+		con $\lambda \neq 0$, $K(x,t)$ continua, y $f \in \mathcal{C}[a,b]$. Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Vamos a reescribir la ecuación de forma simbólica, organizando los términos para poder aplicar posteriormente el teorema de la serie geométrica:
+		\begin{equation}
+			(\lambda I-K)u = f,
+		\end{equation}
+		donde $K$ es un operador integral lineal gerenado por el núcleo $K (\cdot , \cdot )$. Nosotros también lo escribiremos a menudo como $(\lambda - K)u = f$, para aclarar la notación.
+		
+		Escribimos la ecuación de esta manera puesto que así se puede convertir en la forma que necesitamos para aplicar el teorema de la serie geométrica:
+		\begin{equation}
+			(I-L)u = \dfrac{1}{\lambda}f, \qquad L = \dfrac{1}{\lambda}K.
+		\end{equation}
+		Aplicando el teorema de la serie geométrica, afirmamos que si
+		\begin{equation}
+			\lVert L \rVert = \dfrac{1}{|\lambda |}\lVert K \rVert \leq 1,
+		\end{equation}
+		entonces $(I-L)^{-1}$ existe y
+		\begin{equation}
+			\lVert(I-L)^{-1}\rVert \leqslant \dfrac{1}{1 - \lVert L \rVert}.
+		\end{equation}
+		Equivalentemente, si
+		\begin{equation}
+			\lVert K \rVert = \max_{a \leqslant x \leqslant b} \int_{0}^{x}|K(x,t)|dt \leq |\lambda|,
+		\end{equation}
+		entonces $(\lambda I - K)^{-1}$ existe y 
+		\begin{equation}
+			\lVert (\lambda I - K)^{-1}\rVert \leqslant \dfrac{1}{|\lambda| - \lVert K \rVert }.
+		\end{equation}
+		Luego, para cualquier $f \in \mathcal{C}[a,b]$, la ecuación integral tiene solución única $u \in \mathcal{C}[a,b]$ y 
+		\begin{equation}
+			\lVert u \rVert_\infty \leqslant \lVert (\lambda I - K)^{-1} \rVert \lVert f \rVert_\infty \leqslant \dfrac{\lVert f \rVert_\infty}{|\lambda| - \lVert K \rVert }.
+		\end{equation}
+	\end{proof}
+\end{corolario}
 \begin{observacion}
 	Gracias a la demostración del teorema podemos ver que para un operador lineal $L \in \mathcal{L}(X)$ sobre un espacio de Banach $V$, si $\lVert L \rVert \leq 1$, entonces la serie $\sum_{n=0}^{\infty}L^n$ converge en $\mathcal{L}(X)$ y el valor de la serie es el operador $(I-L)^{-1}$.
 \end{observacion}
 \subsection{Generalización del teorema}
 Para motivar la generalización del teorema, vamos a considerar la ecuación integral de Volterra de segunda clase
 \begin{equation}
-	u(x) - \int_{0}^{x} K(x,t)u(t)dt = f(x), \qquad x \in [0,B],
+	u(x) = f(x) + \int_{0}^{x} K(x,t)u(t)dt, \qquad x \in [0,B],
 \end{equation}
 donde $B \geq 0$ y suponemos que el núcleo $K(x,t)$ es continuo para $0 \leqslant t \leqslant x \leqslant B$, y $f \in \mathcal{C}[0,B]$. Si aplicamos el teorema, tendremos que suponer una condición para poder concluir la existencia de solución única, de forma que
 \begin{equation}
@@ -224,17 +227,17 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	\begin{equation}\label{eq:ej1}
 		\lambda u(x) - \int_{0}^{1}\sin(xt)u(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1
 	\end{equation}
-	con $\lambda \neq 0$. De la discusión del ejemplo~\eqref{ej:1}, si
+	con $\lambda \neq 0$. De la discusión del corolario~\eqref{ej:1}, si
 	\begin{equation}\label{ej:2}
-		|\lambda| > \lVert K \rVert = \int_{0}^{1}\sin(t)dt = 1 - \cos(1) \approx 0.4597,
+		|\lambda| > \lVert K \rVert = \int_{0}^{1}\sin(t)dt = 1 - \cos (1) \approx 0.4597,
 	\end{equation}
 	entonces para cada $f \in \mathcal{C}[0,1]$, la ecuación admite una solución única $u \in \mathcal{C}[0,1]$.
 	
-	Para obtener más valores de $\lambda$ para los cuales nuestra ecuación tiene solución única, aplicamos el teorema de perturbación. Ya que $\sin(xt) \approx xt$ para valores pequeños de $|xt|$, comparamos la ecuación con
+	Para obtener más valores de $\lambda$ para los cuales nuestra ecuación tiene solución única, aplicamos el teorema de perturbación. Ya que $\cos(xt) \approx xt$ para valores pequeños de $|xt|$, comparamos la ecuación con
 	\begin{equation}\label{eq:ej2}
 		\lambda v(x) - \int_{0}^{1} xtv(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1.
 	\end{equation}
-	Siguiendo la notación el teorema de perturbación, la ecuación~\eqref{eq:ej1} sería $Mu = f$, y~\eqref{eq:ej2} sería $Lv = f$. El espacio normado es $V = \mathcal{C}[0,1]$ con la norma $\lVert \cdot \rVert_\infty$, y $L,M \in \mathcal{L}(V)$.
+	Siguiendo la notación el teorema de perturbación, la ecuación~\eqref{eq:ej1} sería $Mu = f$, y~\eqref{eq:ej2} sería $Lv = f$. El espacio normado es $X = \mathcal{C}[0,1]$ con la norma $\lVert \cdot \rVert_\infty$, y $L,M \in \mathcal{L}(X)$.
 	
 	Podemos resolver la ecuación integral~\eqref{eq:ej2} de forma explícita. Suponiendo $\lambda \neq 0$, tenemos que cada solución $v$ toma la forma
 	\begin{equation}
@@ -252,7 +255,7 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	\end{equation}
 	y
 	\begin{equation}
-		\lVert L-M \rVert = \int_{0}^{1} (t - \sin t)dt = \cos(1) - \dfrac{1}{2} \approx 0.0403.
+		\lVert L-M \rVert = \int_{0}^{1} (t - \cos t)dt = \cos(1) - \dfrac{1}{2} \approx 0.0403.
 	\end{equation}
 	La condición~\eqref{eq:teo7} viene de
 	\begin{equation}\label{ej:3}
@@ -270,6 +273,15 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	\caption{Gráfico de la parte izquierda de la desigualdad~\eqref{ej:3}}
 	\label{fig:4.1}
 \end{figure}
+\subsection{Existencia y unicidad de solución para sistemas de ecuaciones integrales lineales de Volterra de segunda clase}
+En el caso vectorial, partimos de
+\begin{equation}
+	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B],
+\end{equation}
+donde \textbf{u} es el vector formado por todas las funciones que queremos determinar. \textbf{f} es el vector formado por las funciones continuas independientes, y \textbf{K} es el vector formado por los núcleos de cada una de las ecuaciones que forman el sistema:
+\begin{equation}
+	\textbf{u}(x) = \begin{pmatrix}	u_1(x) \\ u_2(x) \\ ... \\ u_n(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	f_1(x) \\ f_2(x) \\ ... \\ f_n(x)	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	K_1(x,t) \\ K_2(x,t) \\ ... \\ K_n(x,t)	\end{pmatrix},
+\end{equation}
 
 \endinput
 %------------------------------------------------------------------------------------

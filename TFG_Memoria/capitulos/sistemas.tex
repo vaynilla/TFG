@@ -116,9 +116,42 @@ El método de aproximaciones sucesivas también se puede aplicar a sistemas de e
 \begin{equation}
 	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt
 \end{equation}
-donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo. Veamos un ejemplo:
+donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo. Además, necesitaremos un vector con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$ Veamos un ejemplo:
 \begin{ejemplo}
-	Mirar el libro de wazwaz y mezclar los ejemplos 3.19 y 3.22
+	Consideramos el siguiente sistema:
+	\begin{equation}
+		y(x) = 1 - \int_0^x (x-t)y(t)dt
+	\end{equation}
+	\begin{equation}
+		\qquad \qquad \qquad v(x) = 1 - x \sin x + x \cos x + \int_0^x tv(t)dt
+	\end{equation}
+	donde tenemos los siguientes vectores:
+	\begin{equation}
+		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ 1 - x \sin x + x \cos x	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	x-t \\ t	\end{pmatrix},
+	\end{equation}
+	Además tenemos el vector de aproximaciones iniciales para ambas ecuaciones:
+	\begin{equation}
+		\textbf{u}_0 = \begin{pmatrix}	1 \\ x	\end{pmatrix}.
+	\end{equation}
+	Por tanto la fórmula iterativa que vamos a utilizar para calcular las aproximaciones sucesivas es
+	\begin{equation}
+		\textbf{u}_{n+1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_n(t)dt, \qquad n \geqslant 0.
+	\end{equation}
+	Sustituyendo $\textbf{u}_0$ obtenemos:
+	\begin{equation}
+		\textbf{u}_{1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_0(t)dt = \begin{pmatrix}	1 - \dfrac{1}{2!}x^2 \\ 1 + \dfrac{1}{3}x^3 - x \sin x + x \cos x	\end{pmatrix}
+	\end{equation}
+		\begin{equation}
+		\textbf{u}_{2}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_1(t)dt = \begin{pmatrix}	1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4 \\ 3 + \dfrac{1}{2}x^2 + \dfrac{1}{15}x^3 - (2+3x-x^2) \sin x - (2-3x-x^2)\cos x	\end{pmatrix}
+	\end{equation}
+	Para $n \geqslant 3$, obtenemos:
+	\begin{equation}
+		\textbf{u}_{n+1}(x)= \begin{pmatrix}	\sum_{k=0}^{n}(-1)^k\dfrac{x^{2k}}{(2k)!} \\ \sum_{k=0}^{n}(-1)^k\dfrac{x^{2k+1}}{(2k+1)!} + \sum_{k=0}^{n}(-1)^k\dfrac{x^{2k}}{(2k)!}.	\end{pmatrix}.
+	\end{equation}
+	Luego la solución a nuestro sistema es
+	\begin{equation}
+		\textbf{u}(x) = \lim_{n \rightarrow \infty} \textbf{u}_{n+1}(x) = \begin{pmatrix}	\cos x \\ \sin x + \cos x	\end{pmatrix}.
+	\end{equation}
 \end{ejemplo}
 
 
