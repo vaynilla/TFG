@@ -1,17 +1,17 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
-\chapter{Sistemas de ecuaciones diferenciales lineales}
-MEJORAR ESCRITURA PERO PRIMERO LO PONGO A PELO.
-Los sistemas de ecuaciones diferenciales lineales son un caso particular de los sistemas de ecuaciones de Volterra lineales. Vamos a ver esto de forma más clara tanto escalar como vectorialmente. XD
+\chapter{Equivalencia entre ecuaciones diferenciales y ecuaciones de Volterra}
+A continuación veremos la equivalencia que existe entre ambos tipos de ecuaciones, más concretamente, veremos las ecuaciones diferenciales lineales como un caso particular de las ecuaciones de Volterra. Primero vamos a ver el caso escalar, y después lo haremos vectorialmente.
 \section{Escalar}
 Consideramos el PVI:
 \begin{equation}
 	x \in \mathcal{C}^1(0,B):\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B)
 \end{equation}
-La solución del PVI \begin{equation}
+La solución del PVI es de la forma
+\begin{equation}
 	x \in \mathcal{C}[0,B]: x = T(x)
 \end{equation}
-donde definimos el operador $T$ como
+donde definimos el operador lineal $T$ como
 \begin{equation}
 	T: \mathcal{C}[0,B] \longrightarrow \mathcal{C}[0,B]
 \end{equation}
@@ -21,12 +21,7 @@ donde definimos el operador $T$ como
 \begin{equation}
 	\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad (T(x))(t) = x_0 + \int_0^t(a(s)x(s)+b(s))ds
 \end{equation}
-
-En definitiva, la solución del PVI coincide con la solución de la ecuación integral lineal:
-\begin{equation}
-	x(t) = x_0 + \int_0^t (a(s)x(s)+b(s))ds
-\end{equation}
-y vemos que es un caso particular de la ecuación de Volterra de segunda clase, ya que
+Por tanto, vemos que la solución del PVI es un caso particular de la ecuación integral lineal de Volterra de segunda clase:
 \begin{equation}
 	x(t) = f(t) + \lambda \int_0^t K(t,s)x(s)ds,
 \end{equation}
@@ -34,9 +29,18 @@ donde
 \begin{equation}
 	f(t) = x_0 + \int_0^t b(s)ds, \qquad K(t,s) = a(s), \qquad \lambda = 1.
 \end{equation}
-¿Ver que es una equivalencia? es decir, para el otro lado
+Para ver la equivalencia, aplicamos el Teorema Fundamental del Cálculo a la siguiente ecuación integral:
+\begin{equation}
+	x(t) = x_0 + \int_0^t (a(s)x(s)+b(s))ds,
+\end{equation}
+y obtenemos
+\begin{equation}
+	\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B).
+\end{equation}
+En definitiva, la solución del PVI inicial coincide con la solución de la ecuación de Volterra lineal de segunda clase.
 \section{Vectorial}
-
+INDICACIÓN:
+En este caso, el PVI sería (y lo pongo entero), luego lo escribo de forma matricial y vectorial con las negritas. Después hago la misma equivalencia que en el caso escalar. Luego la conclusión entiendo que es la misma de forma vectorial? DUDA
 \endinput
 %------------------------------------------------------------------------------------
 % FIN DEL CAPÍTULO. 
