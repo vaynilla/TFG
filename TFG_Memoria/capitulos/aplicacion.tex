@@ -57,7 +57,34 @@ Al despejar $T(t)$ se tiene
 \begin{equation}
 	= e^{-Kt}\{\int e^{Kt}[KM(t) + H(t) + U(t)]dt + C\}.
 \end{equation}
-A continuación vamos a resolver un ejercicio sobre calentamiento y enfriamiento de edificios en el que tenemos solamente una habitación:
+A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamiento de edificios en el que tenemos solamente una habitación. Vamos a ver primero un ejemplo sencillo en el que suponemos la temperatura exterior constante:
+\begin{ejemplo}
+	Suponemos que al final del día (en el instante $t_0$), cuando las personas salen del edificio, la temperatura exterior permanece constante e igual a $M_0$, la razón de calentamiento adicional $H$ dentro del edificio se anula y la razón de uso del calefactor o el aire acondicionado $U$ también se anula. Determinar $T(t)$, dada la condición inicial $T(t_0) = T_0$.\\
+	\textbf{Solución.} Con $M = M_0$, $H = 0$ y $U = 0$, la ecuación~\eqref{eq:apli2} se convierte en
+	\begin{equation}
+		T(t) = e^{-Kt}\{\int e^{Kt}KM_0dt+C\} = e^{-Kt}[M_0e^{Kt}+C] = M_0 + Ce^{-Kt}.
+	\end{equation}
+	Al hacer $t = t_0$ y usar el valor inicial $T_0$ de la temperatura, vemos que la constante $C$ es $(T_0 - M_0)e^{Kt_0}$. Por lo tanto,
+	\begin{equation}
+		T(t) = M_0 + (T_0 - M_0)e^{-K(t-t_0)}.
+	\end{equation}
+	Cuando $M_0 < T_0$, es decir, la temperatura exterior es menor que la interior, la solución de la ecuación decrece de manera exponencial a partir de la temperatura inicial $T_0$ hasta la temperatura final $M_0$.
+	\begin{observacion}
+		Para determinar el tiempo que tarda la temperatura en cambiar, consideramos la sencilla ecuación lineal $dA/dt = -\alpha A$, cuyas soluciones son de la forma $A(t) = A(0)e^{-\alpha t}$. Cuando $t \rightarrow \infty$, la función $A(t)$ decae en forma exponencial ($\alpha > 0$) o crece de manera exponencial ($\alpha < 0$). En cualquier caso, el tiempo que tarda $A(t)$ en cambiar de $A(0)$ a $A(0)/e$ es justamente $1/\alpha$, ya que
+		\begin{equation}
+			A(\dfrac{1}{\alpha}) = A(0)e^{-\alpha (1/\alpha)} = \dfrac{A(0)}{e}.
+		\end{equation}
+		La cantidad $1/|\alpha|$, que no depende de $A(0)$, es la \textbf{constante de tiempo}.
+	\end{observacion}
+	Volviendo al ejemplo $1$, vemos que la temperatura $T(t)$ satisface la ecuación
+	\begin{equation}
+		\dfrac{dT}{dt}(t) = -KT(t)+KM_0, \qquad \dfrac{d(T-M_0)}{dt}(t) = -K[T(t)-M_0],
+	\end{equation}
+	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $1/K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $1/K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador. También puede ser mayor si el edificio está aislado.
+\end{ejemplo}
+
+\textbf{GRÁFICA + BREVE EXPLICACIÓN}
+
 \begin{ejemplo}
 	Determinar la temperatura del edificio $T(t)$ si la razón de calentamiento adicional $H(t)$ es igual a la constante $H_0$, no hay calentamiento ni enfriamiento $(U(t) = 0)$ y la temperatura exterior $M$ varía como una onda senoidal en un periodo de 24 horas, con un mínimo en $t = 0$ (medianoche) y un máximo en $t = 12$ (mediodía). Es decir, 
 	\begin{equation}

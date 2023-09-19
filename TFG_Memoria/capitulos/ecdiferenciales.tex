@@ -39,8 +39,67 @@ y obtenemos
 \end{equation}
 En definitiva, la solución del PVI inicial coincide con la solución de la ecuación de Volterra lineal de segunda clase.
 \section{Vectorial}
-INDICACIÓN:
-En este caso, el PVI sería (y lo pongo entero), luego lo escribo de forma matricial y vectorial con las negritas. Después hago la misma equivalencia que en el caso escalar. Luego la conclusión entiendo que es la misma de forma vectorial? DUDA
+En este caso, el PVI sería:
+\begin{equation}\label{eq:vect}
+ \hspace*{-3cm} 	\begin{array}{c} x \in \mathcal{C}^1([0,B],\R^n) \\ x:[0,B] \longrightarrow \R^n \\ \qquad \qquad \qquad \qquad t \longmapsto x(t) = (x_1(t),...,x_n(t)) \end{array}:\left\lbrace\begin{array}{c} x_1'(t) = a_{11}(t)x_1(t)+...+a_{1n}(t)x_n(t)+b_1(t) \\ ... \\ x_n'(t) = a_{n1}(t)x_1(t)+...+a_{nn}(t)x_n(t)+b_n(t) \\ x_1(0) = x_1,...,x_n(0) =x_n, \end{array}\right.
+\end{equation}
+utilizando notación matricial para simplificar las fórmulas, nos quedaría de la siguiente forma:
+\begin{equation}
+	\begin{array}{c}
+		\textbf{x}'(t) = \textbf{A}(t)\textbf{x}(t)+\textbf{b}(t) \\ \textbf{x}(0) = \textbf{x}_\textbf{0}
+	\end{array}
+\end{equation}
+donde
+\begin{equation}
+	\textbf{A}(t) = \begin{pmatrix}
+		a_{11}(t) & ... & a_{1n}(t)\\ 
+		... & & ... \\
+		a_{n1}(t) & ... & a_{nn}(t)
+	\end{pmatrix}, \qquad \textbf{x}(t) = \begin{pmatrix}
+	x_1(t) \\ ... \\ x_n(t)
+	\end{pmatrix}, \qquad \textbf{b}(t) = \begin{pmatrix}
+	b_1(t) \\ ... \\ b_n(t)
+	\end{pmatrix}
+\end{equation}
+y el vector $\textbf{x}_\textbf{0}$ está formado por los valores iniciales de cada una de las ecuaciones.
+
+La solución de este PVI viene dada por
+\begin{equation}
+	\textbf{x} \in \mathcal{C}([0,B],\R^n): \qquad \textbf{x} = \textbf{T(x)}
+\end{equation}
+donde 
+\begin{equation}
+	\begin{array}{c}
+		\textbf{T}: (\mathcal{C}[0,B], \R^n) \longrightarrow \mathcal{C}([0,B],\R^n) \\  \textbf{x} \longmapsto \textbf{Tx}:[0,B] \longrightarrow \R^n \\  \qquad \qquad \qquad \qquad \qquad \textbf{Tx}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds,
+	\end{array}
+\end{equation}
+cuando hablamos de hacer una integral compuesta por matrices y vectores, la haremos elemento a elemento, es decir,
+\begin{equation}
+	\int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds = \int_0^t \textbf{y}(s)ds = \begin{pmatrix}
+		\int_0^t y_1(s)ds \\ \int_0^t y_2(s)ds \\ ... \\ \int_0^t y_n(s)ds,
+	\end{pmatrix}
+\end{equation}
+donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s))$. Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
+\begin{equation}
+	\textbf{x}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(t,s)\textbf{x}(s)ds.
+\end{equation}
+Ahora vemos la equivalencia aplicando el Teorema Fundamental del Cálculo a cada uno de los elementos de la matriz y de los vectores de la siguiente ecuación:
+\begin{equation}
+	\textbf{x}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds,
+\end{equation}
+obteniendo:
+\begin{equation}
+	\begin{array}{c}
+		\textbf{x}'(t) = \textbf{A}(t)\textbf{x}(t)+\textbf{b}(t) \\ \textbf{x}(0) = \textbf{x}_\textbf{0}.
+	\end{array}
+\end{equation}
+Es decir, tanto de forma escalar como vectorial, tenemos el siguiente resultado.
+\begin{corolario}
+	La solución del PVI~\eqref{eq:vect} coincide con la solución de la ecuación integral lineal de Volterra de segunda clase dada por
+	\begin{equation}
+		\textbf{x}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds.
+	\end{equation}
+\end{corolario}
 \endinput
 %------------------------------------------------------------------------------------
 % FIN DEL CAPÍTULO. 
