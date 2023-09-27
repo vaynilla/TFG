@@ -52,13 +52,13 @@ utilizando notación matricial para simplificar las fórmulas, nos quedaría de 
 donde
 \begin{equation}
 	\textbf{A}(t) = \begin{pmatrix}
-		a_{11}(t) & ... & a_{1n}(t)\\ 
-		... & & ... \\
-		a_{n1}(t) & ... & a_{nn}(t)
+		a_{11}(t) & \cdots & a_{1n}(t)\\ 
+		\vdots & & \vdots \\
+		a_{n1}(t) & \cdots & a_{nn}(t)
 	\end{pmatrix}, \qquad \textbf{x}(t) = \begin{pmatrix}
-	x_1(t) \\ ... \\ x_n(t)
+	x_1(t) \\ \vdots \\ x_n(t)
 	\end{pmatrix}, \qquad \textbf{b}(t) = \begin{pmatrix}
-	b_1(t) \\ ... \\ b_n(t)
+	b_1(t) \\ \vdots \\ b_n(t)
 	\end{pmatrix}
 \end{equation}
 y el vector $\textbf{x}_\textbf{0}$ está formado por los valores iniciales de cada una de las ecuaciones.
@@ -73,10 +73,10 @@ donde
 		\textbf{T}: (\mathcal{C}[0,B], \R^n) \longrightarrow \mathcal{C}([0,B],\R^n) \\  \textbf{x} \longmapsto \textbf{Tx}:[0,B] \longrightarrow \R^n \\  \qquad \qquad \qquad \qquad \qquad \textbf{Tx}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds,
 	\end{array}
 \end{equation}
-cuando hablamos de hacer una integral compuesta por matrices y vectores, la haremos elemento a elemento, es decir,
+cuando hablamos de hacer una integral compuesta por vectores, la haremos componente a componente, es decir,
 \begin{equation}
 	\int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds = \int_0^t \textbf{y}(s)ds = \begin{pmatrix}
-		\int_0^t y_1(s)ds \\ \int_0^t y_2(s)ds \\ ... \\ \int_0^t y_n(s)ds,
+	\displaystyle	\int_0^t y_1(s)ds \\ \displaystyle \int_0^t y_2(s)ds \\ \vdots \\ \displaystyle \int_0^t y_n(s)ds,
 	\end{pmatrix}
 \end{equation}
 donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s))$. Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
@@ -100,6 +100,53 @@ Es decir, tanto de forma escalar como vectorial, tenemos el siguiente resultado.
 		\textbf{x}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds.
 	\end{equation}
 \end{corolario}
+
+Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de ecuaciones, lo transformaremos en un sistema de ecuaciones integrales de Volterra, y posteriormente, lo resolveremos mediante el método de aproximaciones sucesivas, luego lo volveremos a resolver utilizando el programa \textit{maxima}, y por último, compararemos los resultados obtenidos.
+\begin{ejemplo}
+	Consideramos el PVI
+	\begin{equation}
+		\left\lbrace\begin{array}{c} x'(t) = -2x(t)-4y(t) + 4t +1 \\ y'(t) = -x(t) + y(t) +\dfrac{3}{2}t^2 \\ x(0) = 0, \qquad y(0) = 1 \end{array}\right., \qquad t \in [0,1],
+	\end{equation}
+	que, como hemos visto anteriormente, es equivalente a la siguiente ecuación de Volterra:
+	\begin{equation}
+		\textbf{x}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds.
+	\end{equation}
+	donde
+	\begin{equation}
+		\textbf{A}(t) = \begin{pmatrix}[1.5]
+			-2 & -4 \\ 
+			-1 & 1
+		\end{pmatrix}, \qquad \textbf{x}(t) = \begin{pmatrix}
+			x(t) \\ y(t)
+		\end{pmatrix}, \qquad \textbf{b}(t) = \begin{pmatrix}[1.7]
+			4t+1 \\ \dfrac{3}{2}t^2
+		\end{pmatrix}, \qquad \textbf{x}_\textbf{0} = \begin{pmatrix}
+		0 \\ 1
+		\end{pmatrix},
+	\end{equation}
+	así, aplicaremos la siguiente fórmula iterativa para calcular las aproximaciones sucesivas:
+	\begin{equation}
+		\textbf{x}_{n+1}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_n(s)ds, \qquad n \geqslant 0.
+	\end{equation}
+	donde
+	\begin{equation}
+		\textbf{f}(t) = \textbf{x}_\textbf{0} + \int_0^t \textbf{b}(s)ds, \qquad \textbf{K}(t,s) = \textbf{A}(s),
+	\end{equation}
+	sustituimos $\textbf{x}_\textbf{0}$ y obtenemos:
+	\begin{equation}
+		\textbf{x}_{1}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_0(s)ds = \begin{pmatrix}[1.7]	2t^2 - 3t \\ \dfrac{t^3}{2} +t+1	\end{pmatrix},
+	\end{equation}
+	en la segunda iteración tenemos
+	\begin{equation}
+		\textbf{x}_{2}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_1(s)ds = \begin{pmatrix}[1.7] -2t^4-4t^3+4t^2-3t\\ \dfrac{t^4}{2}-\dfrac{3t^3}{2}+4t^2+t+1	\end{pmatrix},
+	\end{equation}
+	Así, llegamos a que la iteración número cinco es:
+	\begin{equation}
+		\textbf{x}_5(t) = \begin{pmatrix}[1.7]
+			26t^7 + 122t^6 - 190t^5 + 46t^4 - 24t^3 + 4t^2-3t   \\ \dfrac{29t^7}{2}+\dfrac{53t^6}{2}-\dfrac{43t^5}{2}+\dfrac{49t^4}{2}+\dfrac{t^3}{2} +4t^2+t+1
+		\end{pmatrix}
+	\end{equation}
+\end{ejemplo}
 \endinput
 %------------------------------------------------------------------------------------
 % FIN DEL CAPÍTULO. 

@@ -1,6 +1,2 @@
-
-
-
-IMPORTANTE
-
-- En las introducciones, dejar el menor número de fórmulas, que todo sea texto, y hacerlas más extensas y más amenas.
+- Arreglar el ejemplo de la equivalencia
+- Hacer el modelo para 4 y 5 habitaciones como viene en el TFM (Necesito que funcione el método de aprox. sucesivas)

@@ -120,18 +120,15 @@ donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f
 \begin{ejemplo}
 	Consideramos el siguiente sistema:
 	\begin{equation}
-		y(x) = 1 - \int_0^x (x-t)y(t)dt
-	\end{equation}
-	\begin{equation}
-		\qquad \qquad \qquad v(x) = 1 - x \sin x + x \cos x + \int_0^x tv(t)dt
+		\left\lbrace\begin{array}{c}y(x) = 1 + \displaystyle \int_0^x (2y(t)+3v(t))dt \\ v(x) = x^2+3+ \displaystyle \int_0^x (y(t)-v(t))dt \end{array}\right.,
 	\end{equation}
 	donde tenemos los siguientes vectores:
 	\begin{equation}
-		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ 1 - x \sin x + x \cos x	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	x-t \\ t	\end{pmatrix},
+		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ x^2+3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	2 & 3 \\ 1 & -1	\end{pmatrix},
 	\end{equation}
 	Además tenemos el vector de aproximaciones iniciales para ambas ecuaciones:
 	\begin{equation}
-		\textbf{u}_0 = \begin{pmatrix}	1 \\ x	\end{pmatrix}.
+		\textbf{u}_0 = \begin{pmatrix}	-1 \\ 2	\end{pmatrix}.
 	\end{equation}
 	Por tanto la fórmula iterativa que vamos a utilizar para calcular las aproximaciones sucesivas es
 	\begin{equation}
@@ -139,18 +136,14 @@ donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f
 	\end{equation}
 	Sustituyendo $\textbf{u}_0$ obtenemos:
 	\begin{equation}
-		\textbf{u}_{1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_0(t)dt = \begin{pmatrix}	1 - \dfrac{1}{2!}x^2 \\ 1 + \dfrac{1}{3}x^3 - x \sin x + x \cos x	\end{pmatrix}
+		\textbf{u}_{1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_0(t)dt = \begin{pmatrix}	4t+1 \\ t^2-3t+3	\end{pmatrix}
 	\end{equation}
-		\begin{equation}
-		\textbf{u}_{2}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_1(t)dt = \begin{pmatrix}	1 - \dfrac{1}{2!}x^2 + \dfrac{1}{4!}x^4 \\ 3 + \dfrac{1}{2}x^2 + \dfrac{1}{15}x^3 - (2+3x-x^2) \sin x - (2-3x-x^2)\cos x	\end{pmatrix}
-	\end{equation}
-	Para $n \geqslant 3$, obtenemos:
 	\begin{equation}
-		\textbf{u}_{n+1}(x)= \begin{pmatrix}	\sum_{k=0}^{n}(-1)^k\dfrac{x^{2k}}{(2k)!} \\ \sum_{k=0}^{n}(-1)^k\dfrac{x^{2k+1}}{(2k+1)!} + \sum_{k=0}^{n}(-1)^k\dfrac{x^{2k}}{(2k)!}.	\end{pmatrix}.
+		\textbf{u}_{2}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_1(t)dt = \begin{pmatrix}	3t^3-t^2+11t+1 \\ -t^3+8t^2-2t+3	\end{pmatrix}
 	\end{equation}
-	Luego la solución a nuestro sistema es
+	Una solución más aproximada con la quinta iteración sería
 	\begin{equation}
-		\textbf{u}(x) = \lim_{n \rightarrow \infty} \textbf{u}_{n+1}(x) = \begin{pmatrix}	\cos x \\ \sin x + \cos x	\end{pmatrix}.
+		\textbf{u}_{5}(x) = \begin{pmatrix}	33t^6+127t^5+154t^4+74t^3+16t^2+11t+1 \\ 19t^6-14t^5+72t^4+2t^3+14t^2-2t+3	\end{pmatrix}.
 	\end{equation}
 \end{ejemplo}
 

@@ -81,9 +81,23 @@ A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamie
 		\dfrac{dT}{dt}(t) = -KT(t)+KM_0, \qquad \dfrac{d(T-M_0)}{dt}(t) = -K[T(t)-M_0],
 	\end{equation}
 	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $1/K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $1/K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador. También puede ser mayor si el edificio está aislado.
+	
+	Vamos a ver un caso concreto, en el que tendremos como datos:
+	\begin{equation}
+		M_0 = 30\degree C, \qquad T_0 = 20\degree C, \qquad K = 3,
+	\end{equation}
+	entonces, sustituyendo en la fórmula de la temperatura exterior, obtenemos
+	\begin{equation}
+		T(t) = 30+(20-30)e^{-3t}.
+	\end{equation}
+	En la \autoref{fig:constante1}, podemos ver cómo la temperatura exterior se mantiene constante, y la interior va creciendo exponencialmente, sin embargo, cuanto más cerca se encuentra de la temperatura exterior, la variación es menor, hasta volverse también constante en los $30 \celsius$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{grafica_ej1_tempconstante}
+		\caption{Variación de la temperatura manteniendo la temperatura exterior constante}
+		\label{fig:constante1}
+	\end{figure}
 \end{ejemplo}
-
-\textbf{GRÁFICA + BREVE EXPLICACIÓN}
 
 \begin{ejemplo}
 	Determinar la temperatura del edificio $T(t)$ si la razón de calentamiento adicional $H(t)$ es igual a la constante $H_0$, no hay calentamiento ni enfriamiento $(U(t) = 0)$ y la temperatura exterior $M$ varía como una onda senoidal en un periodo de 24 horas, con un mínimo en $t = 0$ (medianoche) y un máximo en $t = 12$ (mediodía). Es decir, 
@@ -127,11 +141,19 @@ A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamie
 	donde $\tan \phi = \omega /K$, la variación senoidal dentro del edificio se retrasa con respecto de la variación en el exterior por $\phi / \omega$ horas. Además, la magnitud de la variación dentro del edificio es ligeramente menor, por un factor de $[1 + (\omega /K)^2]^{-1/2}$, que la variación en el exterior. La frecuencia angular de variación $\omega$ es $2 \pi / 24$ radianes/hora (aproximadamente $1/4$). Los valores usuales para la razón adimensional $\omega /K$ están entre $1/2$ y $1$. Para este rango, el retraso entre la temperatura interior y la exterior es aproximadamente de $1.8$ a $3$ horas y la magnitud de la variación interior está entre $89$ y $71\%$ de la variación en el exterior.
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.6\textwidth]{fig_aplicacion1}
+		\includegraphics[width=0.7\textwidth]{fig_aplicacion1}
 		\caption{Variación de la temperatura dentro y fuera de un edificio sin calefacción}
 		\label{fig:aplicacion1}
 	\end{figure}
-	En la \autoref{fig:aplicacion1} podemos ver la variación senoidal de 24 horas de la temperatura exterior para un día moderado típico así como las variaciones de temperatura dentro del edificio para una razón adimensional $\omega /K$ de la unidad, que corresponde a una constante de tiempo $1/K$ de aproximadamente 4 horas. Al trazar esta última curva, hemos supuesto que el término exponencial ha desaparecido.
+	En la \autoref{fig:aplicacion1} podemos ver la variación senoidal de 24 horas de la temperatura exterior para un día moderado típico así como las variaciones de temperatura dentro del edificio para una razón adimensional $\omega /K$ de la unidad, que corresponde a una constante de tiempo $1/K$ de aproximadamente 4 horas. Los valores que hemos tomado para realizar este ejemplo concreto son:
+	\begin{itemize}
+		\item $M_0 = 10\celsius$ (Temperatura exterior promedio)
+		\item $T_0 = 10\celsius$ (Temperatura interior inicial)
+		\item $K = 0.4$
+		\item $B = 4$
+	\end{itemize}
+	Podemos ver cómo la temperatura interior del edificio sigue el comportamiento esperado, es decir, disminuye cuando es mayor que la exterior, y viceversa, y además, a mayor es la distancia entre ambas temperaturas, mayor es la variación de la temperatura interior del edificio, como es natural.
+	Al trazar esta última curva, hemos supuesto que el término exponencial ha desaparecido.
 \end{ejemplo}
 \section{Ejemplo con dos habitaciones}
 Ahora consideremos el mismo problema con dos zonas, de modo que el calor se transfiere de una a otra en función de la diferencia de temperatura. Suponemos además que alguna de las zonas posee una fuente de calor (o de enfriamiento) que hará que ésta se caliente (o enfríe) en función de su capacidad calorífica. La variación de temperatura en cada zona será la suma del calor (o frío) generado por dicha fuente, si existe en esa zona, y la pérdida o ganancia de calor generada por el contacto con otras zonas o con el exterior. Para calcular las ecuaciones aplicaremos la \textit{ley de Newton del enfriamiento} vista anteriormente.
@@ -217,14 +239,14 @@ Ahora consideremos el mismo problema con dos zonas, de modo que el calor se tran
 		\begin{pmatrix}	0 \\ 0	\end{pmatrix} = \begin{pmatrix}
 		    -4 & 2\\ 
 			2 & -\dfrac{7}{3}
-		\end{pmatrix} \begin{pmatrix}	a_1 \\ a_2	\end{pmatrix} +  \begin{pmatrix}	4 \\ \dfrac{56}{3}	\end{pmatrix}
+		\end{pmatrix} \begin{pmatrix}	a_1 \\ a_2	\end{pmatrix} +  \begin{pmatrix}	4 \\ 56/3	\end{pmatrix}
 	\end{equation}
 	pasando el término independiente al otro lado de la igualdad,
 	\begin{equation}
 		\begin{pmatrix}
 			-4 & 2\\ 
 			2 & -\dfrac{7}{3}
-		\end{pmatrix}\begin{pmatrix}	a_1 \\ a_2	\end{pmatrix} = \begin{pmatrix}	-4 \\ -\dfrac{56}{3}	\end{pmatrix}
+		\end{pmatrix}\begin{pmatrix}	a_1 \\ a_2	\end{pmatrix} = \begin{pmatrix}	-4 \\ -	56/3\end{pmatrix}
 	\end{equation}
 	de donde obtenemos: $a_1 = 35/4$ y $a_2 = 31/2.$ La solución general es:
 	\begin{equation}
@@ -256,12 +278,26 @@ Ahora consideremos el mismo problema con dos zonas, de modo que el calor se tran
 	\end{equation}
 \end{ejemplo}
 
-\textbf{COSAS PARA HACER:}
-
-- meter el displaystyle en las integrales para que se vean mas grandes
-- poner el ejemplo del sistema en la equivalencia, resolverlo mediante aprox. sucesivas, maxima y compararlas con graficas, además cambiar el número de iteraciones para ver la diferencia
-- En el modelo, mirar el TFM tranquilamente y añadir un ejemplo con 4-5 habitaciones o los dos mejor, y resolverlo al igual que en la equivalencia?¿
-- Cambiar las graficas de la aplicacion y comentarlas. 
+\section{Modelo de un edificio con 5 habitaciones}
+Temperatura en A -> a(t)
+B -> b(t)
+C -> c(t)
+D -> d(t)
+E -> e(t)
+F -> M(t)
+Constante de transferencia entre espacio -> K
+Calor generado por cada aire acondicionado en la habitación B -> U\_B(t)
+Calor generado por cada aire acondicionado en la habitación D -> U\_D(t)
+Calor generado en el interior -> H(t)
+\begin{equation}\begin{dcases}
+	 \dfrac{\partial}{\partial t}a(t)= \dfrac{b(t)-a(t)}{K_{AB}} + \dfrac{M(t) - a(t)}{K_{AF}} \\  \dfrac{\partial}{\partial t}b(t)= \dfrac{a(t)-b(t)}{K_{AB}} + \dfrac{c(t)-b(t)}{K_{BC}} + \dfrac{M(t) - b(t)}{K_{BF}} + U_B(t) \\  \dfrac{\partial}{\partial t}c(t)= \dfrac{b(t)-c(t)}{K_{BC}} + \dfrac{d(t)-c(t)}{K_{CD}} + \dfrac{M(t) - c(t)}{K_{CF}} \\  \dfrac{\partial}{\partial t}d(t)= \dfrac{c(t)-d(t)}{K_{CD}} + \dfrac{e(t)-d(t)}{K_{DE}} + \dfrac{M(t) - d(t)}{K_{DF}} + U_D(t) \\  \dfrac{\partial}{\partial t}e(t)= \dfrac{d(t)-e(t)}{K_{DE}} + \dfrac{M(t) - e(t)}{K_{EF}} \end{dcases}
+\end{equation}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{edificio_5habs}
+	\caption{Edificio con 5 habitaciones contiguas}
+	\label{fig:edif5}
+\end{figure}
 
 
 \endinput
