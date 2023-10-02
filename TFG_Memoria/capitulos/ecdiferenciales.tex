@@ -102,10 +102,11 @@ Es decir, tanto de forma escalar como vectorial, tenemos el siguiente resultado.
 \end{corolario}
 
 Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de ecuaciones, lo transformaremos en un sistema de ecuaciones integrales de Volterra, y posteriormente, lo resolveremos mediante el método de aproximaciones sucesivas, luego lo volveremos a resolver utilizando el programa \textit{maxima}, y por último, compararemos los resultados obtenidos.
+
 \begin{ejemplo}
 	Consideramos el PVI
 	\begin{equation}
-		\left\lbrace\begin{array}{c} x'(t) = -2x(t)-4y(t) + 4t +1 \\ y'(t) = -x(t) + y(t) +\dfrac{3}{2}t^2 \\ x(0) = 0, \qquad y(0) = 1 \end{array}\right., \qquad t \in [0,1],
+		\begin{dcases} x'(t) = \dfrac{x(t)}{7}-\dfrac{y(t)}{10} + t \\ y'(t) = -\dfrac{x(t)}{8} +\dfrac{y(t)}{9} +1 \\ x(0) = 0, \qquad y(0) = 0 \end{dcases}, \qquad t \in [0,1],
 	\end{equation}
 	que, como hemos visto anteriormente, es equivalente a la siguiente ecuación de Volterra:
 	\begin{equation}
@@ -114,14 +115,14 @@ Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de
 	donde
 	\begin{equation}
 		\textbf{A}(t) = \begin{pmatrix}[1.5]
-			-2 & -4 \\ 
-			-1 & 1
+			1/7 & -1/10 \\ 
+			-1/8 & 1/9
 		\end{pmatrix}, \qquad \textbf{x}(t) = \begin{pmatrix}
 			x(t) \\ y(t)
-		\end{pmatrix}, \qquad \textbf{b}(t) = \begin{pmatrix}[1.7]
-			4t+1 \\ \dfrac{3}{2}t^2
+		\end{pmatrix}, \qquad \textbf{b}(t) = \begin{pmatrix}
+			t \\ 1
 		\end{pmatrix}, \qquad \textbf{x}_\textbf{0} = \begin{pmatrix}
-		0 \\ 1
+		0 \\ 0
 		\end{pmatrix},
 	\end{equation}
 	así, aplicaremos la siguiente fórmula iterativa para calcular las aproximaciones sucesivas:
@@ -134,18 +135,39 @@ Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de
 	\end{equation}
 	sustituimos $\textbf{x}_\textbf{0}$ y obtenemos:
 	\begin{equation}
-		\textbf{x}_{1}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_0(s)ds = \begin{pmatrix}[1.7]	2t^2 - 3t \\ \dfrac{t^3}{2} +t+1	\end{pmatrix},
+		\textbf{x}_{1}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_0(s)ds = \begin{pmatrix}[1.7]	\dfrac{t^2}{2} \\ t 	\end{pmatrix},
 	\end{equation}
 	en la segunda iteración tenemos
 	\begin{equation}
-		\textbf{x}_{2}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_1(s)ds = \begin{pmatrix}[1.7] -2t^4-4t^3+4t^2-3t\\ \dfrac{t^4}{2}-\dfrac{3t^3}{2}+4t^2+t+1	\end{pmatrix},
+		\textbf{x}_{2}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_1(s)ds = \begin{pmatrix}[2.2] \dfrac{t^3}{14}+\dfrac{2t^2}{5}\\ -\dfrac{t^3}{16}+\dfrac{t^2}{9}+t	\end{pmatrix},
 	\end{equation}
 	Así, llegamos a que la iteración número cinco es:
 	\begin{equation}
-		\textbf{x}_5(t) = \begin{pmatrix}[1.7]
-			26t^7 + 122t^6 - 190t^5 + 46t^4 - 24t^3 + 4t^2-3t   \\ \dfrac{29t^7}{2}+\dfrac{53t^6}{2}-\dfrac{43t^5}{2}+\dfrac{49t^4}{2}+\dfrac{t^3}{2} +4t^2+t+1
+		\textbf{x}_5(t) = \begin{pmatrix}[2.2]
+			\dfrac{2351441t^6}{2489356800}+\dfrac{494317t^5}{200037600}+\dfrac{8209t^4}{793800}+\dfrac{29t^3}{630}+\dfrac{2t^2}{5}   \\ -\dfrac{9169t^6}{10001880}-\dfrac{1232909t^5}{514382400}-\dfrac{4057t^4}{408240}-\dfrac{61t^3}{1620}+\dfrac{t^2}{9}+t
 		\end{pmatrix}
 	\end{equation}
+	Ahora vamos a obtener la solución exacta gracias a Maxima, mediante los comandos que vemos en la \autoref{fig:maxima1}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\textwidth]{maxima1}
+		\caption{Comandos de Maxima para obtener la solución exacta}
+		\label{fig:maxima1}
+	\end{figure}
+	, finalmente comparamos los resultados para $x(t)$ (\autoref{fig:solx}), en azul vemos la solución del método de las aproximaciones sucesivas, y en rojo la solución de Maxima, de la misma forma para $y(t)$ (\autoref{fig:soly}).
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{compx}
+		\caption{Solución $x(t)$}
+		\label{fig:solx}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{compy}
+		\caption{Solución $y(t)$}
+		\label{fig:soly}
+	\end{figure}
+	Vemos claramente cómo con $5$ iteraciones, la convergencia es bastante buena y obtenemos una solución muy cercana a la exacta.
 \end{ejemplo}
 \endinput
 %------------------------------------------------------------------------------------

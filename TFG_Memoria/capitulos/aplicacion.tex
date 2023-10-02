@@ -278,32 +278,87 @@ Ahora consideremos el mismo problema con dos zonas, de modo que el calor se tran
 	\end{equation}
 \end{ejemplo}
 
-\section{Modelo de un edificio con 5 habitaciones}
-Temperatura en A -> a(t)
-B -> b(t)
-C -> c(t)
-D -> d(t)
-E -> e(t)
-F -> M(t)
-Constante de transferencia entre espacio -> K
-Calor generado por cada aire acondicionado en la habitación B -> U\_B(t)
-Calor generado por cada aire acondicionado en la habitación D -> U\_D(t)
-Calor generado en el interior -> H(t)
-\begin{equation}\begin{dcases}
-	 a'(t)= \dfrac{b(t)-a(t)}{K_{AB}} + \dfrac{M(t) - a(t)}{K_{AF}} \\  b'(t)= \dfrac{a(t)-b(t)}{K_{AB}} + \dfrac{c(t)-b(t)}{K_{BC}} + \dfrac{M(t) - b(t)}{K_{BF}} + U_B(t) \\ c'(t)= \dfrac{b(t)-c(t)}{K_{BC}} + \dfrac{d(t)-c(t)}{K_{CD}} + \dfrac{M(t) - c(t)}{K_{CF}} \\  d'(t)= \dfrac{c(t)-d(t)}{K_{CD}} + \dfrac{e(t)-d(t)}{K_{DE}} + \dfrac{M(t) - d(t)}{K_{DF}} + U_D(t) \\  e'(t)= \dfrac{d(t)-e(t)}{K_{DE}} + \dfrac{M(t) - e(t)}{K_{EF}} \end{dcases}
-\end{equation}
+\section{Modelos de un edificio con 5 habitaciones}
+\subsection{Primer ejemplo (temperatura exterior constante)}
+Vamos a estudiar un par de casos de edificios con 5 habitaciones, donde incluiremos personas, y aires acondicionados para hacer el edificio más realista. El primer caso será el que tenemos en la \autoref{fig:edif5}. Podemos ver $5$ habitaciones contiguas y $2$ aires acondicionados en las habitaciones $B$ y $D$. Los datos que tomaremos son los siguientes:
+\begin{itemize}
+	\item Temperatura en A $\rightarrow a(t)  $ 
+	\item Temperatura en B $\rightarrow b(t)  $ 
+	\item Temperatura en C $\rightarrow c(t)  $ 
+	\item Temperatura en D $\rightarrow d(t)  $ 
+	\item Temperatura en E $\rightarrow e(t)  $ 
+	\item Temperatura en el exterior F $\rightarrow M(t) = 35 \celsius$ 
+	\item Constante de transferencia entre cada habitación $K = 2$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 4$
+	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -4\celsius / 5h$
+	\item Calor generado en el interior H $\rightarrow H(t) = 0$
+\end{itemize}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{edificio_5habs}
 	\caption{Edificio con 5 habitaciones contiguas}
 	\label{fig:edif5}
 \end{figure}
+Observando la estructura del edificio, obtenemos el siguiente sistema de ecuaciones:
+\begin{equation}\begin{dcases}
+	 a'(t)= \dfrac{b(t)-a(t)}{K_{AB}} + \dfrac{M(t) - a(t)}{K_{AF}} \\  b'(t)= \dfrac{a(t)-b(t)}{K_{AB}} + \dfrac{c(t)-b(t)}{K_{BC}} + \dfrac{M(t) - b(t)}{K_{BF}} + U_B(t) \\ c'(t)= \dfrac{b(t)-c(t)}{K_{BC}} + \dfrac{d(t)-c(t)}{K_{CD}} + \dfrac{M(t) - c(t)}{K_{CF}} \\  d'(t)= \dfrac{c(t)-d(t)}{K_{CD}} + \dfrac{e(t)-d(t)}{K_{DE}} + \dfrac{M(t) - d(t)}{K_{DF}} + U_D(t) \\  e'(t)= \dfrac{d(t)-e(t)}{K_{DE}} + \dfrac{M(t) - e(t)}{K_{EF}} \end{dcases}
+\end{equation}
+Como valores iniciales para las temperaturas de cada habitación tomaremos:
+\begin{equation}
+	a(t_0) = 25 \celsius, \qquad b(t_0) = 25 \celsius, \qquad c(t_0) = 28 \celsius, \qquad d(t_0) = 20 \celsius, \qquad e(t_0) = 20 \celsius.
+\end{equation}
+Resolvemos el sistema con $Maxima$ y obtenemos la solución gráficamente en la \autoref{fig:graf_sol1}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{graf_sol_5habs1}
+	\caption{Temperaturas de las 5 habitaciones con temperatura exterior constante de $35 \celsius$}
+	\label{fig:graf_sol1}
+\end{figure}
+Es importante observar varias cosas:
+\begin{itemize}
+	\item Las habitaciones $D$ y $E$ comienzan con la misma temperatura, pero hasta la tercera hora hace más calor en la habitación $D$, ¿Cómo puede ser si esta habitación tiene aire acondicionado? Pues porque está pegada a la habitación $C$ en la que hace mucho más calor, luego la variación de temperatura se ve más afectada por esto que por el aire acondicionado, pero vemos como cuando todas las habitaciones se van aproximando en cuanto a temperatura, el efecto del aire acondicionado hace que la habitación $D$ sea la más fresquita, como era de esperar.
+	\item Por un motivo similar, vemos que la habitación $C$ incluso se enfría en la primera hora, pese a que fuera están a $35 \celsius$, esto es debido a que la constante de transferencia $K$ entre cada habitación es menor que hacia el exterior, y al estar las otras habitaciones más frías al principio, se enfría un poco, pero en cuanto todas las demás habitaciones se van calentando, deja de tener efecto sobre la habitación $C$ y emprende su camino hacia los $35 \celsius$ del exterior.
+	\item Como era de esperar, al principio la variación de temperatura es mayor por haber más diferencia entre las habitaciones y el exterior, y conforme va pasando el tiempo, se van aproximando a los $35 \celsius$ y la variación va disminuyendo.
+	\item En general, las habitaciones $A$ y $E$ son las que más variación de temperatura tienen, esto es naturalmente debido a que sólo tienen cerca una habitación, y se ven más influenciadas por el exterior, además de que no tienen aire acondicionado.
+\end{itemize}
+\subsection{Segundo ejemplo (temperatura exterior variable)}
+En el siguiente caso vamos a colocar algunas personas en las habitaciones, y además vamos a cambiar un poco la estructura interna del edificio, tomaremos la \autoref{fig:edif5_2} como referencia.
 
-COSAS PARA HACER:
-- Poner otro ejemplo con 5 habitaciones
-- Dar valores concretos a los sistemas y resolverlos con desolve de maxima.
-- Escribirlo todo bien y enviárselo.
-
+Vamos a tomar como variables:
+\begin{itemize}
+	\item Temperatura en el exterior F $\rightarrow M(t) = 18-12\cos(t\cdot(\pi/12))$
+	\item Constante de transferencia entre cada habitación $K = 2$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 4$
+	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -2\celsius / h$
+	\item Calor generado en el interior H $\rightarrow H(t) = 0.018$ por cada persona
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{edificio_5habs2}
+	\caption{Edificio con 5 habitaciones, 1 persona en A y 4 personas en E}
+	\label{fig:edif5_2}
+\end{figure}
+Atendiendo a la estructura del edificio, obtenemos el siguiente sistema:
+\begin{equation}\begin{dcases}
+		a'(t)= \dfrac{b(t)-a(t)}{K_{AB}} + \dfrac{e(t)-a(t)}{K_{AE}} + \dfrac{M(t) - a(t)}{K_{AF}} + U_A(t) + H(t) \\  b'(t)= \dfrac{a(t)-b(t)}{K_{AB}} + \dfrac{c(t)-b(t)}{K_{BC}} + \dfrac{M(t) - b(t)}{K_{BF}} + U_B(t) \\ c'(t)= \dfrac{b(t)-c(t)}{K_{BC}} + \dfrac{d(t)-c(t)}{K_{BC}} + \dfrac{M(t) - c(t)}{K_{CF}} \\  d'(t)= \dfrac{c(t)-d(t)}{K_{BD}} + \dfrac{M(t) - d(t)}{K_{DF}} \\  e'(t)= \dfrac{a(t)-e(t)}{K_{AE}} + \dfrac{M(t) - e(t)}{K_{EF}} + 4H(t) \end{dcases}
+\end{equation}
+Como valores iniciales para las temperaturas de cada habitación tomaremos:
+\begin{equation}
+	a(t_0) = 10 \celsius, \qquad b(t_0) = 0 \celsius, \qquad c(t_0) = 12 \celsius, \qquad d(t_0) = 17 \celsius, \qquad e(t_0) = 8 \celsius.
+\end{equation}
+Ahora resolvemos el sistema con $Maxima$ y obtenemos las temperaturas de cada habitación gráficamente en la \autoref{fig:graf_sol2}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{graf_sol_5habs2}
+	\caption{Temperaturas de las 5 habitaciones con temperatura exterior variable}
+	\label{fig:graf_sol2}
+\end{figure}
+En este caso tenemos varios detalles que observar:
+\begin{itemize}
+	\item Se aprecia perfectamente cómo la temperatura interior tiene una variación más suave que la exterior, algo natural debido a los aislantes térmicos que tiene el edificio.
+	\item Vemos cómo las habitaciones $A$ y $B$, que tienen un potente aire acondicionado, siempre se mantienen más frías que el resto durante todo el día.
+	\item Pese a que al principio cada habitación tiene una temperatura bastante diferente, al final todas se van aproximando entre ellas, debido a que lo que más las influencia es la temperatura exterior, es decir, es el mayor factor que afecta a la variación de su temperatura.
+\end{itemize}
 \endinput
 %------------------------------------------------------------------------------------
 % FIN DEL CAPÍTULO. 
