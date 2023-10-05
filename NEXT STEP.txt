@@ -1,2 +1,10 @@
-- Arreglar el ejemplo de la equivalencia
-- Hacer el modelo para 4 y 5 habitaciones como viene en el TFM (Necesito que funcione el método de aprox. sucesivas)
+- Hacer el ejemplo con 5 habitaciones y mandárselo al profe para que vea lo de las ilt. (DONE)
+- Incluir teorema del punto fijo de Banach, bien redactado y tal. (DONE)
+- Cambiar demostración del teorema de la serie geométrica utilizando el teorema del punto fijo de Banach, mirarlo en la foto e intentar entenderlo, si no buscar en chatGPT.
+- En la foto, en rojo, abajo de la derecha, hay una mejor demostración de una acotación de la norma de la inversa, ponerla.
+- Cambiar lo de que toda ecuación integral tiene solución única por... Las de fredholm y con tal condición.
+- Hacer la demostración de que toda ecuación integral de Volterra de 2nda clase tiene solución única (Intentarlo como sea) (Repetir en caso vectorial, en el siguiente capítulo).
+- Incluir todas las referencias cuando cojo un comentario tal cual, y revisar los libros a ver si algunas redacciones son clavadas o no.
+- Añadir la bibliografía, y usarla para citar lo que necesite en el texto (véase en...).
+- Meter un ejemplo más con 3 habitaciones y otro con 4 en el modelo.
+- Arreglar todas las correcciones que me ha indicado.

@@ -2,13 +2,23 @@
 % !TeX encoding = utf8
 \chapter{Existencia y unicidad de solución de la ecuación lineal integral de Volterra de segunda clase}
 \section{Teorema de la serie geométrica y sus variantes}
-El siguiente resultado se usa muy a menudo en análisis numérico y matemática aplicada. También es la forma que tenemos para analizar si tienen solución los problemas que están $"$cerca$"$ a otros problemas que sabemos que tienen solución única.
+Este teorema se utiliza muy a menudo en análisis numérico y matemática aplicada. También es la forma que tenemos para analizar si tienen solución los problemas que están $"$cerca$"$ a otros problemas que sí sabemos que tienen solución única.\\
+
+Primero vamos a introducir un resultado muy importante que utilizaremos posteriormente para demostrar este teorema, el resultado garantiza la existencia y unicidad de puntos fijos de ciertas funciones definidas sobre espacios métricos y proporciona un método para encontrarlos.
+\begin{definicion}
+	Sea $X$ un espacio de Banach y $T$ una aplicación. Se dice que $T$ es \textit{contractiva} si existe una constante $c$ verificando $0 \leqslant c < 1$ tal que $\lVert T(x) - T(y) \rVert \leqslant c \lVert x-y \rVert$, para cualesquiera $x, y \in X$.
+\end{definicion}
 \begin{teorema}
-	(Teorema de la serie geométrica) Sea X un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos
+	(Teorema del punto fijo de Banach) Sea $X$ un espacio de Banach y sea $T:X \rightarrow X$ una aplicación contractiva en $X$. Entonces existe un único punto fijo de $T$.\\
+	Además, para todo punto $x_0$ de $X$, la sucesión $\{x_n=T(x_{n-1})\}_{n=1}^\infty$ converge a dicho punto fijo.
+\end{teorema}
+Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
+\begin{teorema}
+	Sea $X$ un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos
 	\begin{equation}
-		\lVert L \rVert \leq 1.
+		\lVert L \rVert < 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en X, su inversa es un operador lineal continuo,
+	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal continuo,
 	\begin{equation}
 		(I-L)^{-1} = \sum_{n=0}^{\infty}L^n,
 	\end{equation}
@@ -17,6 +27,7 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L \rVert}.
 	\end{equation}
 \end{teorema}
+NOS FIJAMOS EN LA FOTO, Y TENEMOS QUE T ES CONTRACTIVO, aplicamos el TPF BANACH y llegamos a lo que pone en la foto.
 \begin{proof}
 	Definimos una sucesión en $\mathcal{L}(X): M_n = \sum_{i=0}^{n}L^i, n \geqslant 0$. Para $p \geqslant 1$, 
 	\begin{equation}
@@ -53,7 +64,7 @@ El siguiente resultado se usa muy a menudo en análisis numérico y matemática 
 	Tomando el límite en $n \rightarrow \infty$, obtenemos~\eqref{eq:teo1}.
 \end{proof}
 \begin{observacion}
-	El teorema dice que bajo las hipótesis que hemos marcado, para cualquier $f \in X$, la ecuación
+	El teorema dice que bajo las hipótesis que hemos establecido, para cualquier $f \in X$, la ecuación
 	\begin{equation}\label{eq:teo2}
 		(I-L)u = f
 	\end{equation}
