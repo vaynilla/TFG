@@ -27,41 +27,27 @@ Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
 		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L \rVert}.
 	\end{equation}
 \end{teorema}
-NOS FIJAMOS EN LA FOTO, Y TENEMOS QUE T ES CONTRACTIVO, aplicamos el TPF BANACH y llegamos a lo que pone en la foto.
 \begin{proof}
-	Definimos una sucesión en $\mathcal{L}(X): M_n = \sum_{i=0}^{n}L^i, n \geqslant 0$. Para $p \geqslant 1$, 
+	Sea $y \in X$, definimos el operador 
 	\begin{equation}
-		\lVert M_{n+p} - M_n \rVert = \lVert \sum_{i=n+1}^{n+p}L^i \rVert \leqslant \sum_{i=n+1}^{n+p} \lVert L^i \rVert \leqslant \sum_{i=n+1}^{n+p} \lVert L \rVert^i.
+		T: X \rightarrow X, \qquad T(x) = y+Lx.
 	\end{equation}
-	Usando que $\lVert L \rVert \leq 1$, tenemos
+	Vamos a ver que $T$ es contractivo, sean $u, v \in X$, y sea $c$ tal que $0 \leqslant c < 1$, 
 	\begin{equation}
-		 \lVert M_{n+p} - M_n \rVert \leqslant \dfrac{\lVert L \rVert^{n+1}}{1 - \lVert L \rVert}.
+		\lVert Tu - Tv \rVert = \lVert y + Lu - (y + Lv) \rVert = \lVert Lu - Lv \rVert = \lVert L(u-v) \rVert \leqslant c\lVert u-v \rVert.
 	\end{equation}
-	Por tanto,
+	Nótese que en la tercera igualdad hemos aplicado la linealidad de $L$, y al final que $\lVert L \rVert < 1$. Ahora aplicamos el teorema del punto fijo de Banach y tomamos como punto inicial $x_0 = y$, por tanto tenemos que
 	\begin{equation}
-		\sup_{p \geqslant 1} \lVert M_{n+p} - M_n \rVert \rightarrow 0, \qquad n \rightarrow \infty,
+		x_n = y + Lx_{n-1} = \sum_{j=0}^{n}L^jy, \qquad n \geqslant 1
 	\end{equation}
-	y \{$M_n$\} es una sucesión de Cauchy en $\mathcal{L}(X)$. Como $\mathcal{L}(X)$ es completo, hay un $M \in \mathcal{L}(X)$ tal que
+	converge al punto fijo $x = Tx$. Es decir,
 	\begin{equation}
-		\lVert M_{n} - M \rVert \rightarrow 0, \qquad n \rightarrow \infty.
+		x = y + Lx \Rightarrow (I-L)x=y \Rightarrow x = (I-L)^{-1}y = \sum_{j=0}^{\infty}L^jy \Rightarrow (I-L)^{-1} = \sum_{j=0}^{\infty}L^j,
 	\end{equation}
-	Usando la definición de $M_n$ y una simple manipulación algebraica,
+	como queríamos demostrar. Para probar~\eqref{eq:teo1} tenemos que
 	\begin{equation}
-		(I-L)M_n = M_n(I-L) = I - L^{n+1}.
+		\lVert (I-L)^{-1} \rVert \leqslant \sum_{j=0}^{\infty}\lVert L^j\rVert \leqslant \sum_{j=0}^{\infty}\lVert L\rVert^j = \dfrac{1}{1-\lVert L \rVert}.
 	\end{equation}
-	Si $n \rightarrow \infty$ obtenemos
-	\begin{equation}
-		(I-L)M = M(I-L) = I.
-	\end{equation}
-	Esta relación implica que $(I-L)$ es una biyección, y
-	\begin{equation}
-		M = (I-L)^{-1} = \lim_{n \rightarrow \infty}\sum_{i=0}^{n}L^i = \sum_{n=0}^{\infty}L^n.
-	\end{equation}
-	Para probar la desigualdad~\eqref{eq:teo1}, observemos que
-	\begin{equation}
-		\lVert M_{n} \rVert \leqslant \sum_{i=0}^{n}\lVert L \rVert^i \leqslant \dfrac{1}{1 - \lVert L \rVert}.
-	\end{equation}
-	Tomando el límite en $n \rightarrow \infty$, obtenemos~\eqref{eq:teo1}.
 \end{proof}
 \begin{observacion}
 	El teorema dice que bajo las hipótesis que hemos establecido, para cualquier $f \in X$, la ecuación
@@ -88,15 +74,15 @@ NOS FIJAMOS EN LA FOTO, Y TENEMOS QUE T ES CONTRACTIVO, aplicamos el TPF BANACH 
 		u_n = \sum_{j=0}^{n}L^jf.
 	\end{equation}
 \end{observacion}
-A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de una ecuación lineal integral, y en particular, nos sirve para las ecuaciones de Volterra de segunda clase.
+A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de solución para una ecuación lineal integral de segunda clase.
 \begin{corolario}\label{ej:1}
-	Toda ecuación lineal integral tiene solución única.
+	Sea la ecuación integral de Fredholm de segunda clase
+	\begin{equation}
+	\lambda	u(x) = f(x)+ \int_{a}^{b}K(x,t)u(t)dt, \qquad x \in [a,b],
+	\end{equation}
+	cumpliendo que $\dfrac{\lVert K \rVert}{\lvert \lambda \rvert} < 1$, entonces la ecuación tiene solución única.
 	\begin{proof}
-		Sea la siguiente ecuación:
-			\begin{equation}
-			u(x) = f(x) + \lambda \int_{a}^{b}K(x,t)u(t)dt, \qquad x \in [a,b],
-		\end{equation}
-		con $\lambda \neq 0$, $K(x,t)$ continua, y $f \in \mathcal{C}[a,b]$. Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Vamos a reescribir la ecuación de forma simbólica, organizando los términos para poder aplicar posteriormente el teorema de la serie geométrica:
+		Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Vamos a reescribir la ecuación de forma simbólica, organizando los términos para poder aplicar posteriormente el teorema de la serie geométrica:
 		\begin{equation}
 			(\lambda I-K)u = f,
 		\end{equation}
@@ -108,7 +94,7 @@ A continuación presentamos un resultado importante que nos garantiza la existen
 		\end{equation}
 		Aplicando el teorema de la serie geométrica, afirmamos que si
 		\begin{equation}
-			\lVert L \rVert = \dfrac{1}{|\lambda |}\lVert K \rVert \leq 1,
+			\lVert L \rVert = \dfrac{1}{|\lambda |}\lVert K \rVert < 1,
 		\end{equation}
 		entonces $(I-L)^{-1}$ existe y
 		\begin{equation}
@@ -128,9 +114,6 @@ A continuación presentamos un resultado importante que nos garantiza la existen
 		\end{equation}
 	\end{proof}
 \end{corolario}
-\begin{observacion}
-	Gracias a la demostración del teorema podemos ver que para un operador lineal $L \in \mathcal{L}(X)$ sobre un espacio de Banach $V$, si $\lVert L \rVert \leq 1$, entonces la serie $\sum_{n=0}^{\infty}L^n$ converge en $\mathcal{L}(X)$ y el valor de la serie es el operador $(I-L)^{-1}$.
-\end{observacion}
 \subsection{Generalización del teorema}
 Para motivar la generalización del teorema, vamos a considerar la ecuación integral de Volterra de segunda clase
 \begin{equation}
@@ -230,8 +213,6 @@ La \textit{perturbación} es una técnica en matemática aplicada que estudia un
 	y aplicamos normas y acotaciones.
 \end{proof}
 Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a otro operador con inversa acotada, también tendrá inversa acotada.} Este es el marco de trabajo para innumerables resultados de existencia de soluciones para ecuaciones integrales y diferenciales.
-
-\textbf{Pensar: consistencia, estabilidad y convergencia.}
 
 \begin{ejemplo}
 	Vamos a examinar si la ecuación integral tiene solución
