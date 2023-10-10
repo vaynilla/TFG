@@ -153,6 +153,25 @@ Sin embargo, podemos usar una variante del teorema de la serie geométrica sin i
 	\end{equation}
 	y la desigualdad~\eqref{eq:teo3} se mantiene.
 \end{proof}
+\begin{corolario}
+	Toda ecuación integral lineal de Volterra de segunda clase tiene solución única.
+\end{corolario}
+\begin{proof}
+	Definimos el operador $T$:
+	\begin{equation}
+		\begin{array}{c}
+		T: \mathcal{C}[0,B] \rightarrow \mathcal{C}[0,B] \\
+		\qquad \qquad \qquad T(u)(t) \mapsto f(t) + \int_{0}^{t} K(t,s)u(s)ds
+		\end{array}
+	\end{equation}
+	Vamos a ver que $\lVert T \rVert < 1$:\\
+
+	Dado que hemos establecido que $\lVert T \rVert < 1$ en el espacio $\mathcal{C}([a,b])$, podemos aplicar el Teorema de la serie geométrica para concluir la existencia y unicidad de soluciones para la ecuación integral de Volterra de segunda clase lineal.\\
+	Tenemos que existe un operador inverso $(I-T)^{-1}$ en $\mathcal{C}([a,b])$, y su inverso se puede expresar como una serie geométrica convergente, por tanto,  la solución única $u(t)$ viene dada por:
+	\begin{equation}
+		u(t) = (I-T)^{-1}f(t).
+	\end{equation}
+\end{proof}
 \subsection{Un resultado de perturbación}
 La \textit{perturbación} es una técnica en matemática aplicada que estudia una ecuación relacionándola con otra ecuación ``cercana'' para la cual existe un resultado que nos proporciona una solución. El siguiente teorema es una de las herramientas más utilizadas.
 
