@@ -153,18 +153,64 @@ Sin embargo, podemos usar una variante del teorema de la serie geométrica sin i
 	\end{equation}
 	y la desigualdad~\eqref{eq:teo3} se mantiene.
 \end{proof}
+Vamos a apoyarnos en esta generalización para ilustrar la demostración del siguiente resultado:
 \begin{corolario}
 	Toda ecuación integral lineal de Volterra de segunda clase tiene solución única.
 \end{corolario}
 \begin{proof}
-	Definimos el operador $T$:
+	Sea la ecuación integral de Volterra de segunda clase:
+	\begin{equation}
+		u(x) = f(x) + \int_0^x K(x,t)u(t)dt, \qquad x \in [0,B].
+	\end{equation}
+	Definimos el operador lineal $L$, que aparece dentro de la ecuación de Volterra:
 	\begin{equation}
 		\begin{array}{c}
-		T: \mathcal{C}[0,B] \rightarrow \mathcal{C}[0,B] \\
-		\qquad \qquad \qquad T(u)(t) \mapsto f(t) + \int_{0}^{t} K(t,s)u(s)ds
+		L: \mathcal{C}[0,B] \rightarrow \mathcal{C}[0,B] \\
+		\qquad \qquad \qquad \qquad \qquad Lu(x) \mapsto \displaystyle \int_{0}^{x} K(x,t)u(t)dt, \qquad x \in [0,B].
 		\end{array}
 	\end{equation}
-	Vamos a ver que $\lVert T \rVert < 1$:\\
+	Vamos a comprobar que verifica las hipótesis de la generalización del teorema de la serie geométrica, es decir, que para algún entero $n \geqslant 1$ se cumple $\lVert L^n \rVert < 1$.\\
+	Establecemos la desigualdad
+	\begin{equation}
+		n \geqslant 1 \Rightarrow \lVert L^n \rVert \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!},
+	\end{equation}
+	equivalentemente,
+	\begin{equation}
+		n \geqslant 1, u \in \mathcal{C}[0,B] \Rightarrow \lVert L^nu \rVert_\infty \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!}\lVert u \rVert_\infty.
+	\end{equation}
+	En efecto, para $n = 1$, si $0 \leqslant x \leqslant B$, entonces
+	\begin{equation}
+		\begin{split}
+			\lvert Lu(x) \rvert & \leqslant \int_{0}^{x} |K(x,t)u(t)|dt \\
+			& \leqslant \int_{0}^{x} \lVert K \rVert_\infty \lVert u \rVert_\infty dt\\
+			& = \lVert K \rVert_\infty \lVert u \rVert_\infty \int_{0}^{x}dt\\
+			& = \lVert K \rVert_\infty \lVert u \rVert_\infty t.
+		\end{split}
+	\end{equation}
+	Así pues,
+	\begin{equation}\label{eq:demvolt1}
+		|Lu(x)| \leqslant \lVert K \rVert_\infty \lVert u \rVert_\infty t.
+	\end{equation}
+	Para $n = 2$, si $0 \leqslant x \leqslant B$, tenemos
+	\begin{equation}
+		\begin{split}
+			|L^2u(x)| & \leqslant \int_{0}^{x}|K(x,t)Lu(t)|dt \\
+			& \leqslant \int_{0}^{x} \lVert K \rVert_\infty \lVert K \rVert_\infty \lVert x \rVert_\infty tdt\\
+			& =  \lVert K \rVert_\infty^2 \lVert x \rVert_\infty \int_{0}^{x}tdt \\
+			& = \lVert K \rVert_\infty^2 \lVert x \rVert_\infty \dfrac{t^2}{2},
+		\end{split}
+	\end{equation}
+	donde en la segunda desigualdad hemos utilizado~\eqref{eq:demvolt1}. Inductivamente deducimos
+	\begin{equation}
+		\left.\begin{split}
+			n \geqslant 1, & u \in \mathcal{C}[0,B]\\
+			& x \in [0,B]
+		\end{split}\right\rbrace \Rightarrow |L^nu(x)| \leqslant \dfrac{\lVert K \rVert_\infty^nt^n}{n!}\lVert u \rVert_\infty,
+	\end{equation}
+	de donde
+	\begin{equation}\label{eq:demvolt2}
+		\lVert L^n \rVert \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!}.
+	\end{equation}
 
 	Dado que hemos establecido que $\lVert T \rVert < 1$ en el espacio $\mathcal{C}([a,b])$, podemos aplicar el Teorema de la serie geométrica para concluir la existencia y unicidad de soluciones para la ecuación integral de Volterra de segunda clase lineal.\\
 	Tenemos que existe un operador inverso $(I-T)^{-1}$ en $\mathcal{C}([a,b])$, y su inverso se puede expresar como una serie geométrica convergente, por tanto,  la solución única $u(t)$ viene dada por:

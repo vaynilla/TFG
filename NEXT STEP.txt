@@ -8,3 +8,4 @@
 - Añadir la bibliografía, y usarla para citar lo que necesite en el texto (véase en...).
 - Meter un ejemplo más con 3 habitaciones y otro con 4 en el modelo.
 - Arreglar todas las correcciones que me ha indicado.
+- Revisar la notación de las ecuaciones de Volterra (demostraciones y tal a veces creo que uso la variable x y otra la t).
