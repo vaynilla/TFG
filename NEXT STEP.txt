@@ -3,9 +3,10 @@
 - Cambiar demostración del teorema de la serie geométrica utilizando el teorema del punto fijo de Banach, mirarlo en la foto e intentar entenderlo. (DONE)
 - En la foto, en rojo, abajo de la derecha, hay una mejor demostración de una acotación de la norma de la inversa, ponerla. (DONE)
 - Cambiar lo de que toda ecuación integral tiene solución única por... Las de fredholm y con tal condición. (DONE)
-- Hacer la demostración de que toda ecuación integral de Volterra de 2nda clase tiene solución única (Intentarlo como sea) (Repetir en caso vectorial, en el siguiente capítulo).
-- Incluir todas las referencias cuando cojo un comentario tal cual, y revisar los libros a ver si algunas redacciones son clavadas o no.
-- Añadir la bibliografía, y usarla para citar lo que necesite en el texto (véase en...).
-- Meter un ejemplo más con 3 habitaciones y otro con 4 en el modelo.
-- Arreglar todas las correcciones que me ha indicado.
-- Revisar la notación de las ecuaciones de Volterra (demostraciones y tal a veces creo que uso la variable x y otra la t).
+- Hacer la demostración de que toda ecuación integral de Volterra de 2nda clase tiene solución única (Intentarlo como sea) (Repetir en caso vectorial, en el siguiente capítulo). (DONE)
+- Incluir todas las referencias (véase en...) cuando cojo un comentario tal cual, y revisar los libros a ver si algunas redacciones son clavadas o no. (DONE)
+- Añadir la bibliografía, y usarla para citar lo que necesite en el texto (véase en...). (DONE)
+- Meter un ejemplo más con 3 habitaciones y otro con 4 en el modelo. (DONE)
+- Arreglar todas las correcciones que me ha indicado. (DONE)
+- Revisar la notación de las ecuaciones de Volterra (demostraciones y tal a veces creo que uso la variable x y otra la t). (DONE)
+- Leer el TFG para ver tema de redacciones + citas de otros libros y etc antes de enviar.

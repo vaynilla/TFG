@@ -1,8 +1,10 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
 \chapter{Existencia y unicidad de solución de la ecuación lineal integral de Volterra de segunda clase}
+\section{Introducción}
+En la sección anterior hemos presentado una amplia gama de ecuaciones integrales, pero ahora estudiamos con detalle las lineales de Volterra de segunda clase, ya que serán las que permitan describir y resolver satisfactoriamente el modelo de distribución de la temperatura interna de un edificio.\\ Si reparamos en la propia naturaleza de este tipo de ecuaciones, debemos exigir cierto grado de regularidad (aunque sólo sea continuidad, incluso algún tipo de buen comportamiento integral) a las funciones dato y a la solución. Todo ello se detalla en este epígrafe.
 \section{Teorema de la serie geométrica y sus variantes}
-Este teorema se utiliza muy a menudo en análisis numérico y matemática aplicada. También es la forma que tenemos para analizar si tienen solución los problemas que están $"$cerca$"$ a otros problemas que sí sabemos que tienen solución única.\\
+Podemos encontrar la aplicación de este teorema habitualmente en análisis numérico y matemática aplicada, esto se debe a que es una gran herramienta para analizar si tienen solución los problemas cercanos a otros problemas para los que sí podemos asegurar la existencia de una solución única.
 
 Primero vamos a introducir un resultado muy importante que utilizaremos posteriormente para demostrar este teorema, el resultado garantiza la existencia y unicidad de puntos fijos de ciertas funciones definidas sobre espacios métricos y proporciona un método para encontrarlos.
 \begin{definicion}
@@ -10,15 +12,17 @@ Primero vamos a introducir un resultado muy importante que utilizaremos posterio
 \end{definicion}
 \begin{teorema}
 	(Teorema del punto fijo de Banach) Sea $X$ un espacio de Banach y sea $T:X \rightarrow X$ una aplicación contractiva en $X$. Entonces existe un único punto fijo de $T$.\\
-	Además, para todo punto $x_0$ de $X$, la sucesión $\{x_n=T(x_{n-1})\}_{n=1}^\infty$ converge a dicho punto fijo.
+	Además, para todo punto $x_0$ de $X$, la sucesión $\{T(x_{n})\}_{n=0}^\infty$ converge a dicho punto fijo.
 \end{teorema}
-Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
+Este teorema tiene sentido incluso para espacios métricos completos, pero nosotros no necesitamos ese nivel de generalización. 
+
+Como notación, utilizaremos $\mathcal{L}(X)$ para referirnos al conjunto de todos los operadores lineales de $X$ en sí mismo, de igual forma $\mathcal{L}(X,Y)$ será el conjunto de todos los operadores lineales de $X$ en $Y$. Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
 \begin{teorema}
 	Sea $X$ un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos
 	\begin{equation}
 		\lVert L \rVert < 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal continuo,
+	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal y continuo,
 	\begin{equation}
 		(I-L)^{-1} = \sum_{n=0}^{\infty}L^n,
 	\end{equation}
@@ -32,23 +36,30 @@ Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
 	\begin{equation}
 		T: X \rightarrow X, \qquad T(x) = y+Lx.
 	\end{equation}
-	Vamos a ver que $T$ es contractivo, sean $u, v \in X$, y sea $c$ tal que $0 \leqslant c < 1$, 
+	Vamos a ver que $T$ es contractivo: sean $u, v \in X$, y sea $c = \lVert L \rVert$, $0 \leqslant c < 1$; entonces 
 	\begin{equation}
 		\lVert Tu - Tv \rVert = \lVert y + Lu - (y + Lv) \rVert = \lVert Lu - Lv \rVert = \lVert L(u-v) \rVert \leqslant c\lVert u-v \rVert.
 	\end{equation}
-	Nótese que en la tercera igualdad hemos aplicado la linealidad de $L$, y al final que $\lVert L \rVert < 1$. Ahora aplicamos el teorema del punto fijo de Banach y tomamos como punto inicial $x_0 = y$, por tanto tenemos que
+	Nótese que en la tercera igualdad hemos aplicado la linealidad y continuidad de $L$. Ahora aplicamos el teorema del punto fijo de Banach y tomamos como punto inicial $x_0 = y$, por tanto tenemos que
 	\begin{equation}
 		x_n = y + Lx_{n-1} = \sum_{j=0}^{n}L^jy, \qquad n \geqslant 1
 	\end{equation}
-	converge al punto fijo $x = Tx$. Es decir,
+	converge al único punto fijo de $T$, $x = Tx$. Es decir,
 	\begin{equation}
 		x = y + Lx \Rightarrow (I-L)x=y \Rightarrow x = (I-L)^{-1}y = \sum_{j=0}^{\infty}L^jy \Rightarrow (I-L)^{-1} = \sum_{j=0}^{\infty}L^j,
 	\end{equation}
-	como queríamos demostrar. Para probar~\eqref{eq:teo1} tenemos que
+	como queríamos demostrar. Ahora vamos a ver que $(I-L)$ es biyectivo y continuo:
+	\begin{itemize}
+		\item Ya hemos visto que es sobreyectiva.
+		\item Inyectiva: $(I-L)u = (I-L)v \Rightarrow 0 = \lVert u-Lu-v+Lv \rVert \geqslant \lVert u-v \rVert - \lVert L(u-v) \rVert \geqslant \lVert u-v \rVert - \lVert L \rVert \lVert u-v \rVert = (1 - \lVert L \rVert) \lVert u-v \rVert \Rightarrow u = v$ (Puesto que $(1 - \lVert L \rVert) > 0$).
+		\item Para la continuidad vamos a utilizar el Teorema de isomorfismos de Banach.
+	\end{itemize}
+	Para probar~\eqref{eq:teo1}, teniendo en cuenta una vez más que $\lVert L \rVert < 1$, tenemos que
 	\begin{equation}
 		\lVert (I-L)^{-1} \rVert \leqslant \sum_{j=0}^{\infty}\lVert L^j\rVert \leqslant \sum_{j=0}^{\infty}\lVert L\rVert^j = \dfrac{1}{1-\lVert L \rVert}.
 	\end{equation}
 \end{proof}
+Hay una demostración alternativa utilizando la complitud del espacio y la suma de una serie geométrica (véase \cite{Atkinson}).
 \begin{observacion}
 	El teorema dice que bajo las hipótesis que hemos establecido, para cualquier $f \in X$, la ecuación
 	\begin{equation}\label{eq:teo2}
@@ -74,27 +85,27 @@ Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
 		u_n = \sum_{j=0}^{n}L^jf.
 	\end{equation}
 \end{observacion}
-A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de solución para una ecuación lineal integral de segunda clase.
+A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de solución para una ecuación lineal integral de Fredholm de segunda clase.
 \begin{corolario}\label{ej:1}
 	Sea la ecuación integral de Fredholm de segunda clase
 	\begin{equation}
-	\lambda	u(x) = f(x)+ \int_{a}^{b}K(x,t)u(t)dt, \qquad x \in [a,b],
+	u(x) = f(x)+ \int_{a}^{b}K(x,t)u(t)dt, \qquad x \in [a,b],
 	\end{equation}
-	cumpliendo que $\dfrac{\lVert K \rVert}{\lvert \lambda \rvert} < 1$, entonces la ecuación tiene solución única.
+	cumpliendo que $\lVert K \rVert < 1$, entonces la ecuación tiene solución única.
 	\begin{proof}
 		Sea $X = \mathcal{C}[a,b]$ con la norma $\lVert \cdot \rVert_\infty$. Vamos a reescribir la ecuación de forma simbólica, organizando los términos para poder aplicar posteriormente el teorema de la serie geométrica:
 		\begin{equation}
-			(\lambda I-K)u = f,
+			(I-\mathcal{K})u = f,
 		\end{equation}
-		donde $K$ es un operador integral lineal gerenado por el núcleo $K (\cdot , \cdot )$. Nosotros también lo escribiremos a menudo como $(\lambda - K)u = f$, para aclarar la notación.
+		donde $\mathcal{K}$ es un operador integral lineal gerenado por el núcleo $K (\cdot , \cdot )$.
 		
 		Escribimos la ecuación de esta manera puesto que así se puede convertir en la forma que necesitamos para aplicar el teorema de la serie geométrica:
 		\begin{equation}
-			(I-L)u = \dfrac{1}{\lambda}f, \qquad L = \dfrac{1}{\lambda}K.
+			(I-L)u = f, \qquad L = \mathcal{K}.
 		\end{equation}
 		Aplicando el teorema de la serie geométrica, afirmamos que si
 		\begin{equation}
-			\lVert L \rVert = \dfrac{1}{|\lambda |}\lVert K \rVert < 1,
+			\lVert L \rVert = \lVert \mathcal{K} \rVert < 1,
 		\end{equation}
 		entonces $(I-L)^{-1}$ existe y
 		\begin{equation}
@@ -102,66 +113,68 @@ A continuación presentamos un resultado importante que nos garantiza la existen
 		\end{equation}
 		Equivalentemente, si
 		\begin{equation}
-			\lVert K \rVert = \max_{a \leqslant x \leqslant b} \int_{0}^{x}|K(x,t)|dt \leq |\lambda|,
+			\rho := \max_{a \leqslant x \leqslant b} \int_{a}^{x}|K(x,t)|dt < 1,
 		\end{equation}
-		entonces $(\lambda I - K)^{-1}$ existe y 
+		entonces $(I - \mathcal{K})^{-1}$ existe y 
 		\begin{equation}
-			\lVert (\lambda I - K)^{-1}\rVert \leqslant \dfrac{1}{|\lambda| - \lVert K \rVert }.
+			\lVert (I - \mathcal{K})^{-1}\rVert \leqslant \dfrac{1}{1 - \rho }.
 		\end{equation}
 		Luego, para cualquier $f \in \mathcal{C}[a,b]$, la ecuación integral tiene solución única $u \in \mathcal{C}[a,b]$ y 
 		\begin{equation}
-			\lVert u \rVert_\infty \leqslant \lVert (\lambda I - K)^{-1} \rVert \lVert f \rVert_\infty \leqslant \dfrac{\lVert f \rVert_\infty}{|\lambda| - \lVert K \rVert }.
+			\lVert u \rVert_\infty \leqslant \lVert (I - \mathcal{K})^{-1} \rVert \lVert f \rVert_\infty \leqslant \dfrac{\lVert f \rVert_\infty}{1 - \rho }.
 		\end{equation}
+		Nótese que la condición $\rho < 1$ está garantizada en cuanto $\lVert K \rVert_\infty < 1$, siendo $K \in \mathcal{C}([a,b]\times [a,b])$.
 	\end{proof}
 \end{corolario}
-\subsection{Generalización del teorema}
-Para motivar la generalización del teorema, vamos a considerar la ecuación integral de Volterra de segunda clase
+\section{Generalización del teorema}
+En principio, a la hora de probar que la ecuación integral de Volterra de segunda clase
 \begin{equation}
 	u(x) = f(x) + \int_{0}^{x} K(x,t)u(t)dt, \qquad x \in [0,B],
 \end{equation}
-donde $B \geq 0$ y suponemos que el núcleo $K(x,t)$ es continuo para $0 \leqslant t \leqslant x \leqslant B$, y $f \in \mathcal{C}[0,B]$. Si aplicamos el teorema, tendremos que suponer una condición para poder concluir la existencia de solución única, de forma que
+tiene solución única, y a parte de suponer $B > 0$, que el núcleo $K(x,t) \in \mathcal{C}([0,x]\times[0,B])$ y $f \in \mathcal{C}[0,B]$, si queremos aplicar el teorema de la serie geométrica, tendremos que suponer una condición extra sobre el núcleo:
 \begin{equation}
-	\max_{x\in [0,B]}\int_{0}^{x} |K(x,t)|dt \leq 1.
+	\max_{x\in [0,B]}\int_{0}^{x} |K(x,t)|dt < 1.
 \end{equation}
-Sin embargo, podemos usar una variante del teorema de la serie geométrica sin importar el tamaño del núcleo $K(x,t)$, y garantizando la existencia de solución única. Simbólicamente, escribimos la ecuación integral como $(I-L)u = f$.
-\begin{corolario}
-	Sea X un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos que para algún entero $m \geqslant 1$ se cumple
+Sin embargo, esta restricción puede obviarse, gracias a una generalización del teorema de la serie geométrica. Simbólicamente, escribiremos la ecuación integral como $(I-L)u = f$.
+\begin{corolario}\label{corolario}
+	Sea X un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos que para algún entero $n \geqslant 1$ se cumple
 	\begin{equation}
-		\lVert L^m \rVert \leq 1.
+		\lVert L^n \rVert < 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal acotado, y 
+	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal y continuo, y 
 	\begin{equation}\label{eq:teo3}
-		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^m \rVert} \sum_{i=0}^{m - 1}\lVert L^i \rVert.
+		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^n \rVert} \sum_{i=0}^{n - 1}\lVert L^i \rVert.
 	\end{equation}
 \end{corolario}
 \begin{proof}
-	Gracias al teorema de la serie geométrica, sabemos que $(I-L^m)^{-1}$ existe como un operador biyectivo acotado de $X$ en sí mismo,
+	Gracias al teorema de la serie geométrica, sabemos que $(I-L^n)^{-1}$ existe como un operador biyectivo lineal y continuo de $X$ en sí mismo,
 	\begin{equation}
-		(I - L^m)^{-1} = \sum_{j=0}^{\infty}L^{mj} 
+		(I - L^n)^{-1} = \sum_{j=0}^{\infty}L^{nj} 
 	\end{equation}
 	en $\mathcal{L}(X)$, y
 	\begin{equation}
-		\lVert (I - L^m)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^m \rVert}.
+		\lVert (I - L^n)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^n \rVert}.
 	\end{equation}
 	De las igualdades
 	\begin{equation}
-		(I - L)(\sum_{i=0}^{m - 1}L^i) = (\sum_{i=0}^{m - 1}L^i)(I-L) = I - L^m,
+		(I - L)(\sum_{i=0}^{n - 1}L^i) = (\sum_{i=0}^{n - 1}L^i)(I-L) = I - L^n,
 	\end{equation}
 	concluimos que $(I-L)$ es una biyección,
 	\begin{equation}
-		(I-L)^{-1} = (\sum_{i=0}^{m-1}L^i)(I-L^m)^{-1}
+		(I-L)^{-1} = (\sum_{i=0}^{n-1}L^i)(I-L^n)^{-1}
 	\end{equation}
-	y la desigualdad~\eqref{eq:teo3} se mantiene.
+	que es continuo, gracias al Teorema de los isomorfismos de Banach, y la desigualdad~\eqref{eq:teo3} se mantiene.
 \end{proof}
 Vamos a apoyarnos en esta generalización para ilustrar la demostración del siguiente resultado:
 \begin{corolario}
-	Toda ecuación integral lineal de Volterra de segunda clase tiene solución única.
+	Toda ecuación integral lineal de Volterra de segunda clase tiene solución única, cuando trabajamos en contexto continuo.
 \end{corolario}
 \begin{proof}
 	Sea la ecuación integral de Volterra de segunda clase:
 	\begin{equation}
-		u(x) = f(x) + \int_0^x K(x,t)u(t)dt, \qquad x \in [0,B].
+		u(x) = f(x) + \int_0^x K(x,t)u(t)dt, \qquad x \in [0,B],
 	\end{equation}
+	donde $f \in \mathcal{C}[0,B]$, $K \in \mathcal{C}([0,B]\times [0,B])$ y $u \in \mathcal{C}[0,B]$ es la función incógnita.
 	Definimos el operador lineal $L$, que aparece dentro de la ecuación de Volterra:
 	\begin{equation}
 		\begin{array}{c}
@@ -169,13 +182,14 @@ Vamos a apoyarnos en esta generalización para ilustrar la demostración del sig
 		\qquad \qquad \qquad \qquad \qquad Lu(x) \mapsto \displaystyle \int_{0}^{x} K(x,t)u(t)dt, \qquad x \in [0,B].
 		\end{array}
 	\end{equation}
+	Así, podemos escribir la ecuación como $(I-L)u = f$.
 	Vamos a comprobar que verifica las hipótesis de la generalización del teorema de la serie geométrica, es decir, que para algún entero $n \geqslant 1$ se cumple $\lVert L^n \rVert < 1$.\\
 	Establecemos la desigualdad
 	\begin{equation}
 		n \geqslant 1 \Rightarrow \lVert L^n \rVert \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!},
 	\end{equation}
 	equivalentemente,
-	\begin{equation}
+	\begin{equation}\label{eq:ref}
 		n \geqslant 1, u \in \mathcal{C}[0,B] \Rightarrow \lVert L^nu \rVert_\infty \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!}\lVert u \rVert_\infty.
 	\end{equation}
 	En efecto, para $n = 1$, si $0 \leqslant x \leqslant B$, entonces
@@ -184,45 +198,45 @@ Vamos a apoyarnos en esta generalización para ilustrar la demostración del sig
 			\lvert Lu(x) \rvert & \leqslant \int_{0}^{x} |K(x,t)u(t)|dt \\
 			& \leqslant \int_{0}^{x} \lVert K \rVert_\infty \lVert u \rVert_\infty dt\\
 			& = \lVert K \rVert_\infty \lVert u \rVert_\infty \int_{0}^{x}dt\\
-			& = \lVert K \rVert_\infty \lVert u \rVert_\infty t.
+			& = \lVert K \rVert_\infty \lVert u \rVert_\infty x.
 		\end{split}
 	\end{equation}
 	Así pues,
 	\begin{equation}\label{eq:demvolt1}
-		|Lu(x)| \leqslant \lVert K \rVert_\infty \lVert u \rVert_\infty t.
+		|Lu(x)| \leqslant \lVert K \rVert_\infty \lVert u \rVert_\infty x.
 	\end{equation}
 	Para $n = 2$, si $0 \leqslant x \leqslant B$, tenemos
 	\begin{equation}
 		\begin{split}
 			|L^2u(x)| & \leqslant \int_{0}^{x}|K(x,t)Lu(t)|dt \\
-			& \leqslant \int_{0}^{x} \lVert K \rVert_\infty \lVert K \rVert_\infty \lVert x \rVert_\infty tdt\\
-			& =  \lVert K \rVert_\infty^2 \lVert x \rVert_\infty \int_{0}^{x}tdt \\
-			& = \lVert K \rVert_\infty^2 \lVert x \rVert_\infty \dfrac{t^2}{2},
+			& \leqslant \int_{0}^{x} \lVert K \rVert_\infty \lVert K \rVert_\infty \lVert u \rVert_\infty tdt\\
+			& =  \lVert K \rVert_\infty^2 \lVert u \rVert_\infty \int_{0}^{x}tdt \\
+			& = \lVert K \rVert_\infty^2 \lVert u \rVert_\infty \dfrac{x^2}{2},
 		\end{split}
 	\end{equation}
 	donde en la segunda desigualdad hemos utilizado~\eqref{eq:demvolt1}. Inductivamente deducimos
 	\begin{equation}
 		\left.\begin{split}
-			n \geqslant 1, & u \in \mathcal{C}[0,B]\\
+			n \geqslant 1, \qquad & u \in \mathcal{C}[0,B]\\
 			& x \in [0,B]
-		\end{split}\right\rbrace \Rightarrow |L^nu(x)| \leqslant \dfrac{\lVert K \rVert_\infty^nt^n}{n!}\lVert u \rVert_\infty,
+		\end{split}\right\rbrace \Rightarrow |L^nu(x)| \leqslant \dfrac{\lVert K \rVert_\infty^nx^n}{n!}\lVert u \rVert_\infty,
 	\end{equation}
-	de donde
+	de donde se tiene~\eqref{eq:ref} y, por tanto, 
 	\begin{equation}\label{eq:demvolt2}
 		\lVert L^n \rVert \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!}.
 	\end{equation}
-
-	Dado que hemos establecido que $\lVert T \rVert < 1$ en el espacio $\mathcal{C}([a,b])$, podemos aplicar el Teorema de la serie geométrica para concluir la existencia y unicidad de soluciones para la ecuación integral de Volterra de segunda clase lineal.\\
-	Tenemos que existe un operador inverso $(I-T)^{-1}$ en $\mathcal{C}([a,b])$, y su inverso se puede expresar como una serie geométrica convergente, por tanto,  la solución única $u(t)$ viene dada por:
+	Como la sucesión $\{\dfrac{\lVert K \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!}$ es convergente, $\sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!} = e^{\lVert K \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2} da $\lVert L^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert L^n \rVert < 1$.
+	Luego podemos aplicar la generalización del teorema de la serie geométrica (\autoref{corolario}) y tenemos que existe el operador inverso $(I-L)^{-1}$ en $\mathcal{C}([0,B])$, y su inverso se puede expresar como la suma de una serie geométrica convergente, por tanto,  la solución única $u$ viene dada por:
 	\begin{equation}
-		u(t) = (I-T)^{-1}f(t).
+		u = (I-L)^{-1}f.
 	\end{equation}
 \end{proof}
-\subsection{Un resultado de perturbación}
-La \textit{perturbación} es una técnica en matemática aplicada que estudia una ecuación relacionándola con otra ecuación ``cercana'' para la cual existe un resultado que nos proporciona una solución. El siguiente teorema es una de las herramientas más utilizadas.
+\section{Un resultado de perturbación}
+Vamos a presentar otra aplicación del teorema de la serie geométrica, distinta a lo hecho con las ecuaciones integrales previamente.
+La \textit{perturbación} es una estrategia en matemática aplicada que se enfoca en el estudio de una ecuación al relacionarla con otra ecuación $"$afín$"$, de la cual sabemos que existe un resultado que nos da una solución, esto nos ayuda a encontrar soluciones para problemas más complicados utilizando otros más simples. El siguiente teorema representa una de las herramientas de uso más frecuente en este contexto.
 
 \begin{teorema}
-	Sea $X$ y $Y$ espacios normados, siendo al menos uno de ellos completo. Suponemos que $L \in \mathcal{L}(X,Y)$ tiene inversa acotada $L^{-1}: Y \rightarrow X.$ Suponemos $M \in \mathcal{L}(X,Y)$ satisface
+	Sean $X$ e $Y$ espacios normados, siendo al menos uno de ellos completo. Suponemos que $L \in \mathcal{L}(X,Y)$ posee un inversso lineal y continuo $L^{-1}: Y \rightarrow X.$ Además, $M \in \mathcal{L}(X,Y)$ satisface
 	\begin{equation}\label{eq:teo7}
 		\lVert M-L \rVert < \dfrac{1}{\lVert L^{-1} \rVert}.
 	\end{equation}
@@ -253,11 +267,11 @@ La \textit{perturbación} es una técnica en matemática aplicada que estudia un
 	\begin{equation}
 		\lVert (L - M)L^{-1} \rVert \leqslant \lVert L - M \rVert \lVert L^{-1 \rVert} < 1.
 	\end{equation}
-	Luego por el teorema de la serie geométrica, $[I-(L-M)L^{-1}]^{-1}$ existe y además,
+	Luego por el teorema de la serie geométrica, $[I-(L-M)L^{-1}]^{-1}$ existe, es lineal y continuo y además,
 	\begin{equation}
 		\lVert [I-(L-M)L^{-1}]^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert (L-M)L^{-1}\rVert} \leqslant \dfrac{1}{1 - \lVert L^{-1} \rVert \lVert L-M \rVert }.
 	\end{equation}
-	$M^{-1}$ existe con
+	Entonces $M^{-1}$ existe y es lineal y continuo, con
 	\begin{equation}
 		M^{-1} = L^{-1}[I-(L-M)L^{-1}]^{-1}
 	\end{equation}
@@ -269,30 +283,30 @@ La \textit{perturbación} es una técnica en matemática aplicada que estudia un
 	\begin{equation}
 		L^{-1} - M^{-1} = M^{-1}(M-L)L^{-1},
 	\end{equation}
-	tomando normas y usando~\eqref{eq:teo5}.
+	tomamos normas y usamos~\eqref{eq:teo5}.
 	
 	Para~\eqref{eq:teo6},
 	\begin{equation}
 		x_1 - x_2 = (L^{-1} - M^{-1})y = M^{-1}(M-L)L^{-1}y = M^{-1}(M-L)x_1
 	\end{equation}
-	y aplicamos normas y acotaciones.
+	y aplicamos normas.
 \end{proof}
-Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a otro operador con inversa acotada, también tendrá inversa acotada.} Este es el marco de trabajo para innumerables resultados de existencia de soluciones para ecuaciones integrales y diferenciales.
+Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a otro operador biyectivo, lineal y continuo, también será biyectivo, lineal y continuo.} Según se dice en \cite{Atkinson}, la aplicación de este resultado es útil para muchos resultados de existencia de soluciones para ecuaciones integrales y diferenciales.
 
 \begin{ejemplo}
-	Vamos a examinar si la ecuación integral tiene solución
+	Vamos a examinar si la ecuación integral
 	\begin{equation}\label{eq:ej1}
-		\lambda u(x) - \int_{0}^{1}\sin(xt)u(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1
+		\lambda u(x) - \int_{0}^{1} \dfrac{\cos(xt)}{2}u(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1
 	\end{equation}
-	con $\lambda \neq 0$. De la discusión del corolario~\eqref{ej:1}, si
+	tiene solución, con $\lambda \neq 0$. De la discusión del corolario~\eqref{ej:1}, si
 	\begin{equation}\label{ej:2}
-		|\lambda| > \lVert K \rVert = \int_{0}^{1}\sin(t)dt = 1 - \cos (1) \approx 0.4597,
+	1 > \lVert K \rVert = \int_{0}^{1}\dfrac{\cos(t)}{2}dt = \sin (1)/2 \approx 0.4207,
 	\end{equation}
 	entonces para cada $f \in \mathcal{C}[0,1]$, la ecuación admite una solución única $u \in \mathcal{C}[0,1]$.
 	
 	Para obtener más valores de $\lambda$ para los cuales nuestra ecuación tiene solución única, aplicamos el teorema de perturbación. Ya que $\cos(xt) \approx xt$ para valores pequeños de $|xt|$, comparamos la ecuación con
 	\begin{equation}\label{eq:ej2}
-		\lambda v(x) - \int_{0}^{1} xtv(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1.
+		\lambda v(x) - \int_{0}^{1} \dfrac{xt}{2}v(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1.
 	\end{equation}
 	Siguiendo la notación el teorema de perturbación, la ecuación~\eqref{eq:ej1} sería $Mu = f$, y~\eqref{eq:ej2} sería $Lv = f$. El espacio normado es $X = \mathcal{C}[0,1]$ con la norma $\lVert \cdot \rVert_\infty$, y $L,M \in \mathcal{L}(X)$.
 	
@@ -302,7 +316,7 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	\end{equation}
 	para alguna constante $c$. Sustituyéndolo en la ecuación nos lleva a una fórmula para $c$, y entonces
 	\begin{equation}
-		v(x) = \dfrac{1}{\lambda}[f(x) + \dfrac{1}{\lambda - 1/3}\int_{0}^{1}xtf(t)dt], \qquad \lambda \neq 0,\dfrac{1}{3}.
+		v(x) = \dfrac{1}{\lambda}[f(x) + \dfrac{1}{\lambda - 1/3}\int_{0}^{1}\dfrac{xt}{2}f(t)dt], \qquad \lambda \neq 0,\dfrac{1}{3}.
 	\end{equation}
 	Esta relación define $L^{-1}f$ para toda $f \in \mathcal{C}[0,1]$.
 	
@@ -312,34 +326,89 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	\end{equation}
 	y
 	\begin{equation}
-		\lVert L-M \rVert = \int_{0}^{1} (t - \cos t)dt = \cos(1) - \dfrac{1}{2} \approx 0.0403.
+		\lVert L-M \rVert = \int_{0}^{1} (t - \dfrac{\cos t}{2})dt = \dfrac{1}{2} - \sin(1)/2 \approx 0.0793.
 	\end{equation}
 	La condición~\eqref{eq:teo7} viene de
 	\begin{equation}\label{ej:3}
-		\dfrac{1}{|\lambda|}(1+\dfrac{1}{2|\lambda - 1/3|}) < \dfrac{1}{\cos(1)-1/2}.
+		\dfrac{1}{|\lambda|}(1+\dfrac{1}{2|\lambda - 1/3|}) < \dfrac{1}{1/2 - \sin(1)/2}.
 	\end{equation}
-	En la \autoref{fig:4.1} podemos ver un gráfico de la parte izquierda de esta desigualdad. Si $\lambda$ es un número real, entonces hay tres casos a considerar: $\lambda > 1/3$, $0 < \lambda < 1/3$, y $\lambda < 0$. Para el caso $\lambda < 0$, la desigualdad es cierta si y sólo si $\lambda < \lambda_0 \approx -0.0881$, que es la raíz negativa de la ecuación
-	\begin{equation}
-		\lambda^2 - (\dfrac{5}{6} - \cos(1)) \lambda - \dfrac{5}{6}(\cos(1) - \dfrac{1}{2}) = 0.
-	\end{equation} 
-	Como consecuencia el teorema de perturbación, tenemos que si $\lambda < \lambda_0$, entonces nuestra ecuación integral tiene solución única para cualquier $f \in \mathcal{C}[0,1]$. Esto es una mejora significativa en comparación con el punto de partida que teníamos~\eqref{ej:2}.
+	Si $\lambda$ es un número real, entonces hay tres casos a considerar: $\lambda > 1/3$, $0 < \lambda < 1/3$, y $\lambda < 0$. Para el caso $\lambda < 0$, la desigualdad es cierta si y sólo si $\lambda < \lambda_0 \approx -0.1596$.
+	
+	Como consecuencia del teorema de perturbación, tenemos que si $\lambda < \lambda_0$, entonces nuestra ecuación integral tiene solución única para cualquier $f \in \mathcal{C}[0,1]$. Esto es una mejora significativa en comparación con el punto de partida que teníamos~\eqref{ej:2}.
 \end{ejemplo}
-\begin{figure}[htb!]
-	\centering
-	\includegraphics[width=\textwidth]{fig4.1}
-	\caption{Gráfico de la parte izquierda de la desigualdad~\eqref{ej:3}}
-	\label{fig:4.1}
-\end{figure}
-\subsection{Existencia y unicidad de solución para sistemas de ecuaciones integrales lineales de Volterra de segunda clase}
-En el caso vectorial, partimos de
+\section{Existencia y unicidad de solución para sistemas de ecuaciones integrales lineales de Volterra de segunda clase}
+Avanzamos ahora un poco más en el estudio de las ecuaciones integrales de Volterra, ocupándonos de un sistema de ecuaciones integrales lineales de Volterra de segunda clase en contexto continuo que, vectorialmente, adopta la expresión 
 \begin{equation}
 	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B],
 \end{equation}
-donde \textbf{u} es el vector formado por todas las funciones que queremos determinar. \textbf{f} es el vector formado por las funciones continuas independientes, y \textbf{K} es el vector formado por los núcleos de cada una de las ecuaciones que forman el sistema:
+donde \textbf{u} es el vector formado por todas las funciones continuas que queremos determinar, \textbf{f} es el vector formado por las funciones continuas independientes, y \textbf{K} es el vector formado por los núcleos continuos de cada una de las ecuaciones que forman el sistema:
 \begin{equation}
-	\textbf{u}(x) = \begin{pmatrix}	u_1(x) \\ u_2(x) \\ \vdots \\ u_n(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	f_1(x) \\ f_2(x) \\ \vdots \\ f_n(x)	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	K_1(x,t) \\ K_2(x,t) \\ \vdots \\ K_n(x,t)	\end{pmatrix},
+	\textbf{u}(x) = \begin{pmatrix}	u_1(x) \\ u_2(x) \\ \vdots \\ u_n(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	f_1(x) \\ f_2(x) \\ \vdots \\ f_n(x)	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	K_1(x,t) \\ K_2(x,t) \\ \vdots \\ K_n(x,t)	\end{pmatrix}.
 \end{equation}
-\textbf{Añadir Corolario 2.1 con la notación vectorial + su demostración?}
+\begin{corolario}
+	Todo sistema de ecuaciones integrales lineales de Volterra de segunda clase en ambiente continuo tiene solución única.
+\end{corolario}
+\begin{proof}
+	Partimos de la ecuación de Volterra, ya con notación vectorial:
+	\begin{equation}
+		\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
+	\end{equation}
+	Definimos el operador lineal $L$, que aparece dentro de la ecuación de Volterra:
+	\begin{equation}
+		\begin{array}{c}
+			\textbf{L}: \mathcal{C}([0,B],\R^n) \rightarrow \mathcal{C}([0,B],\R^n) \\
+			\qquad \qquad \qquad \qquad \qquad \textbf{L}\textbf{u}(x) \mapsto \displaystyle \int_{0}^{x} \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
+		\end{array}
+	\end{equation}
+	Así, podemos escribir la ecuación como $(\textbf{I}-\textbf{L})\textbf{u} = \textbf{f}$.
+	Vamos a comprobar que verifica las hipótesis de la generalización del teorema de la serie geométrica, es decir, que para algún entero $n \geqslant 1$ se cumple $\lVert \textbf{L}^n \rVert < 1$.\\
+	Establecemos la desigualdad
+	\begin{equation}
+		n \geqslant 1 \Rightarrow \lVert \textbf{L}^n \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!},
+	\end{equation}
+	equivalentemente,
+	\begin{equation}\label{eq:ref2}
+		n \geqslant 1, \textbf{u} \in \mathcal{C}([0,B],\R^n) \Rightarrow \lVert \textbf{L}^n\textbf{u} \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\lVert \textbf{u} \rVert_\infty.
+	\end{equation}
+	En efecto, para $n = 1$, si $0 \leqslant x \leqslant B$, entonces
+	\begin{equation}
+		\begin{split}
+			\lVert \textbf{L}\textbf{u}(x) \rVert_\infty & \leqslant \int_{0}^{x} \lVert \textbf{K}(x,t)\textbf{u}(t)\rVert_\infty dt \\
+			& \leqslant \int_{0}^{x} \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty dt\\
+			& = \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty \int_{0}^{x}dt\\
+			& = \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty x.
+		\end{split}
+	\end{equation}
+	Así pues,
+	\begin{equation}\label{eq:demvolt1_2}
+		\lVert \textbf{L}\textbf{u}(x)\rVert_\infty \leqslant \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty x.
+	\end{equation}
+	Para $n = 2$, si $0 \leqslant x \leqslant B$, tenemos
+	\begin{equation}
+		\begin{split}
+			\lVert \textbf{L}^2\textbf{u}(x)\rVert_\infty & \leqslant \int_{0}^{x}\lVert \textbf{K}(x,t)\textbf{L}\textbf{u}(t)\rVert_\infty dt \\
+			& \leqslant \int_{0}^{x} \lVert \textbf{K} \rVert_\infty \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty tdt\\
+			& =  \lVert \textbf{K} \rVert_\infty^2 \lVert \textbf{u} \rVert_\infty \int_{0}^{x}tdt \\
+			& = \lVert \textbf{K} \rVert_\infty^2 \lVert \textbf{u} \rVert_\infty \dfrac{x^2}{2},
+		\end{split}
+	\end{equation}
+	donde en la segunda desigualdad hemos utilizado~\eqref{eq:demvolt1_2}. Inductivamente deducimos
+	\begin{equation}
+		\left.\begin{split}
+			n \geqslant 1, \qquad & \textbf{u} \in \mathcal{C}([0,B],\R^n)\\
+			& x \in [0,B]
+		\end{split}\right\rbrace \Rightarrow \lVert \textbf{L}^n\textbf{u}(x)\rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nx^n}{n!}\lVert \textbf{u} \rVert_\infty,
+	\end{equation}
+	de donde se tiene~\eqref{eq:ref2} y, por tanto,
+	\begin{equation}\label{eq:demvolt2_2}
+		\lVert \textbf{L}^n \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}.
+	\end{equation}
+	Como la sucesión $\{\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}$ es convergente, $\sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!} = e^{\lVert \textbf{K} \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2_2} da $\lVert \textbf{L}^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert \textbf{L}^n \rVert < 1$.
+	Ahora estamos en condición de aplicar la generalización del teorema de la serie geométrica que vimos anteriormente, ya que aunque estemos en caso vectorial, el resultado es análogo y por tanto sabemos que existe el operador inverso $(\textbf{I}-\textbf{L})^{-1}$ en $\mathcal{C}([0,B],\R^n)$, y además su inverso se puede expresar como la suma de una serie geométrica convergente, por tanto, la solución única $\textbf{u}$ viene dada por:
+	\begin{equation}
+		\textbf{u} = (\textbf{I}-\textbf{L})^{-1}\textbf{f}.
+	\end{equation}
+\end{proof}
 
 \endinput
 %------------------------------------------------------------------------------------

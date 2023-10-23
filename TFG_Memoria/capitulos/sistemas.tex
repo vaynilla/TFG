@@ -1,39 +1,38 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
-\chapter{Sistemas de ecuaciones integrales de Volterra de segunda clase}
+\chapter{Algunos métodos para resolver sistemas de ecuaciones integrales de Volterra de segunda clase}
 \section{Introducción}
-Los sistemas de ecuaciones integrales, lineales y no lineales, aparecen en muchas aplicaciones de ingeniería, física, química y modelos de crecimiento de poblaciones. Las ideas generales y las características esenciales de estos sistemas se pueden aplicar en muchos ámbitos.
+Los sistemas de ecuaciones integrales, lineales y no lineales, aparecen en muchas aplicaciones de ingeniería, física, química y modelos de crecimiento de poblaciones (véase en \cite{sistemas1} y \cite{sistemas2}). Las ideas generales y las características esenciales de estos sistemas se pueden aplicar en muchos ámbitos.
 
-Una gran variedad de métodos numéricos y analíticos se usan para manejar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior. Los tres métodos que vamos a estudiar en este capitulo son los siguientes:
+Una gran variedad de métodos numéricos y analíticos se usan para abordar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior, adaptándolos a este contexto más general. Los tres métodos que vamos a estudiar en este capitulo son los siguientes:
 \begin{itemize}
 	\item Método de descomposición de Adomian
 	\item Método de la transformada de Laplace
 	\item Método de las aproximaciones sucesivas
 \end{itemize}
 
-Los sistemas de ecuaciones integrales lineales de Volterra de segunda clase, vienen dados por
+En consonancia con el estudio analítico realizado en el capítulo 2, los sistemas de ecuaciones integrales lineales de Volterra de segunda clase, vienen dados por
 \begin{equation}
-	u(x) = f_1(x) + \int_{0}^{x}(K_1(x,t)u(t) + \tilde{K}_1(x,t)v(t)+...),
+	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
 \end{equation}
-\begin{equation}
-	v(x) = f_2(x) + \int_{0}^{x}(K_2(x,t)u(t) + \tilde{K}_2(x,t)v(t)+...).
-\end{equation}
-Las funciones desconocidas $u(x), v(x), .... ,$ que se determinarán, aparecen dentro y fuera de la integral. Los núcleos $K_i(x,t)$ y $\tilde{K}_i(x,t)$ y la función $f_i(x)$ son funciones reales dadas. A continuación veremos los métodos para resolver estos sistemas.
+Las funciones desconocidas $\textbf{u}(x)$ que se determinarán son continuas, aparecen dentro y fuera de la integral. Los núcleos $\textbf{K}(x,t)$ y las funciones $\textbf{f}(x)$ son funciones continuas reales dadas. A continuación veremos los métodos para resolver estos sistemas.
 \section{Método de descomposición de Adomian}
-Como ya vimos anteriormente, este método descompone cada solución en una suma infinita de componentes, donde cada componente se determina de forma recursiva. Este método puede utilizarse en su forma estándar o combinando los términos de ruido. Además, el método de descomposición modificado se utilizará donde sea apropiado. Veamos un ejemplo para resolver un sistema de ecuaciones integrales de Volterra utilizando este método.
+Como ya vimos en caso escalar, este método descompone cada solución en la suma de una serie, donde cada componente se determina de forma recursiva. Ahora, el planteamiento es totalmente análogo:
+\begin{align}
+	\textbf{u}_0(x) &= \textbf{f}(x),      &   \\
+	\textbf{u}_{n+1}(x) &= \int_{0}^{x} \textbf{K}(x,t)\textbf{u}_n(t)dt, \qquad n \geqslant 0.         & 
+\end{align}
+Este método puede utilizarse en su forma estándar o combinando los términos de ruido. Además, el método de descomposición modificado se utilizará donde sea apropiado. Veamos un ejemplo para resolver un sistema de ecuaciones integrales de Volterra utilizando este método.
 \begin{ejemplo}
 	Partimos del siguiente sistema:
 	\begin{equation}
-		u(x) = x - \dfrac{1}{6}x^4 + \int_{0}^{x}((x-t)^2u(t) + (x-t)v(t))dt,
+		\left\lbrace\begin{array}{c}u(x) = x - \dfrac{1}{6}x^4 + \displaystyle \int_{0}^{x}((x-t)^2u(t) + (x-t)v(t))dt \\ v(x) = x^2 - \dfrac{1}{12}x^5 + \displaystyle \int_{0}^{x}((x-t)^3u(t) + (x-t)^2v(t))dt. \end{array}\right.
 	\end{equation}
-	\begin{equation}
-		v(x) = x^2 - \dfrac{1}{12}x^5 + \int_{0}^{x}((x-t)^3u(t) + (x-t)^2v(t))dt.
-	\end{equation}
-	El método nos sugiere que los términos lineales $u(x)$ y $v(x)$ se descompongan como una suma infinita de componentes
+	El método nos sugiere que los términos lineales $u(x)$ y $v(x)$ se descompongan como una serie
 	\begin{equation}
 		u(x) = \sum_{n=0}^{\infty}u_n(x), \qquad v(x) = \sum_{n=0}^{\infty}v_n(x),
 	\end{equation}
-	donde $u_n(x)$ y $v_n(x)$, $n \geqslant 0$ son las componentes de $u(x)$ y $v(x)$ que encontraremos de forma recursiva.
+	donde $u_n(x)$ y $v_n(x)$, $n \geqslant 0$ son los términos de $u(x)$ y $v(x)$ que encontraremos de forma recursiva.
 	
 	Sustituyendo las series en el sistema obtenemos
 	\begin{equation}
@@ -68,14 +67,32 @@ Como ya vimos anteriormente, este método descompone cada solución en una suma 
 \end{ejemplo}
 
 \section{Método de la transformada de Laplace}
-Puesto que ya hemos explicado este método en profundidad en el capítulo anterior, vamos a mostrar directamente un ejemplo en el que veremos cómo se aplica a un sistema de ecuaciones integrales de Volterra.
+Aunque ya hemos explicado este método en profundidad en el capítulo anterior en caso escalar, vamos a describir cómo sería para sistemas, y posteriormente mostraremos un ejemplo en el que veremos cómo se aplica a un sistema de ecuaciones integrales de Volterra.
+
+Partimos de nuestro sistema
+\begin{equation}
+	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
+\end{equation}
+Tomando la transformada de Laplace de ambos lados tenemos
+\begin{equation}
+	\textbf{U}(s) =\textbf{F}(s) + \mathcal{\textbf{K}}(s)\textbf{U}(s),
+\end{equation}
+donde
+\begin{equation}
+	\textbf{U}(s) = \mathcal{L}\{\textbf{u}(x)\}, \qquad \mathcal{\textbf{K}}(s) = \mathcal{L}\{\textbf{K}(x)\}, \qquad \textbf{F}(s) = \mathcal{L}\{\textbf{f}(x)\}.
+\end{equation}
+Resolviendo la ecuación para $\textbf{U}(s)$ obtenemos
+\begin{equation}
+	\textbf{U}(s) = \dfrac{\textbf{F}(s)}{1- \mathcal{\textbf{K}}(s)}, \qquad  \mathcal{\textbf{K}}(s) \neq 1.
+\end{equation}
+La solución $\textbf{u}(x)$ se obtiene tomando la inversa de la transformada de Laplace en la ecuación anterior donde obtenemos:
+\begin{equation}
+	\textbf{u}(x) = \mathcal{L}^{-1}\{\dfrac{\textbf{F}(s)}{1- \mathcal{\textbf{K}}(s)}\}.
+\end{equation}
 \begin{ejemplo}
-	Sea
+	Sea el sistema
 	\begin{equation}
-		u(x) = 1 - x^2 + x^3 + \int_{0}^{x}((x-t)u(t) + (x-t)v(t))dt,
-	\end{equation}
-	\begin{equation}
-		v(x) = 1 - x^3 - \dfrac{1}{10}x^5 + \int_{0}^{x}((x-t)u(t) - (x-t)v(t))dt.
+		\left\lbrace\begin{array}{c}u(x) = 1 - x^2 + x^3 + \displaystyle \int_{0}^{x}((x-t)u(t) + (x-t)v(t))dt \\ v(x) = 1 - x^3 - \dfrac{1}{10}x^5 + \displaystyle \int_{0}^{x}((x-t)u(t) - (x-t)v(t))dt. \end{array}\right.
 	\end{equation}
 	Es importante darse cuenta que ambos núcleos son iguales, es decir, $K_1(x-t) = K_2(x-t) = x-t$. Tomando la transformada de Laplace en ambos lados de cada ecuación obtenemos
 	\begin{equation}
@@ -116,19 +133,19 @@ El método de aproximaciones sucesivas también se puede aplicar a sistemas de e
 \begin{equation}
 	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt
 \end{equation}
-donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo. Además, necesitaremos un vector con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$ Veamos un ejemplo:
+donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo, todos ellos continuos. Además, necesitaremos una función vectorial con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$ Veamos un ejemplo:
 \begin{ejemplo}
 	Consideramos el siguiente sistema:
 	\begin{equation}
-		\left\lbrace\begin{array}{c}y(x) = 1 + \displaystyle \int_0^x (2y(t)+3v(t))dt \\ v(x) = x^2+3+ \displaystyle \int_0^x (y(t)-v(t))dt \end{array}\right.,
+		\left\lbrace\begin{array}{c}y(x) = 1 + \displaystyle \int_0^x (\dfrac{1}{8}y(t)\dfrac{-1}{6}v(t))dt \\ v(x) = 3+ \displaystyle \int_0^x (\dfrac{1}{7}y(t)-\dfrac{1}{8}v(t))dt \end{array}\right.,
 	\end{equation}
 	donde tenemos los siguientes vectores:
 	\begin{equation}
-		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ x^2+3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	2 & 3 \\ 1 & -1	\end{pmatrix},
+		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ 3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}[2]	\dfrac{1}{8} & \dfrac{-1}{6} \\ \dfrac{ 1}{7} & \dfrac{-1}{8}	\end{pmatrix},
 	\end{equation}
 	Además tenemos el vector de aproximaciones iniciales para ambas ecuaciones:
 	\begin{equation}
-		\textbf{u}_0 = \begin{pmatrix}	-1 \\ 2	\end{pmatrix}.
+		\textbf{u}_0 = \begin{pmatrix}	0 \\ 1	\end{pmatrix}.
 	\end{equation}
 	Por tanto la fórmula iterativa que vamos a utilizar para calcular las aproximaciones sucesivas es
 	\begin{equation}
@@ -136,15 +153,22 @@ donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f
 	\end{equation}
 	Sustituyendo $\textbf{u}_0$ obtenemos:
 	\begin{equation}
-		\textbf{u}_{1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_0(t)dt = \begin{pmatrix}	4t+1 \\ t^2-3t+3	\end{pmatrix}
+		\textbf{u}_{1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_0(t)dt = \begin{pmatrix}[2]	1-\dfrac{t}{6} \\ 3-\dfrac{t}{8}	\end{pmatrix}
 	\end{equation}
 	\begin{equation}
-		\textbf{u}_{2}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_1(t)dt = \begin{pmatrix}	3t^3-t^2+11t+1 \\ -t^3+8t^2-2t+3	\end{pmatrix}
+		\textbf{u}_{2}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_1(t)dt = \begin{pmatrix}[2]	1-\dfrac{3t}{8} \\ -\dfrac{11t^2}{1344}-\dfrac{13t}{56}+3	\end{pmatrix}
 	\end{equation}
 	Una solución más aproximada con la quinta iteración sería
 	\begin{equation}
-		\textbf{u}_{5}(x) = \begin{pmatrix}	33t^6+127t^5+154t^4+74t^3+16t^2+11t+1 \\ 19t^6-14t^5+72t^4+2t^3+14t^2-2t+3	\end{pmatrix}.
+		\textbf{u}_{5}(x) = \begin{pmatrix}[2.2]	-\dfrac{121t^5}{10838016}+\dfrac{121t^4}{1806336}+\dfrac{11t^3}{3584}-\dfrac{11t^2}{1344}-\dfrac{3t}{8}+1 \\ -\dfrac{121t^5}{14450688}+\dfrac{121t^4}{602112}+\dfrac{143t^3}{75264}-\dfrac{11t^2}{448}-\dfrac{13t}{56}+3	\end{pmatrix}.
 	\end{equation}
+	Comparamos en la \autoref{fig:sol43} la aproximación con la solución y observamos que la aproximación ya es aceptable con la quinta iteración.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{comp_sol_ej43}
+		\caption{Solución exacta y con aproximaciones sucesivas}
+		\label{fig:sol43}
+	\end{figure}
 \end{ejemplo}
 
 

@@ -1,17 +1,14 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
-\chapter{Equivalencia entre ecuaciones diferenciales y ecuaciones de Volterra}
-A continuación veremos la equivalencia que existe entre ambos tipos de ecuaciones, más concretamente, veremos las ecuaciones diferenciales lineales como un caso particular de las ecuaciones de Volterra. Primero vamos a ver el caso escalar, y después lo haremos vectorialmente.
-\section{Escalar}
+\chapter{Relación entre ecuaciones diferenciales y ecuaciones de Volterra}
+A continuación veremos la relación que existe entre ambos tipos de ecuaciones, más concretamente, veremos las ecuaciones diferenciales lineales como un caso particular de las ecuaciones de Volterra. Primero vamos a ver el caso escalar, y después lo haremos vectorialmente.
+\section{Ecuación escalar}
 Consideramos el PVI:
 \begin{equation}
-	x \in \mathcal{C}^1(0,B):\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B)
+	x \in \mathcal{C}^1(0,B):\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B),
 \end{equation}
-La solución del PVI es de la forma
-\begin{equation}
-	x \in \mathcal{C}[0,B]: x = T(x)
-\end{equation}
-donde definimos el operador lineal $T$ como
+donde $a,b \in \mathcal{C}[0,B]$ y $x_0 \in \R$.
+La solución del PVI es el único punto fijo del operador lineal y continuo $T$, definido como
 \begin{equation}
 	T: \mathcal{C}[0,B] \longrightarrow \mathcal{C}[0,B]
 \end{equation}
@@ -19,31 +16,31 @@ donde definimos el operador lineal $T$ como
 	\qquad \qquad x \longmapsto T(x): [0,B] \rightarrow \R
 \end{equation}
 \begin{equation}
-	\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad (T(x))(t) = x_0 + \int_0^t(a(s)x(s)+b(s))ds
+	\qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad (T(x))(t) = x_0 + \int_0^t(a(s)x(s)+b(s))ds.
 \end{equation}
 Por tanto, vemos que la solución del PVI es un caso particular de la ecuación integral lineal de Volterra de segunda clase:
 \begin{equation}
-	x(t) = f(t) + \lambda \int_0^t K(t,s)x(s)ds,
+	x(t) = f(t) + \int_0^t K(t,s)x(s)ds,
 \end{equation}
 donde
 \begin{equation}
-	f(t) = x_0 + \int_0^t b(s)ds, \qquad K(t,s) = a(s), \qquad \lambda = 1.
+	f(t) = x_0 + \int_0^t b(s)ds, \qquad K(t,s) = a(s).
 \end{equation}
-Para ver la equivalencia, aplicamos el Teorema Fundamental del Cálculo a la siguiente ecuación integral:
+Para ver la equivalencia, basta aplicar el Teorema Fundamental del Cálculo a la siguiente ecuación integral:
 \begin{equation}
 	x(t) = x_0 + \int_0^t (a(s)x(s)+b(s))ds,
 \end{equation}
-y obtenemos
+donde $x \in \mathcal{C}[0,B]$, y obtenemos, equivalentemente,
 \begin{equation}
-	\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B).
+	\left\lbrace\begin{array}{c} x'(t) = a(t)x(t)+b(t) \\ x(0) = x_0 \end{array}\right.,\qquad t \in (0,B),
 \end{equation}
-En definitiva, la solución del PVI inicial coincide con la solución de la ecuación de Volterra lineal de segunda clase.
-\section{Vectorial}
+siendo $x \in \mathcal{C}^1[0,B]$. En definitiva, la solución del PVI inicial coincide con la solución de la ecuación de Volterra lineal de segunda clase.
+\section{Ecuación vectorial}
 En este caso, el PVI sería:
 \begin{equation}\label{eq:vect}
- \hspace*{-3cm} 	\begin{array}{c} x \in \mathcal{C}^1([0,B],\R^n) \\ x:[0,B] \longrightarrow \R^n \\ \qquad \qquad \qquad \qquad t \longmapsto x(t) = (x_1(t),...,x_n(t)) \end{array}:\left\lbrace\begin{array}{c} x_1'(t) = a_{11}(t)x_1(t)+...+a_{1n}(t)x_n(t)+b_1(t) \\ ... \\ x_n'(t) = a_{n1}(t)x_1(t)+...+a_{nn}(t)x_n(t)+b_n(t) \\ x_1(0) = x_1,...,x_n(0) =x_n, \end{array}\right.
+ \hspace*{-3cm} 	\begin{array}{c} \textbf{x} \in \mathcal{C}^1([0,B],\R^n) \\ \textbf{x}:[0,B] \longrightarrow \R^n \\ \qquad \qquad \qquad \qquad t \longmapsto \textbf{x}(t) = (x_1(t),...,x_n(t)) \end{array}:\left\lbrace\begin{array}{c} x_1'(t) = a_{11}(t)x_1(t)+...+a_{1n}(t)x_n(t)+b_1(t) \\ ... \\ x_n'(t) = a_{n1}(t)x_1(t)+...+a_{nn}(t)x_n(t)+b_n(t) \\ x_1(0) = x_1,...,x_n(0) =x_n. \end{array}\right.
 \end{equation}
-utilizando notación matricial para simplificar las fórmulas, nos quedaría de la siguiente forma:
+Utilizando notación matricial para simplificar las fórmulas, nos quedaría de la siguiente forma:
 \begin{equation}
 	\begin{array}{c}
 		\textbf{x}'(t) = \textbf{A}(t)\textbf{x}(t)+\textbf{b}(t) \\ \textbf{x}(0) = \textbf{x}_\textbf{0}
@@ -63,23 +60,19 @@ donde
 \end{equation}
 y el vector $\textbf{x}_\textbf{0}$ está formado por los valores iniciales de cada una de las ecuaciones.
 
-La solución de este PVI viene dada por
-\begin{equation}
-	\textbf{x} \in \mathcal{C}([0,B],\R^n): \qquad \textbf{x} = \textbf{T(x)}
-\end{equation}
-donde 
+La solución de este PVI viene dada por el punto fijo del operador lineal y continuo
 \begin{equation}
 	\begin{array}{c}
-		\textbf{T}: (\mathcal{C}[0,B], \R^n) \longrightarrow \mathcal{C}([0,B],\R^n) \\  \textbf{x} \longmapsto \textbf{Tx}:[0,B] \longrightarrow \R^n \\  \qquad \qquad \qquad \qquad \qquad \textbf{Tx}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds,
+		\textbf{T}: (\mathcal{C}[0,B], \R^n) \longrightarrow \mathcal{C}([0,B],\R^n) \\  \textbf{x} \longmapsto \textbf{Tx}:[0,B] \longrightarrow \R^n \\  \qquad \qquad \qquad \qquad \qquad \textbf{Tx}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds.
 	\end{array}
 \end{equation}
-cuando hablamos de hacer una integral compuesta por vectores, la haremos componente a componente, es decir,
+Cuando hablamos de hacer una integral compuesta por vectores, la haremos componente a componente, es decir,
 \begin{equation}
-	\int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds = \int_0^t \textbf{y}(s)ds = \begin{pmatrix}
-	\displaystyle	\int_0^t y_1(s)ds \\ \displaystyle \int_0^t y_2(s)ds \\ \vdots \\ \displaystyle \int_0^t y_n(s)ds,
-	\end{pmatrix}
+	\int_0^t \textbf{y}(s)ds = \begin{pmatrix}
+	\displaystyle	\int_0^t y_1(s)ds \\ \displaystyle \int_0^t y_2(s)ds \\ \vdots \\ \displaystyle \int_0^t y_n(s)ds
+	\end{pmatrix},
 \end{equation}
-donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s))$. Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
+donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s)) \in \mathcal{C}([0,B],\R^n)$. Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
 \begin{equation}
 	\textbf{x}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(t,s)\textbf{x}(s)ds.
 \end{equation}
@@ -101,7 +94,7 @@ Es decir, tanto de forma escalar como vectorial, tenemos el siguiente resultado.
 	\end{equation}
 \end{corolario}
 
-Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de ecuaciones, lo transformaremos en un sistema de ecuaciones integrales de Volterra, y posteriormente, lo resolveremos mediante el método de aproximaciones sucesivas, luego lo volveremos a resolver utilizando el programa \textit{maxima}, y por último, compararemos los resultados obtenidos.
+Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de ecuaciones, lo transformaremos en un sistema de ecuaciones integrales de Volterra, y posteriormente, lo resolveremos mediante el método de aproximaciones sucesivas, luego lo volveremos a resolver utilizando el programa \textit{Maxima}, y por último, compararemos los resultados obtenidos.
 
 \begin{ejemplo}
 	Consideramos el PVI
@@ -123,9 +116,9 @@ Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de
 			t \\ 1
 		\end{pmatrix}, \qquad \textbf{x}_\textbf{0} = \begin{pmatrix}
 		0 \\ 0
-		\end{pmatrix},
+		\end{pmatrix}.
 	\end{equation}
-	así, aplicaremos la siguiente fórmula iterativa para calcular las aproximaciones sucesivas:
+	Así, aplicaremos la siguiente fórmula iterativa para calcular las aproximaciones sucesivas:
 	\begin{equation}
 		\textbf{x}_{n+1}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(s,t)\textbf{x}_n(s)ds, \qquad n \geqslant 0.
 	\end{equation}
@@ -157,13 +150,13 @@ Vamos a ver un ejemplo en el cual, partiendo de un PVI formado por un sistema de
 	, finalmente comparamos los resultados para $x(t)$ (\autoref{fig:solx}), en azul vemos la solución del método de las aproximaciones sucesivas, y en rojo la solución de Maxima, de la misma forma para $y(t)$ (\autoref{fig:soly}).
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.7\textwidth]{compx}
+		\includegraphics[width=0.8\textwidth]{compx}
 		\caption{Solución $x(t)$}
 		\label{fig:solx}
 	\end{figure}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=0.7\textwidth]{compy}
+		\includegraphics[width=0.8\textwidth]{compy}
 		\caption{Solución $y(t)$}
 		\label{fig:soly}
 	\end{figure}

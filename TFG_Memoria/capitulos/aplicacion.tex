@@ -3,15 +3,15 @@
 \chapter{Aplicación: Calentamiento y enfriamiento de edificios}
 Como aplicación sobre lo estudiado anteriormente, vamos a formular un modelo matemático que describa la temperatura dentro de un edificio, como función de la temperatura exterior, el calor generado dentro del edificio y el calefactor o el aire acondicionado.
 
-Un enfoque natural para modelar la temperatura dentro de un edificio es el uso del análisis por compartimentos.
+Un enfoque natural para modelizar la temperatura dentro de un edificio es el uso del análisis por compartimentos. A continuación vamos a ver diferentes modelos de edificios con distintos tipos y número de habitaciones, pondremos ejemplos y explicaremos cómo resolverlos, además observaremos que las soluciones son como deberíamos esperar en la vida real, pero eso sí, las cuantificamos de forma precisa.
 \section{Edificio como habitación única}
-Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edificio como un único compartimento, es decir, sin estar dividido en varias habitaciones. Entonces la razón de cambio en la temperatura queda determinada por todos los factores que generan o disipan calor. Tomaremos en cuenta tres factores principales que afectan la temperatura dentro del edificio:
+Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edificio como un único compartimento, es decir, sin estar dividido en varias habitaciones. Entonces la variación en la temperatura queda determinada por todos los factores que generan o disipan calor. Tomaremos en cuenta tres factores principales que afectan la temperatura dentro del edificio:
 \begin{itemize}
-	\item En primer lugar está el calor generado por las personas, las luces y las máquinas dentro del edificio. Esto causa una razón de incremento en la temperatura que denotaremos por $H(t)$.
-	\item En segundo lugar está el calentamiento (o enfriamiento) proporcionado por la calefacción (o el aire acondicionado).  Esta razón de incremento (o decremento) en temperatura será representada por $U(t)$.
-	\item El tercer factor es el efecto de la temperatura exterior $M(t)$ sobre la temperatura dentro del edificio. La evidencia experimental ha mostrado que este factor se puede modelar mediante la \textbf{ley de enfriamiento de Newton}.
+	\item En primer lugar está el calor generado dentro del propio edificio, por factores como pueden ser las personas o la maquinaria interna. A esta razón de incremento en la temperatura la denotaremos por $H(t)$.
+	\item En segundo lugar está el calentamiento (o enfriamiento) proporcionado por la calefacción (o el aire acondicionado). Esta variación en la temperatura será representada como $U(t)$.
+	\item El tercer factor es el efecto de la temperatura exterior, $M(t)$, sobre la temperatura interna del edificio. Según se indica en \cite{Nagle}, la evidencia experimental ha mostrado que este factor se puede modelizar mediante la \textbf{ley de enfriamiento de Newton}.
 	
-	Esta ley establece que hay una razón de cambio de la temperatura $T(t)$ que es proporcional a la diferencia entre la temperatura exterior $M(t)$ y la temperatura interior $T(t)$. Es decir, la razón de cambio en temperatura del edificio debida a $M(t)$ es 
+	Esta ley establece que hay una variación de la temperatura $T(t)$ que es proporcional a la diferencia entre la temperatura exterior $M(t)$ y la temperatura interior $T(t)$. Es decir, la variación en temperatura del edificio debida a $M(t)$ es 
 	\begin{equation}
 		K[M(t) - T(t)].
 	\end{equation}
@@ -20,17 +20,17 @@ Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edi
 	Por otro lado, cuando la temperatura exterior es menor que la temperatura interior, entonces $M(t) - T(t) < 0$ y la temperatura del edificio disminuye.
 \end{itemize}
 En general, la razón de calentamiento adicional $H(t)$ y la razón de calefacción
-(o enfriamiento) $U(t)$ quedan descritas en términos de energía por unidad de tiempo
+(ó enfriamiento) $U(t)$ quedan descritas en términos de energía por unidad de tiempo
 (como las unidades térmicas británicas por hora). Sin embargo, al multiplicar por la
 capacidad calórica del edificio (en unidades de cambio de temperatura por unidad de energía calórica), podemos expresar las dos cantidades $H(t)$ y $U(t)$ en términos de temperatura por unidad de tiempo.
 
 En definitiva, vemos que 
 \begin{equation}
-	\dfrac{\partial T}{\partial t} = K[M(t) - T(t)] + H(t) + U(t),
+	\dfrac{d T}{d t} = K[M(t) - T(t)] + H(t) + U(t),
 \end{equation}
 cuando la razón de calentamiento adicional $H(t)$ es siempre no negativa y $U(t)$ es positiva para la calefacción y negativa para el aire acondicionado. Como la ecuación es lineal, la resolveremos fácilmente escribiéndola en la forma canónica
 \begin{equation}
-	\dfrac{\partial T}{\partial t}(t) + P(t)T(t) = Q(t),
+	\dfrac{d T}{d t}(t) + P(t)T(t) = Q(t),
 \end{equation}
 donde
 \begin{equation}
@@ -45,7 +45,7 @@ vemos que el factor integrante es
 \end{equation}
 Para resolver la ecuación, multiplicamos $e^{Kt}$ e integramos:
 \begin{equation}
-	e^{Kt}\dfrac{\partial T}{\partial t}(t) + Ke^{Kt}T(t) = e^{Kt}Q(t),
+	e^{Kt}\dfrac{d T}{d t}(t) + Ke^{Kt}T(t) = e^{Kt}Q(t),
 \end{equation}
 \begin{equation}
 	e^{Kt}T(t) = \int e^{Kt}Q(t)dt + C.
@@ -80,7 +80,7 @@ A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamie
 	\begin{equation}
 		\dfrac{dT}{dt}(t) = -KT(t)+KM_0, \qquad \dfrac{d(T-M_0)}{dt}(t) = -K[T(t)-M_0],
 	\end{equation}
-	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $1/K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $1/K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador. También puede ser mayor si el edificio está aislado.
+	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). A mayor sea el valor de esta constante, más tiempo tardará en transferirse el calor entre el exterior y el interior del edificio. Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador. También puede ser mayor si el edificio está aislado.
 	
 	Vamos a ver un caso concreto, en el que tendremos como datos:
 	\begin{equation}
@@ -277,7 +277,41 @@ Ahora consideremos el mismo problema con dos zonas, de modo que el calor se tran
 		y(1) = \dfrac{46}{13}e^{-t}3 + \dfrac{107}{52}e^{-16t/3}(-2) + \dfrac{31}{2} \approx 19,405\degree C.
 	\end{equation}
 \end{ejemplo}
-
+\section{Modelo con 3 habitaciones}
+Vamos a estudiar ahora un caso un poco más complejo con 3 habitaciones, un par de aires acondicionados y hasta 10 personas en una sola habitación, podremos ver si la temperatura en cada habitación se comporta como debería, en la \autoref{fig:edif3} vemos el edificio con el que vamos a trabajar.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{edificio_3habs}
+	\caption{Edificio con 3 habitaciones contiguas, personas y aires acondicionados}
+	\label{fig:edif3}
+\end{figure}
+Los datos que vamos a utilizar son:
+\begin{itemize}
+	\item Temperatura en A $\rightarrow a(t)  $ 
+	\item Temperatura en B $\rightarrow b(t)  $ 
+	\item Temperatura en C $\rightarrow c(t)  $ 
+	\item Temperatura en el exterior F $\rightarrow M(t) = 5-10\cos(t\cdot(\pi/12))$
+	\item Constante de transferencia entre cada habitación $K = 3$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 5$
+	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -8\celsius / 5h$
+	\item Calor generado en el interior H $\rightarrow H(t) = 0.018$ por cada persona
+\end{itemize}
+Con la estructura del edificio, obtenemos el sistema de ecuaciones:
+\begin{equation}\begin{dcases}
+		a'(t)= \dfrac{b(t)-a(t)}{K_{AB}} + \dfrac{c(t)-a(t)}{K_{AC}} + \dfrac{M(t) - a(t)}{K_{AF}} + U(t) + H(t) \\  b'(t)= \dfrac{a(t)-b(t)}{K_{AB}} + \dfrac{M(t) - b(t)}{K_{BF}} + 10H(t) \\ c'(t)= \dfrac{a(t)-c(t)}{K_{AC}} + \dfrac{M(t) - c(t)}{K_{CF}} + U(t) \end{dcases}
+\end{equation}
+Como valores iniciales para las temperaturas de cada habitación tomaremos:
+\begin{equation}
+	a(t_0) = 20 \celsius, \qquad b(t_0) = 10 \celsius, \qquad c(t_0) = 15 \celsius.
+\end{equation}
+Resolvemos el sistema con $Maxima$ y obtenemos la solución gráficamente en la \autoref{fig:graf_sol3}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{graf_sol3}
+	\caption{Temperaturas de las 3 habitaciones con temperatura exterior variable}
+	\label{fig:graf_sol3}
+\end{figure}
+Como conclusión podemos observar que los resultados son los naturales, ya que la habitación $B$ es la que se mantiene más caliente de las tres, lo que es normal al no tener aire acondicionado y además tiene $10$ personas generando calor en su interior, por otro lado, la habitación $C$ es un poco más fría que la $A$ debido a que no tiene ninguna persona dentro, y finalmente vemos como todas las temperaturas interiores van variando según la temperatura exterior, pero siempre de forma más suave que ésta, como era de esperar.
 \section{Modelos de un edificio con 5 habitaciones}
 \subsection{Primer ejemplo (temperatura exterior constante)}
 Vamos a estudiar un par de casos de edificios con 5 habitaciones, donde incluiremos personas, y aires acondicionados para hacer el edificio más realista. El primer caso será el que tenemos en la \autoref{fig:edif5}. Podemos ver $5$ habitaciones contiguas y $2$ aires acondicionados en las habitaciones $B$ y $D$. Los datos que tomaremos son los siguientes:
