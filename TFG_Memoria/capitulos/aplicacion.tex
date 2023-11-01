@@ -1,6 +1,8 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
 \chapter{Aplicación: Calentamiento y enfriamiento de edificios}
+En esta sección hemos recopilado información de \cite{Campos}, \cite{Nagle} y \cite{tfm}.
+
 Como aplicación sobre lo estudiado anteriormente, vamos a formular un modelo matemático que describa la temperatura dentro de un edificio, como función de la temperatura exterior, el calor generado dentro del edificio y el calefactor o el aire acondicionado.
 
 Un enfoque natural para modelizar la temperatura dentro de un edificio es el uso del análisis por compartimentos. A continuación vamos a ver diferentes modelos de edificios con distintos tipos y número de habitaciones, pondremos ejemplos y explicaremos cómo resolverlos, además observaremos que las soluciones son como deberíamos esperar en la vida real, pero eso sí, las cuantificamos de forma precisa.
@@ -20,37 +22,14 @@ Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edi
 	Por otro lado, cuando la temperatura exterior es menor que la temperatura interior, entonces $M(t) - T(t) < 0$ y la temperatura del edificio disminuye.
 \end{itemize}
 En general, la razón de calentamiento adicional $H(t)$ y la razón de calefacción
-(ó enfriamiento) $U(t)$ quedan descritas en términos de energía por unidad de tiempo
-(como las unidades térmicas británicas por hora). Sin embargo, al multiplicar por la
+(ó enfriamiento) $U(t)$ quedan descritas en términos de energía por unidad de tiempo. Sin embargo, al multiplicar por la
 capacidad calórica del edificio (en unidades de cambio de temperatura por unidad de energía calórica), podemos expresar las dos cantidades $H(t)$ y $U(t)$ en términos de temperatura por unidad de tiempo.
 
 En definitiva, vemos que 
 \begin{equation}
 	\dfrac{d T}{d t} = K[M(t) - T(t)] + H(t) + U(t),
 \end{equation}
-cuando la razón de calentamiento adicional $H(t)$ es siempre no negativa y $U(t)$ es positiva para la calefacción y negativa para el aire acondicionado. Como la ecuación es lineal, la resolveremos fácilmente escribiéndola en la forma canónica
-\begin{equation}
-	\dfrac{d T}{d t}(t) + P(t)T(t) = Q(t),
-\end{equation}
-donde
-\begin{equation}
-	P(t) := K,
-\end{equation}
-\begin{equation}\label{eq:apli1}
-	Q(t) := KM(t) + H(t) + U(t),
-\end{equation}
-vemos que el factor integrante es
-\begin{equation}
-	\mu (t) = \exp(\int Kdt) = e^{Kt}.
-\end{equation}
-Para resolver la ecuación, multiplicamos $e^{Kt}$ e integramos:
-\begin{equation}
-	e^{Kt}\dfrac{d T}{d t}(t) + Ke^{Kt}T(t) = e^{Kt}Q(t),
-\end{equation}
-\begin{equation}
-	e^{Kt}T(t) = \int e^{Kt}Q(t)dt + C.
-\end{equation}
-Al despejar $T(t)$ se tiene
+cuando la razón de calentamiento adicional $H(t)$ es siempre no negativa y $U(t)$ es positiva para la calefacción y negativa para el aire acondicionado. Como la ecuación es lineal, podemos resolverla fácilmente obteniendo como solución:
 \begin{equation}\label{eq:apli2}
 	T(t) = e^{-Kt}\int e^{Kt}Q(t)dt + Ce^{-Kt}
 \end{equation}
@@ -80,7 +59,7 @@ A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamie
 	\begin{equation}
 		\dfrac{dT}{dt}(t) = -KT(t)+KM_0, \qquad \dfrac{d(T-M_0)}{dt}(t) = -K[T(t)-M_0],
 	\end{equation}
-	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). A mayor sea el valor de esta constante, más tiempo tardará en transferirse el calor entre el exterior y el interior del edificio. Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador. También puede ser mayor si el edificio está aislado.
+	donde $M_0$ es una constante, en cualquier caso, la constante de tiempo es justamente $1/K$, lo que representa el tiempo que tarda la diferencia de temperaturas $T-M_0$ en cambiar de $T-M_0$ a $(T_0 - m_0)/e$. También diremos que $1/K$ es la \textbf{constante de tiempo para el edificio} (sin calefacción o aire acondicionado). A mayor sea el valor de esta constante, mayor aislamiento habrá, y por tanto, más tiempo tardará en transferirse el calor entre el exterior y el interior del edificio. Un valor típico para la constante de tiempo de un edificio es de $2$ a $4$ horas, pero puede ser menor si las ventanas están abiertas o existe algún ventilador, ya que obviamente, tendremos menos aislamiento. También puede ser mayor si el edificio está aislado de otros edificios. El valor de esta constante depende también de los materiales que tiene el edificio, todo esto se puede ver con más detalle en \cite{tfm}.
 	
 	Vamos a ver un caso concreto, en el que tendremos como datos:
 	\begin{equation}
@@ -105,7 +84,7 @@ A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamie
 		M(t) = M_0 - B \cos \omega t,
 	\end{equation}
 	donde $B$ es una constante positiva, $M_0$ es la temperatura exterior promedio y $\omega = 2\pi /24 =\pi /12$ radianes/hora. (Esto podría ocurrir durante la primavera o el otoño cuando no hay calefactor ni aire acondicionado).\\
-	\textbf{Solución.} La función $Q(t)$ que vimos en~\eqref{eq:apli1} ahora es
+	\textbf{Solución.} Definimos la función $Q(t)$ como
 	\begin{equation}
 		Q(t) = K(M_0 - B \cos \omega t) + H_0.
 	\end{equation}
@@ -291,8 +270,8 @@ Los datos que vamos a utilizar son:
 	\item Temperatura en B $\rightarrow b(t)  $ 
 	\item Temperatura en C $\rightarrow c(t)  $ 
 	\item Temperatura en el exterior F $\rightarrow M(t) = 5-10\cos(t\cdot(\pi/12))$
-	\item Constante de transferencia entre cada habitación $K = 3$
-	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 5$
+	\item Constante de transferencia entre cada habitación $K = 5$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 3$
 	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -8\celsius / 5h$
 	\item Calor generado en el interior H $\rightarrow H(t) = 0.018$ por cada persona
 \end{itemize}
@@ -322,8 +301,8 @@ Vamos a estudiar un par de casos de edificios con 5 habitaciones, donde incluire
 	\item Temperatura en D $\rightarrow d(t)  $ 
 	\item Temperatura en E $\rightarrow e(t)  $ 
 	\item Temperatura en el exterior F $\rightarrow M(t) = 35 \celsius$ 
-	\item Constante de transferencia entre cada habitación $K = 2$
-	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 4$
+	\item Constante de transferencia entre cada habitación $K = 4$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 2$
 	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -4\celsius / 5h$
 	\item Calor generado en el interior H $\rightarrow H(t) = 0$
 \end{itemize}
@@ -351,7 +330,7 @@ Resolvemos el sistema con $Maxima$ y obtenemos la solución gráficamente en la 
 Es importante observar varias cosas:
 \begin{itemize}
 	\item Las habitaciones $D$ y $E$ comienzan con la misma temperatura, pero hasta la tercera hora hace más calor en la habitación $D$, ¿Cómo puede ser si esta habitación tiene aire acondicionado? Pues porque está pegada a la habitación $C$ en la que hace mucho más calor, luego la variación de temperatura se ve más afectada por esto que por el aire acondicionado, pero vemos como cuando todas las habitaciones se van aproximando en cuanto a temperatura, el efecto del aire acondicionado hace que la habitación $D$ sea la más fresquita, como era de esperar.
-	\item Por un motivo similar, vemos que la habitación $C$ incluso se enfría en la primera hora, pese a que fuera están a $35 \celsius$, esto es debido a que la constante de transferencia $K$ entre cada habitación es menor que hacia el exterior, y al estar las otras habitaciones más frías al principio, se enfría un poco, pero en cuanto todas las demás habitaciones se van calentando, deja de tener efecto sobre la habitación $C$ y emprende su camino hacia los $35 \celsius$ del exterior.
+	\item Por un motivo similar, vemos que la habitación $C$ incluso se enfría en la primera hora, pese a que fuera están a $35 \celsius$, esto es debido a que la constante de transferencia $1/K$ entre cada habitación es menor que hacia el exterior, y al estar las otras habitaciones más frías al principio, se enfría un poco, pero en cuanto todas las demás habitaciones se van calentando, deja de tener efecto sobre la habitación $C$ y emprende su camino hacia los $35 \celsius$ del exterior.
 	\item Como era de esperar, al principio la variación de temperatura es mayor por haber más diferencia entre las habitaciones y el exterior, y conforme va pasando el tiempo, se van aproximando a los $35 \celsius$ y la variación va disminuyendo.
 	\item En general, las habitaciones $A$ y $E$ son las que más variación de temperatura tienen, esto es naturalmente debido a que sólo tienen cerca una habitación, y se ven más influenciadas por el exterior, además de que no tienen aire acondicionado.
 \end{itemize}
@@ -361,8 +340,8 @@ En el siguiente caso vamos a colocar algunas personas en las habitaciones, y ade
 Vamos a tomar como variables:
 \begin{itemize}
 	\item Temperatura en el exterior F $\rightarrow M(t) = 18-12\cos(t\cdot(\pi/12))$
-	\item Constante de transferencia entre cada habitación $K = 2$
-	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 4$
+	\item Constante de transferencia entre cada habitación $K = 4$
+	\item Constante de transferencia entre una habitación y el exterior $K_{xF} = 2$
 	\item Calor generado por cada aire acondicionado U $\rightarrow U(t) = -2\celsius / h$
 	\item Calor generado en el interior H $\rightarrow H(t) = 0.018$ por cada persona
 \end{itemize}
@@ -391,7 +370,7 @@ En este caso tenemos varios detalles que observar:
 \begin{itemize}
 	\item Se aprecia perfectamente cómo la temperatura interior tiene una variación más suave que la exterior, algo natural debido a los aislantes térmicos que tiene el edificio.
 	\item Vemos cómo las habitaciones $A$ y $B$, que tienen un potente aire acondicionado, siempre se mantienen más frías que el resto durante todo el día.
-	\item Pese a que al principio cada habitación tiene una temperatura bastante diferente, al final todas se van aproximando entre ellas, debido a que lo que más las influencia es la temperatura exterior, es decir, es el mayor factor que afecta a la variación de su temperatura.
+	\item Pese a que al principio cada habitación tiene una temperatura bastante diferente, al final todas se van aproximando entre ellas, debido a que lo que más las influencia es la temperatura exterior, es decir, es el mayor factor que afecta a la variación de la temperatura interna de este edificio.
 \end{itemize}
 \endinput
 %------------------------------------------------------------------------------------

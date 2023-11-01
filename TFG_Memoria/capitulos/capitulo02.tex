@@ -8,6 +8,8 @@
 \chapter{Métodos de resolución de ecuaciones integrales de Volterra de segunda clase}
 
 \section{Introducción}
+Para recopilar información sobre los métodos, hemos tomado como referencia \cite{WazWaz}.
+
 El diseño de métodos numéricos para ecuaciones integrales en general, y en particular de Volterra, es un campo de investigación vigente actualmente.
 Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra.
 
@@ -144,7 +146,7 @@ Podemos utilizar este método para las ecuaciones integrales tanto de Volterra c
 	\begin{equation}
 		u(x) = 1 - \sinh(x).
 	\end{equation}
-	Ahora vamos a mostrar gráficamente en la \autoref{fig:adomian1} la solución que nos da el método de Adomian y el modificado para 5 iteraciones comparándolo con la solución exacta:
+	Ahora vamos a mostrar gráficamente en la \autoref{fig:adomian1} la solución que nos da el método de Adomian y el modificado para 5 iteraciones comparándolos con la solución exacta:
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{ejemplo_adomian}
@@ -152,7 +154,7 @@ Podemos utilizar este método para las ecuaciones integrales tanto de Volterra c
 		\label{fig:adomian1}
 	\end{figure}
 	\begin{observacion}
-		Podemos ver como efectivamente la convergencia en el método modificado es mucho más rápida que en el método de Adomian.
+		Podemos ver como efectivamente la convergencia en el método modificado es mucho más rápida que en el método de Adomian ya que con sólo 5 iteraciones ya se aproxima mucho mejor a la solución.
 \end{observacion}
 \end{ejemplo}
 
@@ -234,7 +236,7 @@ Veamos un ejemplo para dejar claro este método:
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{suma_parcial_sol}
-		\caption{Comparación de la solución exacta con una suma parcial}
+		\caption{Comparación de la solución exacta con la suma parcial $v(x)$}
 		\label{fig:sol_suma}
 	\end{figure}
 \end{ejemplo}
@@ -242,7 +244,7 @@ Veamos un ejemplo para dejar claro este método:
 \section{Métodos iterativos}
 
 \subsection{Método de iteración variacional (VIM)}
-Este método ha sido desarrollado por Ji-Huan He en sus libros \cite{VIM1} y \cite{VIM2}, y ha demostrado ser eficaz y seguro para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Sin embargo, en el caso de que no se pueda obtener la solución exacta, la serie resultante se puede utilizar para fines numéricos. Asimismo, una de las ventajas que tiene este método es que puede abordar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir ningún tipo de restricciones. Vamos a presentar los pasos principales del método:
+Este método ha sido desarrollado por Ji-Huan He en sus libros \cite{VIM1} y \cite{VIM2}, y ha demostrado ser eficaz y seguro para estudios numéricos y analíticos. El método proporciona aproximaciones sucesivas que convergen rápidamente a la solución exacta en forma de serie, siempre que exista. Sin embargo, en el caso de que no se pueda obtener la solución exacta, la serie resultante se puede utilizar para fines numéricos. Asimismo, una de las ventajas que tiene este método es que puede abordar problemas tanto lineales como no lineales de la misma forma sin necesidad de añadir más restricciones. Vamos a presentar los pasos principales del método:
 
 Consideramos la ecuación diferencial:
 \begin{equation}\label{eq:miv1}
@@ -350,6 +352,13 @@ Vamos a examinar el problema de valores iniciales obtenido utilizando el método
 	\begin{equation}
 		u(x) = e^x.
 	\end{equation}
+	En la \autoref{fig:sol_vim} mostramos la comparación de la suma parcial $v(x) = 1 + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3+\dfrac{1}{4!}x^4$ con la solución exacta $u(x)$, se aprecia que la aproximación es bastante buena.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{grafica_vim}
+		\caption{Comparación de la solución exacta con la suma parcial $v(x)$}
+		\label{fig:sol_vim}
+	\end{figure}
 \end{ejemplo}
 
 \subsection{Método de aproximaciones sucesivas}
@@ -365,7 +374,19 @@ donde $u(x)$ es la función desconocida a determinar, $K(x,t)$ es el núcleo, y 
 \end{equation}
 donde la aproximación inicial $u_0(x)$ puede ser cualquier función real. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0$ ó $f(x)$.
 
-La convergencia de $u_n(x)$ está justificada con el estudio del capítulo 2.
+La convergencia de $u_n(x)$ está justificada con el estudio del capítulo $2$, teniendo en cuenta que 
+\begin{equation}
+	u = \sum_{j=0}^{\infty}L^jf,
+\end{equation}
+siendo $L$ el operador lineal visto en~\eqref{ref_operador}, que 
+\begin{equation}
+	u_n = \sum_{j=0}^{n}L^jf,
+\end{equation}
+y que el papel de $f$ ($=u_0$) lo puede jugar cualquier otra función continua $g$, ya que se tendría:
+\begin{align}
+		u_0 &= g \\ u_1 &= f+Lg \\ \vdots \\ u_n &= (\sum_{j=0}^{n-1}L^jf)+L^ng.
+\end{align}
+donde $L^ng \rightarrow 0$. Es más, en el mencionado capítulo $2$ obtuvimos cotas del error para este método.
 En la siguiente observación vamos a ver algunas diferencias entre los métodos iterativos que hemos visto.
 \begin{observacion}
 	Es interesante ver que mientras que el método de iteración variacional utiliza la siguiente fórmula iterativa
@@ -408,6 +429,7 @@ Vamos a ilustrar este método con un ejemplo para que se vea más claro.
 	\begin{equation}
 		u(x) = \lim_{n \rightarrow \infty} u_{n+1}(x) = e^x.
 	\end{equation}
+	La solución de este ejemplo es idéntica a la que podemos ver en la \autoref{fig:sol_vim} del método de iteración variacional.
 \end{ejemplo}
 
 \section{Otros métodos}
@@ -515,6 +537,8 @@ La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace 
 		u(x) = e^x.
 	\end{equation}
 \end{ejemplo}
+
+Aunque no sea objeto de este trabajo, se pueden ver otros métodos interesantes para la resolución de las ecuaciones integrales de Fredholm de segunda clase, como métodos de proyección, el método de Nyström u otros métodos iterativos, para entrar más en detalle y profundizar un poco más, véase \cite{Atkinson} cap $12$.
 
 \endinput
 %------------------------------------------------------------------------------------

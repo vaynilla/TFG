@@ -2,6 +2,8 @@
 % !TeX encoding = utf8
 \chapter{Existencia y unicidad de solución de la ecuación lineal integral de Volterra de segunda clase}
 \section{Introducción}
+En esta sección nos hemos basado en el texto de \cite{Atkinson}, aunque como se verá, hemos realizado algunas modificaciones como en la demostración del teorema de la serie geométrica.
+
 En la sección anterior hemos presentado una amplia gama de ecuaciones integrales, pero ahora estudiamos con detalle las lineales de Volterra de segunda clase, ya que serán las que permitan describir y resolver satisfactoriamente el modelo de distribución de la temperatura interna de un edificio.\\ Si reparamos en la propia naturaleza de este tipo de ecuaciones, debemos exigir cierto grado de regularidad (aunque sólo sea continuidad, incluso algún tipo de buen comportamiento integral) a las funciones dato y a la solución. Todo ello se detalla en este epígrafe.
 \section{Teorema de la serie geométrica y sus variantes}
 Podemos encontrar la aplicación de este teorema habitualmente en análisis numérico y matemática aplicada, esto se debe a que es una gran herramienta para analizar si tienen solución los problemas cercanos a otros problemas para los que sí podemos asegurar la existencia de una solución única.
@@ -12,12 +14,12 @@ Primero vamos a introducir un resultado muy importante que utilizaremos posterio
 \end{definicion}
 \begin{teorema}
 	(Teorema del punto fijo de Banach) Sea $X$ un espacio de Banach y sea $T:X \rightarrow X$ una aplicación contractiva en $X$. Entonces existe un único punto fijo de $T$.\\
-	Además, para todo punto $x_0$ de $X$, la sucesión $\{T(x_{n})\}_{n=0}^\infty$ converge a dicho punto fijo.
+	Además, para todo punto $x_0$ de $X$, la sucesión $\{T^n(x_{0})\}_{n=0}^\infty$ converge a dicho punto fijo.
 \end{teorema}
 Este teorema tiene sentido incluso para espacios métricos completos, pero nosotros no necesitamos ese nivel de generalización. 
 
-Como notación, utilizaremos $\mathcal{L}(X)$ para referirnos al conjunto de todos los operadores lineales de $X$ en sí mismo, de igual forma $\mathcal{L}(X,Y)$ será el conjunto de todos los operadores lineales de $X$ en $Y$. Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
-\begin{teorema}
+Como notación, utilizaremos $\mathcal{L}(X)$ para referirnos al espacio de todos los operadores lineales de $X$ en sí mismo, de igual forma $\mathcal{L}(X,Y)$ será el espacio de todos los operadores lineales de $X$ en $Y$, ambos dotados de su norma usual. Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
+\begin{teorema}\label{teorema}
 	Sea $X$ un espacio de Banach, $L \in \mathcal{L}(X)$. Suponemos
 	\begin{equation}
 		\lVert L \rVert < 1.
@@ -51,8 +53,8 @@ Como notación, utilizaremos $\mathcal{L}(X)$ para referirnos al conjunto de tod
 	como queríamos demostrar. Ahora vamos a ver que $(I-L)$ es biyectivo y continuo:
 	\begin{itemize}
 		\item Ya hemos visto que es sobreyectiva.
-		\item Inyectiva: $(I-L)u = (I-L)v \Rightarrow 0 = \lVert u-Lu-v+Lv \rVert \geqslant \lVert u-v \rVert - \lVert L(u-v) \rVert \geqslant \lVert u-v \rVert - \lVert L \rVert \lVert u-v \rVert = (1 - \lVert L \rVert) \lVert u-v \rVert \Rightarrow u = v$ (Puesto que $(1 - \lVert L \rVert) > 0$).
-		\item Para la continuidad vamos a utilizar el Teorema de isomorfismos de Banach.
+		\item Inyectiva: $(I-L)u = (I-L)v \Rightarrow 0 = \lVert u-Lu-v+Lv \rVert \geqslant \lVert u-v \rVert - \lVert L(u-v) \rVert \geqslant \lVert u-v \rVert - \lVert L \rVert \lVert u-v \rVert = (1 - \lVert L \rVert) \lVert u-v \rVert \Rightarrow u = v.$ (Puesto que $(1 - \lVert L \rVert) > 0$).
+		\item El teorema de isomorfismos de Banach nos asegura la continuidad, para más detalle véase \cite{brezis}.
 	\end{itemize}
 	Para probar~\eqref{eq:teo1}, teniendo en cuenta una vez más que $\lVert L \rVert < 1$, tenemos que
 	\begin{equation}
@@ -85,6 +87,10 @@ Hay una demostración alternativa utilizando la complitud del espacio y la suma 
 		u_n = \sum_{j=0}^{n}L^jf.
 	\end{equation}
 \end{observacion}
+Si aproximamos la solución $u$ por una suma parcial $u_n$, el error cometido puede estimarse explícitamente:
+\begin{equation}
+	\lVert u-u_n \rVert = \lVert \sum_{j=n+1}^\infty L^jf \rVert \leqslant \sum_{j=n+1}^\infty \lVert L \rVert^j \lVert f \rVert = \dfrac{\lVert L \rVert^{n+1}}{1-\lVert L \rVert}\lVert f \rVert.
+\end{equation}
 A continuación presentamos un resultado importante que nos garantiza la existencia y unicidad de solución para una ecuación lineal integral de Fredholm de segunda clase.
 \begin{corolario}\label{ej:1}
 	Sea la ecuación integral de Fredholm de segunda clase
@@ -141,7 +147,11 @@ Sin embargo, esta restricción puede obviarse, gracias a una generalización del
 	\begin{equation}
 		\lVert L^n \rVert < 1.
 	\end{equation}
-	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal y continuo, y 
+	Entonces $I - L$ es una biyección en $X$, su inversa es un operador lineal y continuo,
+	\begin{equation}
+		(I-L)^{-1}=\sum_{j=0}^{\infty}L^j, 
+	\end{equation}
+	y
 	\begin{equation}\label{eq:teo3}
 		\lVert (I-L)^{-1} \rVert \leqslant \dfrac{1}{1 - \lVert L^n \rVert} \sum_{i=0}^{n - 1}\lVert L^i \rVert.
 	\end{equation}
@@ -163,10 +173,13 @@ Sin embargo, esta restricción puede obviarse, gracias a una generalización del
 	\begin{equation}
 		(I-L)^{-1} = (\sum_{i=0}^{n-1}L^i)(I-L^n)^{-1}
 	\end{equation}
-	que es continuo, gracias al Teorema de los isomorfismos de Banach, y la desigualdad~\eqref{eq:teo3} se mantiene.
+	que es continuo, gracias al Teorema de los isomorfismos de Banach, de donde se deduce la desigualdad~\eqref{eq:teo3} y la igualdad
+	\begin{equation}
+		(I-L)^{-1}=\sum_{j=0}^{\infty}L^j.
+	\end{equation}
 \end{proof}
 Vamos a apoyarnos en esta generalización para ilustrar la demostración del siguiente resultado:
-\begin{corolario}
+\begin{corolario}\label{coroooolario}
 	Toda ecuación integral lineal de Volterra de segunda clase tiene solución única, cuando trabajamos en contexto continuo.
 \end{corolario}
 \begin{proof}
@@ -176,7 +189,7 @@ Vamos a apoyarnos en esta generalización para ilustrar la demostración del sig
 	\end{equation}
 	donde $f \in \mathcal{C}[0,B]$, $K \in \mathcal{C}([0,B]\times [0,B])$ y $u \in \mathcal{C}[0,B]$ es la función incógnita.
 	Definimos el operador lineal $L$, que aparece dentro de la ecuación de Volterra:
-	\begin{equation}
+	\begin{equation}\label{ref_operador}
 		\begin{array}{c}
 		L: \mathcal{C}[0,B] \rightarrow \mathcal{C}[0,B] \\
 		\qquad \qquad \qquad \qquad \qquad Lu(x) \mapsto \displaystyle \int_{0}^{x} K(x,t)u(t)dt, \qquad x \in [0,B].
@@ -225,12 +238,16 @@ Vamos a apoyarnos en esta generalización para ilustrar la demostración del sig
 	\begin{equation}\label{eq:demvolt2}
 		\lVert L^n \rVert \leqslant \dfrac{\lVert K \rVert_\infty^nB^n}{n!}.
 	\end{equation}
-	Como la sucesión $\{\dfrac{\lVert K \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!}$ es convergente, $\sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!} = e^{\lVert K \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2} da $\lVert L^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert L^n \rVert < 1$.
+	Como la sucesión $\{\dfrac{\lVert K \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!}$ es convergente, $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert K \rVert_\infty^nB^n}{n!} = e^{\lVert K \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2} da $\lVert L^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert L^n \rVert < 1$.
 	Luego podemos aplicar la generalización del teorema de la serie geométrica (\autoref{corolario}) y tenemos que existe el operador inverso $(I-L)^{-1}$ en $\mathcal{C}([0,B])$, y su inverso se puede expresar como la suma de una serie geométrica convergente, por tanto,  la solución única $u$ viene dada por:
 	\begin{equation}
 		u = (I-L)^{-1}f.
 	\end{equation}
 \end{proof}
+Como $u = \displaystyle \sum_{j=0}^{\infty} L^jf$, una aproximación de dicha solución viene dada por una suma parcial $u_n = \displaystyle \sum_{j=0}^{n}L^jf$ y gracias a~\eqref{eq:demvolt2} tenemos
+\begin{equation}
+	\lVert u-u_n \rVert \leqslant \sum_{j=n+1}^{\infty}\dfrac{\lVert K \rVert_\infty^j B^j}{j!}.
+\end{equation}
 \section{Un resultado de perturbación}
 Vamos a presentar otra aplicación del teorema de la serie geométrica, distinta a lo hecho con las ecuaciones integrales previamente.
 La \textit{perturbación} es una estrategia en matemática aplicada que se enfoca en el estudio de una ecuación al relacionarla con otra ecuación $"$afín$"$, de la cual sabemos que existe un resultado que nos da una solución, esto nos ayuda a encontrar soluciones para problemas más complicados utilizando otros más simples. El siguiente teorema representa una de las herramientas de uso más frecuente en este contexto.
@@ -403,12 +420,13 @@ donde \textbf{u} es el vector formado por todas las funciones continuas que quer
 	\begin{equation}\label{eq:demvolt2_2}
 		\lVert \textbf{L}^n \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}.
 	\end{equation}
-	Como la sucesión $\{\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}$ es convergente, $\sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!} = e^{\lVert \textbf{K} \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2_2} da $\lVert \textbf{L}^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert \textbf{L}^n \rVert < 1$.
+	Como la sucesión $\{\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}$ es convergente, $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!} = e^{\lVert \textbf{K} \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2_2} da $\lVert \textbf{L}^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert \textbf{L}^n \rVert < 1$.
 	Ahora estamos en condición de aplicar la generalización del teorema de la serie geométrica que vimos anteriormente, ya que aunque estemos en caso vectorial, el resultado es análogo y por tanto sabemos que existe el operador inverso $(\textbf{I}-\textbf{L})^{-1}$ en $\mathcal{C}([0,B],\R^n)$, y además su inverso se puede expresar como la suma de una serie geométrica convergente, por tanto, la solución única $\textbf{u}$ viene dada por:
 	\begin{equation}
 		\textbf{u} = (\textbf{I}-\textbf{L})^{-1}\textbf{f}.
 	\end{equation}
 \end{proof}
+Las consideraciones hechas en caso escalar relativas a la aproximación $\displaystyle \sum_{j=0}^{n}\textbf{L}^j\textbf{f}$ de la solución $\displaystyle \sum_{j=0}^{\infty}\textbf{L}^j\textbf{f}$ son igualmente válidas aquí, gracias a la acotación~\eqref{eq:demvolt2_2}.
 
 \endinput
 %------------------------------------------------------------------------------------

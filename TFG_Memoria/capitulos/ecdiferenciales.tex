@@ -38,9 +38,9 @@ siendo $x \in \mathcal{C}^1[0,B]$. En definitiva, la solución del PVI inicial c
 \section{Ecuación vectorial}
 En este caso, el PVI sería:
 \begin{equation}\label{eq:vect}
- \hspace*{-3cm} 	\begin{array}{c} \textbf{x} \in \mathcal{C}^1([0,B],\R^n) \\ \textbf{x}:[0,B] \longrightarrow \R^n \\ \qquad \qquad \qquad \qquad t \longmapsto \textbf{x}(t) = (x_1(t),...,x_n(t)) \end{array}:\left\lbrace\begin{array}{c} x_1'(t) = a_{11}(t)x_1(t)+...+a_{1n}(t)x_n(t)+b_1(t) \\ ... \\ x_n'(t) = a_{n1}(t)x_1(t)+...+a_{nn}(t)x_n(t)+b_n(t) \\ x_1(0) = x_1,...,x_n(0) =x_n. \end{array}\right.
+ \hspace*{-3cm} 	\begin{array}{c} \textbf{x} \in \mathcal{C}^1([0,B],\R^n) \\ \textbf{x}:[0,B] \longrightarrow \R^n \\ \qquad \qquad \qquad \qquad t \longmapsto \textbf{x}(t) = (x_1(t),...,x_n(t)) \end{array}:\left\lbrace\begin{array}{c} x_1'(t) = a_{11}(t)x_1(t)+...+a_{1n}(t)x_n(t)+b_1(t) \\ ... \\ x_n'(t) = a_{n1}(t)x_1(t)+...+a_{nn}(t)x_n(t)+b_n(t) \\ x_1(0) = x_1,...,x_n(0) =x_n, \end{array}\right.
 \end{equation}
-Utilizando notación matricial para simplificar las fórmulas, nos quedaría de la siguiente forma:
+donde $a_{ij} \in \mathcal{C}([0,B])$ y $b_i \in \mathcal{C}([0,B])$ para todo $i,j \in \{1,...,n\}$. Utilizando notación matricial para simplificar las fórmulas, nos quedaría de la siguiente forma:
 \begin{equation}
 	\begin{array}{c}
 		\textbf{x}'(t) = \textbf{A}(t)\textbf{x}(t)+\textbf{b}(t) \\ \textbf{x}(0) = \textbf{x}_\textbf{0}
