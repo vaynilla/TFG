@@ -11,7 +11,7 @@
 Para recopilar información sobre los métodos, hemos tomado como referencia \cite{WazWaz}.
 
 El diseño de métodos numéricos para ecuaciones integrales en general, y en particular de Volterra, es un campo de investigación vigente actualmente.
-Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra.
+Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra, todos estos métodos nos proporcionan como solución una función exacta o aproximada, sin embargo, al final de la sección veremos, además, los métodos de cuadratura, cuya particularidad es que en vez de dar como resultado una función, proporcionan valores cercanos a la solución en una cantidad finita de puntos separados por un tamaño fijado anteriormente.
 
 A parte de estudiar algunos de estos métodos tradicionales, veremos otros métodos algo más recientes tales como:
 \begin{itemize}
@@ -536,6 +536,54 @@ La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace 
 	\begin{equation}
 		u(x) = e^x.
 	\end{equation}
+\end{ejemplo}
+\subsection{Métodos de cuadratura}
+Se puede ver detalladamente en \cite{cuadratura}.
+
+Sea $h > 0$ un tamaño fijo y sean $m, N$ tales que $Nh = B$, $m \leqslant N$.
+
+\begin{equation}
+	u(mh) - \int_{0}^{mh}K(mh,s)u(s)ds = f(mh), \qquad mh \in [0,B].
+\end{equation}
+Ahora, si usamos una regla general de cuadratura de la forma $\displaystyle \int_{0}^{mh}F(s)ds = \displaystyle \sum_{j=0}^{m} w_{mj}F(jh),$ entonces la ecuación se reduce a
+\begin{equation}
+	u(mh) - \sum_{j=0}^{m}w_{mj}K(mh,jh)u(jh) = f(mh),\qquad mh \in [0,B],
+\end{equation}
+donde $m = 1,2,...,N$ y tomando $x = 0$ tenemos el valor inicial $u(0) = f(0)$. Esto nos da el sistema de ecuaciones
+\begin{equation}
+	\begin{dcases}
+		u(0) = f(0), \\ w_{10}K(h,0)u(0)+(1-w_{11}K(h,h))u(h) = f(h), \\ w_{20}K(2h,0)u(0)+w_{21}K(2h,h)u(h)+(1-w_{22}K(2h,2h))u(2h) = f(2h), \\ \vdots \\ \displaystyle \sum_{j=0}^{N-1}w_{Nj}K(Nh,jh)u(jh)+(1-w_{NN}K(Nh,Nh))u(Nh) = f(Nh). 
+	\end{dcases}
+\end{equation}
+La precisión del resultado depende de la elección de $h$, la suavidad de $K(x,s)$ y $f(x)$, y la regla de cuadratura elegida. Por ejemplo, si elegimos la regla trapezoidal, el sistema se convierte en
+\begin{equation}\label{eq:trapecio}
+	\begin{dcases}
+		u(mh) - h \displaystyle \sum_{j=0}^{m}``K(mh,jh)u(jh) = f(mh), \qquad m = 1,2,..., \\ u(0) = f(0),
+	\end{dcases}
+\end{equation}
+que tiene un error de orden $O(h^2)$ cuando $h \rightarrow 0$.
+\begin{ejemplo}
+	Consideramos $K(x,s) = 12$, y tenemos
+	\begin{equation}
+		u(x) - \int_{0}^{x}12u(s)ds = f(x), \qquad x \in [0,B].
+	\end{equation}
+	Ahora, usando la regla de cuadratura del trapecio~\eqref{eq:trapecio} y escribimos la diferencia para $m = r$ y $m = r+1$ y restamos una de la otra, obteniendo la ecuación
+	\begin{equation}
+		(1-12h/2)u((r+1)h)-(1+12h/2)u(rh) = f((r+1)h)-f(rh) \equiv \Delta f(rh),
+	\end{equation}
+	para $r = 0,1,2,... .$ Luego la solución de la ecuación de Volterra viene dada por la recurrencia
+	\begin{equation}
+		u(rh) = \gamma^m f(0) + (1- 12h/2)^{-1}\sum_{s=0}^{m-1} \gamma^{m-s-1} s\Delta f(sh),
+	\end{equation}
+	donde $\gamma = (1 + 12h/2)/(1-12h/2)$. Tendremos que elegir $h$ de forma que $h \neq 2/12$. El error es de orden $O(h^2)$, se puede ver más detalladamente en \cite{cuadratura}.
+	
+	Vamos a tomar como ejemplo $f(x) = 13e^{-x}-12$, la solución exacta es $u(x) = e^{-x}$. Los resultados obtenidos con el método vienen dados en la \autoref{fig:tabla}.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.35\textwidth]{tabla}
+		\caption{Resultados del método para $h = 1/20$}
+		\label{fig:tabla}
+	\end{figure}
 \end{ejemplo}
 
 Aunque no sea objeto de este trabajo, se pueden ver otros métodos interesantes para la resolución de las ecuaciones integrales de Fredholm de segunda clase, como métodos de proyección, el método de Nyström u otros métodos iterativos, para entrar más en detalle y profundizar un poco más, véase \cite{Atkinson} cap $12$.
