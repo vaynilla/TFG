@@ -1,0 +1,2 @@
+https://docs.sympy.org/latest/modules/solvers/ode.html#sympy.solvers.ode.dsolve -> Para resolver sistemas de ecuaciones diferenciales en python
+https://scipython.com/book2/chapter-8-scipy/examples/solving-a-system-of-stiff-odes/ -> Para resolver el sistema en el backend
