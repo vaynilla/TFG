@@ -4,12 +4,15 @@ from flask import Flask, jsonify, request
 from scipy.integrate import solve_ivp
 import numpy as np
 import matplotlib.pyplot as plt
+from flask_cors import CORS
 
 app = Flask(__name__)
 
+CORS(app)
+
 @app.route('/')
 def hello_world():  # put application's code here
-    return jsonify({'name': 'Resolución de sistemas de ecuaciones diferenciales'})
+    return jsonify({'name': 'Resolucion de sistemas de ecuaciones diferenciales'})
 
 
 # Ruta para resolver sistemas de ecuaciones diferenciales
@@ -24,7 +27,7 @@ def resolver_ecuaciones_dif():
         def fun(t, y):
             return [eval(ecuacion,{"y":y, "t":t, "np":np}) for ecuacion in ecuaciones]
 
-        t_span = (condiciones_iniciales['t_inicial'], condiciones_iniciales['t_final'])
+        t_span = (0, 24)
         y0 = [condiciones_iniciales[f'y_{i}'] for i in range(len(ecuaciones))]
 
         try:
