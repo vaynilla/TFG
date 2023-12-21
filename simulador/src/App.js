@@ -1,12 +1,13 @@
 import './App.css';
-import Formulario from "./components/Formulario";
+import Simulador from "./components/Formulario";
 
 function App() {
   return (
     <div className="App">
-      <Formulario/>
+      <Simulador/>
     </div>
   );
 }
+
 
 export default App;

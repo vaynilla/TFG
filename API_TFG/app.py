@@ -25,19 +25,20 @@ def resolver_ecuaciones_dif():
         condiciones_iniciales = data['condiciones_iniciales']
 
         def fun(t, y):
-            return [eval(ecuacion,{"y":y, "t":t, "np":np}) for ecuacion in ecuaciones]
+            return [eval(ecuacion, {"y": y, "t": t, "np": np}) for ecuacion in ecuaciones]
 
         t_span = (0, 24)
         y0 = [condiciones_iniciales[f'y_{i}'] for i in range(len(ecuaciones))]
 
         try:
             # Intenta resolver el sistema de ecuaciones diferenciales
-            solucion = solve_ivp(fun, t_span, y0, t_eval=np.arange(0,24,0.1))
+            solucion = solve_ivp(fun, t_span, y0, t_eval=np.arange(0, 24, 0.1))
 
             # Devuelve la solución como JSON (una lista con los puntos en el tiempo y el valor en esos puntos)
             resultado = {'t': solucion.t.tolist(), 'y': solucion.y.tolist()}
             plt.plot(solucion.t, solucion.y.T)
             plt.show()
+            # Devolvemos el resultado formado por el tiempo y la temperatura de cada habitación en cada instante de tiempo
             return jsonify(resultado), 201
 
         except Exception as e:
