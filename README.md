@@ -7,7 +7,7 @@ siguiente en el sistema:
 
 -   Python
 
--   PIP (gestos de paquetes de Python)
+-   PIP (gestor de paquetes de Python)
 
 -   Flask, NumPy, SciPy, Flask-CORS (librerías de Python)
 
