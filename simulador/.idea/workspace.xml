@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/LogoCS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API_TFG/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../API_TFG/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Formulario.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Formulario.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +127,7 @@
       <workItem from="1706090231642" duration="84000" />
       <workItem from="1706091253422" duration="1208000" />
       <workItem from="1706269337768" duration="607000" />
+      <workItem from="1706442396818" duration="637000" />
     </task>
     <servers />
   </component>
