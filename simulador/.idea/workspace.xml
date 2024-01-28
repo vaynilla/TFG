@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/LogoCS.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API_TFG/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../API_TFG/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Formulario.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Formulario.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +56,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Datos\VAYNILLA\TFG\simulador\public" />
+      <recent name="D:\Datos\VAYNILLA\TFG\simulador\src" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
@@ -112,6 +120,21 @@
       <workItem from="1702909381507" duration="16000" />
       <workItem from="1703097421634" duration="8940000" />
       <workItem from="1703166508394" duration="13708000" />
+      <workItem from="1703247864736" duration="770000" />
+      <workItem from="1703256400243" duration="38000" />
+      <workItem from="1703271775258" duration="216000" />
+      <workItem from="1703690356102" duration="5400000" />
+      <workItem from="1703710883663" duration="11000" />
+      <workItem from="1703711266442" duration="1000" />
+      <workItem from="1703783359877" duration="5047000" />
+      <workItem from="1703850358766" duration="4034000" />
+      <workItem from="1705667401895" duration="5143000" />
+      <workItem from="1705756252032" duration="5598000" />
+      <workItem from="1705839783361" duration="500000" />
+      <workItem from="1705876013103" duration="1547000" />
+      <workItem from="1706090231642" duration="84000" />
+      <workItem from="1706091253422" duration="1208000" />
+      <workItem from="1706269337768" duration="607000" />
     </task>
     <servers />
   </component>

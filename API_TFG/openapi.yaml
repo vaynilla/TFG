@@ -1,0 +1,46 @@
+openapi: "3.0.0"
+info:
+  title: Resuelve sistemas de ecuaciones diferenciales
+  version: "1.0.0"
+paths:
+  /resolver_ecuaciones:
+    post:
+      summary: Resuelve sistemas de ecuaciones diferenciales
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ecuaciones:
+                  type: array
+                  items:
+                    type: string
+                condiciones_iniciales:
+                  type: array
+                  items:
+                    type: integer
+                exterior:
+                  type: string
+      responses:
+        '201':
+          description: Solución
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  t:
+                    type: array
+                  y:
+                    type: array
+                    items:
+                      type: array
+                  temp_exterior:
+                    type: array
+        '400':
+          description: Error, se requieren ecuaciones diferenciales y condiciones iniciales para resolver el sistema.
+
+
+  
