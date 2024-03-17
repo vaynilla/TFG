@@ -40,7 +40,8 @@ paths:
                   temp_exterior:
                     type: array
         '400':
-          description: Error, se requieren ecuaciones diferenciales y condiciones iniciales para resolver el sistema.
+          description: Error, se requieren ecuaciones diferenciales y condiciones iniciales 
+          para resolver el sistema.
 
 
   
