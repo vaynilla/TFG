@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/apendices/apendice01.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/apendices/apendice01.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/glosario.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/glosario.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/library.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/library.bib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +133,7 @@
       <workItem from="1706091253422" duration="1208000" />
       <workItem from="1706269337768" duration="607000" />
       <workItem from="1706442396818" duration="637000" />
+      <workItem from="1708739288933" duration="840000" />
     </task>
     <servers />
   </component>

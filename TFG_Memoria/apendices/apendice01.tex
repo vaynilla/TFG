@@ -1,11 +1,54 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
-
-\chapter{Primer apéndice}\label{ap:apendice1}
-
-Los apéndices son opcionales.
-
-Archivo: \texttt{apendices/apendice01.tex}
+\chapter{Manual de instalación y acceso}\label{ap:apendice1}
+\section{Requisitos previos}
+Antes de instalar y ejecutar el programa, debemos tener instalado lo siguiente en el sistema:
+\begin{itemize}
+	\item Python
+	\item PIP (gestor de paquetes de Python)
+	\item Flask, NumPy, SciPy, Flask-CORS (librerías de Python)
+	\item npm y Node.js
+	\item React
+\end{itemize}
+\section{Instrucciones de instalación}
+\subsection{Primera parte: API}
+\begin{enumerate}
+	\item Clonamos el repositorio del TFG desde GitHub y accedemos al de la API:
+	\begin{verbatim}
+		git clone https://github.com/vaynilla/TFG.git
+		cd API_TFG
+	\end{verbatim}
+	\item Instalamos las dependencias de Python utilizando PIP:
+	\begin{verbatim}
+		pip install -r requirements.txt
+	\end{verbatim}
+	\item Ejecutamos el servidor de la API:
+	\begin{verbatim}
+		python app.py
+	\end{verbatim}
+	La API ahora debería estar en funcionamiento y accesible en la dirección URL especificada (por ejemplo, http://localhost:$5000$).
+\end{enumerate}
+\subsection{Segunda parte: Simulador}
+\begin{enumerate}
+	\item Accedemos al repositorio del simulador:
+	\begin{verbatim}
+		cd simulador
+	\end{verbatim}
+	\item Instalamos las dependencias del proyecto utilizando npm:
+	\begin{verbatim}
+		npm install
+	\end{verbatim}
+	\item Iniciamos la aplicación:
+	\begin{verbatim}
+		npm start
+	\end{verbatim}
+\end{enumerate}
+\subsection{Acceso a la aplicación}
+Una vez hemos completado los pasos anteriores, podremos acceder a la aplicación desde el navegador web:
+\begin{itemize}
+	\item Backend (API): La API estará disponible en la URL especificada por Flask (por ejemplo, http://localhost:$5000$).
+	\item Frontend (React): La aplicación frontend estará disponible en http://localhost:$3000$ por defecto, a menos que se especifique lo contrario.
+\end{itemize}
 
 \endinput
 %------------------------------------------------------------------------------------
