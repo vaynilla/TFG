@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../API_TFG/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API_TFG/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/apendices/apendice01.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/apendices/apendice01.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/aplicacion.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/desarrollo.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/glosario.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/glosario.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/library.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/library.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/conclusiones.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/conclusiones.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/libro.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +45,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/Vaynilla/AppData/Roaming/JetBrains/WebStorm2023.2/node/node-v18.15.0-win-x64/node&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.npm start.executor&quot;: &quot;Run&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2023.2.4\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -134,6 +133,8 @@
       <workItem from="1706269337768" duration="607000" />
       <workItem from="1706442396818" duration="637000" />
       <workItem from="1708739288933" duration="840000" />
+      <workItem from="1710861521441" duration="211000" />
+      <workItem from="1711020897549" duration="1157000" />
     </task>
     <servers />
   </component>
