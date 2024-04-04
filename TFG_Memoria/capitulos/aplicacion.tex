@@ -1,17 +1,17 @@
 % !TeX root = ../libro.tex
 % !TeX encoding = utf8
 \chapter{Caso de uso: Calentamiento y enfriamiento de edificios}
-En esta sección hemos recopilado información de \cite{Campos}, \cite{Nagle} y \cite{tfm}.
-
-Como aplicación sobre lo estudiado anteriormente, vamos a formular un modelo matemático que describa la temperatura dentro de un edificio, como función de la temperatura exterior, el calor generado dentro del edificio y el calefactor o el aire acondicionado.
+Como aplicación sobre lo estudiado anteriormente, vamos a formular un modelo matemático que describa la temperatura dentro de un edificio, como función de la temperatura exterior, el calor generado dentro del edificio y el sistema de aire acondicionado o calefacción.
 
 Un enfoque natural para modelar la temperatura dentro de un edificio es el uso del análisis por compartimentos. A continuación vamos a ver diferentes modelos de edificios con distintos tipos y número de habitaciones, pondremos ejemplos y explicaremos cómo resolverlos, además observaremos que las soluciones son como deberíamos esperar en la vida real, pero eso sí, las cuantificamos de forma precisa.
+
+En esta sección hemos recopilado información de \cite{Campos}, \cite{Nagle} y \cite{tfm}.
 \section{Edificio como habitación única}
 Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edificio como un único compartimento, es decir, sin estar dividido en varias habitaciones. Entonces la variación en la temperatura queda determinada por todos los factores que generan o disipan calor. Tomaremos en cuenta tres factores principales que afectan la temperatura dentro del edificio:
 \begin{itemize}
 	\item En primer lugar está el calor generado dentro del propio edificio, por factores como pueden ser las personas o la maquinaria interna. A esta razón de incremento en la temperatura la denotaremos por $H(t)$.
 	\item En segundo lugar está el calentamiento (o enfriamiento) proporcionado por la calefacción (o el aire acondicionado). Esta variación en la temperatura será representada como $U(t)$.
-	\item El tercer factor es el efecto de la temperatura exterior, $M(t)$, sobre la temperatura interna del edificio. Según se indica en \cite{Nagle}, la evidencia experimental ha mostrado que este factor se puede modelizar mediante la \textbf{ley de enfriamiento de Newton}.
+	\item El tercer factor es el efecto de la temperatura exterior, $M(t)$, sobre la temperatura interna del edificio. Este factor se puede modelizar mediante la \textbf{ley de enfriamiento de Newton}.
 	
 	Esta ley establece que hay una variación de la temperatura $T(t)$ que es proporcional a la diferencia entre la temperatura exterior $M(t)$ y la temperatura interior $T(t)$. Es decir, la variación en temperatura del edificio debida a $M(t)$ es 
 	\begin{equation}
@@ -21,7 +21,7 @@ Sea $T(t)$ la temperatura dentro del edificio en el instante $t$ y veamos al edi
 	
 	Por otro lado, cuando la temperatura exterior es menor que la temperatura interior, entonces $M(t) - T(t) < 0$ y la temperatura del edificio disminuye.
 \end{itemize}
-En general, la razón de calentamiento adicional $H(t)$ y la razón de calefacción
+En general, la variación de calentamiento adicional $H(t)$ y la razón de calefacción
 (ó enfriamiento) $U(t)$ quedan descritas en términos de energía por unidad de tiempo. Sin embargo, al multiplicar por la
 capacidad calórica del edificio (en unidades de cambio de temperatura por unidad de energía calórica), podemos expresar las dos cantidades $H(t)$ y $U(t)$ en términos de temperatura por unidad de tiempo.
 
@@ -36,7 +36,7 @@ cuando la razón de calentamiento adicional $H(t)$ es siempre no negativa y $U(t
 \begin{equation}
 	= e^{-Kt}\{\int e^{Kt}[KM(t) + H(t) + U(t)]dt + C\}.
 \end{equation}
-A continuación vamos a resolver unos ejercicios sobre calentamiento y enfriamiento de edificios en el que tenemos solamente una habitación. Vamos a ver primero un ejemplo sencillo en el que suponemos la temperatura exterior constante:
+A continuación vamos a resolver unos ejemplos sobre calentamiento y enfriamiento de edificios en el que tenemos solamente una habitación. Vamos a ver primero un ejemplo sencillo en el que suponemos la temperatura exterior constante:
 \begin{ejemplo}
 	Suponemos que al final del día (en el instante $t_0$), cuando las personas salen del edificio, la temperatura exterior permanece constante e igual a $M_0$, la razón de calentamiento adicional $H$ dentro del edificio se anula y la razón de uso del calefactor o el aire acondicionado $U$ también se anula. Determinar $T(t)$, dada la condición inicial $T(t_0) = T_0$.\\
 	\textbf{Solución.} Con $M = M_0$, $H = 0$ y $U = 0$, la ecuación~\eqref{eq:apli2} se convierte en

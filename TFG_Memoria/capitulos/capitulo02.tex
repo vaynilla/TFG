@@ -8,10 +8,8 @@
 \chapter{Métodos de resolución de ecuaciones integrales de Volterra de segunda clase}
 
 \section{Introducción}
-Para recopilar información sobre los métodos, hemos tomado como referencia \cite{WazWaz}.
-
 El diseño de métodos numéricos para ecuaciones integrales en general, y en particular de Volterra, es un campo de investigación vigente actualmente.
-Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra, todos estos métodos nos proporcionan como solución una función exacta o aproximada, sin embargo, al final de la sección veremos, además, los métodos de cuadratura, cuya particularidad es que en vez de dar como resultado una función, proporcionan valores cercanos a la solución en una cantidad finita de puntos separados por un tamaño fijado anteriormente.
+Existen una gran variedad de métodos numéricos y analíticos, tales como el método de aproximaciones sucesivas, la transformada de Laplace, colocación con splines, Runge-Kutta, y otros muchos que han sido utilizados para manejar las ecuaciones integrales de Volterra. Todos estos métodos nos proporcionan como solución una función exacta o aproximada, sin embargo, al final de la sección veremos, además, los métodos de cuadratura, cuya particularidad es que en vez de dar como resultado una función, proporcionan valores cercanos a la solución en una cantidad finita de puntos.
 
 A parte de estudiar algunos de estos métodos tradicionales, veremos otros métodos algo más recientes tales como:
 \begin{itemize}
@@ -22,6 +20,8 @@ A parte de estudiar algunos de estos métodos tradicionales, veremos otros méto
 Nos vamos a centrar principalmente en cómo se aplican estos métodos con un objetivo principal, encontrar una solución $u(x)$ para la ecuación integral de Volterra de segunda clase.\\Daremos una visión general de esta amplia familia de métodos de resolución, sin entrar en detalles como la convergencia o el error.
 
 Para diferenciar mejor en qué se basan cada uno de los métodos, vamos a distinguir entre los métodos que utilizan series, los métodos iterativos, y otros métodos especiales que no se engloban en los anteriores.
+
+Para recopilar información sobre los métodos, hemos tomado como referencia básica \cite{WazWaz}.
 \section{Métodos basados en series}
 \subsection{Método de descomposición de Adomian (ADM)}
 Fue desarrollado por George Adomian en \cite{Adomian1} y \cite{Adomian12} y está muy bien abordado en muchas referencias. Se ha investigado mucho sobre este método para poder aplicarlo a una amplia clase de ecuaciones diferenciales ordinarias, en derivadas parciales, y también en ecuaciones integrales (véase \cite{Atkinson}).
@@ -53,7 +53,7 @@ que es equivalente a
 y análogamente para las demás componentes. Como podemos ver en~\eqref{eq:recurrencia1}, las componentes $u_0(x), u_1(x), u_2(x), u_3(x),..., u_n(x)$ están completamente determinadas. Como resultado, la solución $u(x)$ de la ecuación integral de Volterra~\eqref{eq:volterra} en forma de serie se obtiene fácilmente utilizando~\eqref{eq:sum_adomian}.
 
 \begin{observacion}
-Hemos visto cómo el método de descomposición ha convertido una ecuación integral en una determinación de componentes calculables. Muchos investigadores formalizaron que si existe una solución exacta para el problema, entonces la serie obtenida converge muy rápidamente a esa solución (véase \cite{WazWaz}).
+Hemos visto cómo el método de descomposición ha convertido una ecuación integral en una determinación de componentes calculables. Muchos investigadores formalizaron que si existe una solución exacta para el problema, entonces la serie obtenida converge muy rápidamente a esa solución (véase \cite{WazWaz}). De hecho, la serie obtenida coincide con la de la serie geométrica.
 
 Sin embargo, para problemas concretos donde no se puede obtener una solución, generalmente se utiliza un número truncado de términos con fines numéricos. Podemos observar que cuantos más componentes usemos, mayor precisión obtendremos, ya que la sucesión formada por los componentes converge a la solución.
 \end{observacion}
@@ -89,7 +89,7 @@ Sin embargo, para problemas concretos donde no se puede obtener una solución, g
 	\end{equation}
 \end{ejemplo}
 
-\subsection{Método de descomposición modificado (mADM)}
+\subsection{Método de descomposición de Adomian modificado (mADM)}
 Wazwaz presenta una modificación importante del ADM en sus libros \cite{WazWaz1} y \cite{WazWaz2}. Este método facilitará el proceso de cálculo y acelerará la convergencia de la solución en series. Se aplicará, siempre que se pueda, a cualquier ecuación integral y diferencial de cualquier orden.
 \begin{observacion}
 	Este método se basa principalmente en dividir la función $f(x)$ en dos partes, por tanto no se puede usar si la función $f(x)$ está formada por un sólo término.
@@ -103,8 +103,8 @@ En muchos casos, la función $f(x)$ se puede escribir como una suma de dos funci
 Gracias a esto, se introducirá un cambio importante a la hora de formar la relación de recurrencia en el método de Adomian. Para minimizar el tamaño de los cálculos, identificamos la primera componente $u_0(x)$ como una de las partes de $f(x)$, que será $f_1(x)$ o $f_2(x)$. La otra parte se puede añadir a la componente $u_1(x)$ junto a los demás términos. En resumen, obtenemos la siguiente relación de recurrencia:
 \begin{align}
 	u_0(x) &= f_1(x),      &   \\
-	u_{1}(x) &= f_2(x) + \lambda \int_{0}^{x} K(x,t)u_0(t)dt,    &  \\
-	u_{k+1}(x) &= \lambda \int_{0}^{x} K(x,t)u_k(t)dt, \qquad k \geqslant 1.    &
+	u_{1}(x) &= f_2(x) + \int_{0}^{x} K(x,t)u_0(t)dt,    &  \\
+	u_{k+1}(x) &= \int_{0}^{x} K(x,t)u_k(t)dt, \qquad k \geqslant 1.    &
 \end{align}	
 \begin{observacion}
 	Esto muestra que la diferencia entre la relación de recurrencia estándar y la modificada se basa únicamente en la formación de las dos primeras componentes $u_0(x)$ y $u_1(x)$. Las demás componentes se mantienen igual.
@@ -186,7 +186,7 @@ Asumimos que la solución $u(x)$ de la ecuación integral de Volterra
 \begin{equation}
 	u(x) = f(x) + \int_0^x K(x,t)u(t)dt,
 \end{equation}
-es analítica, es decir, posee una solución en forma de serie de Taylor, donde los coeficientes $a_n$ se determinarán de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos lados y obtenemos
+es analítica, es decir, posee una solución en forma de serie de Taylor, donde los coeficientes $a_n$ se determinarán de forma recursiva. Sustituimos~\eqref{eq:serie1} en ambos miembros y obtenemos
 \begin{equation}\label{eq:serie2}
 	\sum_{n=0}^{\infty}a_nx^n = T(f(x)) + \int_{0}^{x}K(x,t)(\sum_{n=0}^{\infty}a_nt^n)dt,
 \end{equation}
@@ -372,7 +372,7 @@ donde $u(x)$ es la función desconocida a determinar, $K(x,t)$ es el núcleo, y 
 \begin{equation}\label{eq:wowo}
 	u_n(x) = f(x) + \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
 \end{equation}
-donde la aproximación inicial $u_0(x)$ puede ser cualquier función real. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0$ ó $f(x)$.
+donde la aproximación inicial $u_0(x)$ puede ser cualquier función real, a diferencia de Adomian. Siempre empezamos con una suposición inicial para $u_0(x)$, normalmente se suele elegir $0$ ó $f(x)$.
 
 La convergencia de $u_n(x)$ está justificada con el estudio del capítulo $2$, teniendo en cuenta que 
 \begin{equation}
@@ -393,7 +393,7 @@ En la siguiente observación vamos a ver algunas diferencias entre los métodos 
 	\begin{equation}
 		u_{n+1}(x) = u_n(x) + \int_{0}^{x} \lambda(\xi)(\dfrac{\partial u_n(\xi)}{\partial \xi}-\tilde{u}_n(\xi))d\xi,
 	\end{equation}
-	mientras que el método de aproximaciones sucesivas utiliza la siguiente:
+	el método de aproximaciones sucesivas utiliza la siguiente:
 	\begin{equation}
 		u_n(x) = f(x) + \int_{0}^{x} K(x,t)u_{n-1}(t)dt, \qquad n \geqslant 1,
 	\end{equation}
@@ -538,18 +538,18 @@ La solución $u(x)$ se obtiene tomando la inversa de la transformada de Laplace 
 	\end{equation}
 \end{ejemplo}
 \subsection{Métodos de cuadratura}
-Se puede ver detalladamente en \cite{cuadratura}.
+Son bien conocidos y de uso extendido. Nosotros hemos usado como referencia \cite{cuadratura} para desarrollarlos.
 
-Sea $h > 0$ un tamaño fijo y sean $m, N$ tales que $Nh = B$, $m \leqslant N$.
+Sea $h > 0$ un tamaño fijo y sean $m, N$ tales que $Nh = B$, $m \leqslant N$. Entonces
 
 \begin{equation}
 	u(mh) - \int_{0}^{mh}K(mh,s)u(s)ds = f(mh), \qquad mh \in [0,B].
 \end{equation}
-Ahora, si usamos una regla general de cuadratura de la forma $\displaystyle \int_{0}^{mh}F(s)ds = \displaystyle \sum_{j=0}^{m} w_{mj}F(jh),$ entonces la ecuación se reduce a
+Ahora, si usamos una fórmula de cuadratura de la forma $\displaystyle \int_{0}^{mh}F(s)ds = \displaystyle \sum_{j=0}^{m} w_{mj}F(jh),$ entonces la ecuación se aproxima por
 \begin{equation}
 	u(mh) - \sum_{j=0}^{m}w_{mj}K(mh,jh)u(jh) = f(mh),\qquad mh \in [0,B],
 \end{equation}
-donde $m = 1,2,...,N$ y tomando $x = 0$ tenemos el valor inicial $u(0) = f(0)$. Esto nos da el sistema de ecuaciones
+donde $m = 1,2,...,N$ y tomando $x = 0$ tenemos el valor inicial $u(0) = f(0)$. Esto nos da el sistema de ecuaciones lineales (por tanto, resoluble sin problema, al menos para órdenes bajos)
 \begin{equation}
 	\begin{dcases}
 		u(0) = f(0), \\ w_{10}K(h,0)u(0)+(1-w_{11}K(h,h))u(h) = f(h), \\ w_{20}K(2h,0)u(0)+w_{21}K(2h,h)u(h)+(1-w_{22}K(2h,2h))u(2h) = f(2h), \\ \vdots \\ \displaystyle \sum_{j=0}^{N-1}w_{Nj}K(Nh,jh)u(jh)+(1-w_{NN}K(Nh,Nh))u(Nh) = f(Nh). 

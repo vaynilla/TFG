@@ -2,8 +2,6 @@
 % !TeX encoding = utf8
 \chapter{Algunos métodos para resolver sistemas de ecuaciones integrales de Volterra de segunda clase}
 \section{Introducción}
-Al igual que en la sección anterior, la información acerca de algunos de estos métodos ha sido extraída de \cite{WazWaz}.
-
 Los sistemas de ecuaciones integrales, lineales y no lineales, aparecen en muchas aplicaciones de ingeniería, física, química y modelos de crecimiento de poblaciones (véase en \cite{sistemas1} y \cite{sistemas2}). Las ideas generales y las características esenciales de estos sistemas se pueden aplicar en muchos ámbitos.
 
 Una gran variedad de métodos numéricos y analíticos se usan para abordar estos sistemas, pero la mayoría encuentran dificultades en términos del gran trabajo computacional, sobre todo cuando el sistema incluye varias ecuaciones integrales. Para evitar estas dificultades que normalmente se ven en los métodos tradicionales, vamos a utilizar algunos de los métodos introducidos en el capítulo anterior, adaptándolos a este contexto más general. Los tres métodos que vamos a estudiar en este capitulo son los siguientes:
@@ -18,6 +16,8 @@ En consonancia con el estudio analítico realizado en el capítulo 2, los sistem
 	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
 \end{equation}
 Las funciones desconocidas $\textbf{u}(x)$ que se determinarán son continuas, aparecen dentro y fuera de la integral. Los núcleos $\textbf{K}(x,t)$ y las funciones $\textbf{f}(x)$ son funciones continuas reales dadas. A continuación veremos los métodos para resolver estos sistemas.
+
+Al igual que en la sección anterior, la información acerca de algunos de estos métodos ha sido extraída de \cite{WazWaz}.
 \section{Método de descomposición de Adomian}
 Como ya vimos en caso escalar, este método descompone cada solución en la suma de una serie, donde cada componente se determina de forma recursiva. Ahora, el planteamiento es totalmente análogo:
 \begin{align}
@@ -135,7 +135,7 @@ El método de aproximaciones sucesivas también se puede aplicar a sistemas de e
 \begin{equation}
 	\textbf{u}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}(t)dt
 \end{equation}
-donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo, todos ellos continuos. Además, necesitaremos una función vectorial con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$ Veamos un ejemplo:
+donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo, todos ellos continuos. Además, necesitaremos una función vectorial con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$. Veamos un ejemplo:
 \begin{ejemplo}
 	Consideramos el siguiente sistema:
 	\begin{equation}
