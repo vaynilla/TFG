@@ -5,7 +5,7 @@
 Antes de instalar y ejecutar el programa, debemos tener instalado lo
 siguiente en el sistema:
 
--   Python
+-   Python (Version 3.6 en adelante)
 
 -   PIP (gestor de paquetes de Python)
 
