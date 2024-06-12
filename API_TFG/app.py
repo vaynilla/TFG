@@ -1,4 +1,3 @@
-# coding=utf-8
 import traceback
 
 from flask import Flask, jsonify, request, send_from_directory
