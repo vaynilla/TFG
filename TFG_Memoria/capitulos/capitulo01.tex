@@ -37,7 +37,11 @@ En las ecuaciones integrales de Volterra, uno de los límites de integración es
 		u(x) = 5x + 2\int_0^x (x-t)u(t)dt, \qquad x \in [0,4].
 	\end{equation}	
 \end{ejemplo}
+<<<<<<< Updated upstream
 \subsection{Ecuaciones integrales singulares}
+=======
+Para continuar vamos a introducir el concepto de ecuación integral de Volterra singular:
+>>>>>>> Stashed changes
 \begin{definicion}
 	Diremos que una ecuación integral de Volterra
 	\begin{equation}
@@ -49,31 +53,28 @@ En las ecuaciones integrales de Volterra, uno de los límites de integración es
 		\item El núcleo $K(x,t)$ no está acotado en algún punto del intervalo de integración.
 	\end{itemize}
 \end{definicion}
-A continuación vamos a centrarnos en unas ecuaciones particulares, pudiendo ser de segunda clase:
+Vamos a centrarnos en una ecuación particular de segunda clase:
 \begin{equation}\label{}
-	u(x) = f(x) + \int_0^x \dfrac{1}{(x-t)^\alpha}u(t)dt, \qquad 0 < \alpha < 1, \qquad x \in [0,B]
+	u(x) = f(x) + \int_0^x \dfrac{1}{(x-t)^\alpha}u(t)dt, \qquad 0 < \alpha < 1, \qquad x \in [0,B].
 \end{equation}
-o de primera clase
-\begin{equation}\label{}
-	f(x) = \int_0^x \dfrac{1}{(x-t)^\alpha}u(t)dt, \qquad 0 < \alpha < 1, \qquad x \in [0,B].
-\end{equation}
-Se conocen como \textit{ecuación integral singular débil} y \textit{ecuación integral generalizada de Abel}, respectivamente. Para el valor de $\alpha = \dfrac{1}{2}$, la ecuación:
-\begin{equation}\label{}
-	f(x) = \int_0^x \dfrac{1}{\sqrt{x-t}}u(t)dt
-\end{equation}
-se llama \textit{ecuación integral singular de Abel}. Nótese que el núcleo no está acotado en el límite superior $t = x$. 
+Se conoce como \textit{ecuación integral singular débil}. Nótese que el núcleo no está acotado en el límite superior $t = x$. 
 \begin{ejemplo}
-	Ejemplos de una ecuación integral de Abel, generalizada de Abel, y singular débil serían los siguientes:
+	Una ecuación integral singular débil sería:
 	\begin{equation}\label{}
 		\dfrac{\sin x}{2} = \int_0^x \dfrac{1}{\sqrt{x-t}}u(t)dt,
 	\end{equation}
+\end{ejemplo}
+
+\section{Ecuaciones integrales de Fredholm}
+En las ecuaciones integrales de Fredholm, los límites de integración son fijos. Además, al igual que con las ecuaciones integrales de Volterra, al estudiar las ecuaciones de segunda clase, la función desconocida $u(x)$ aparece tanto dentro como fuera de la integral. De igual forma que hemos hecho con las ecuaciones de Volterra, vamos a definir la ecuación integral de Fredholm de \textit{segunda clase}:
+\begin{equation}\label{}
+	u(x) = f(x) + \int_a^b K(x,t)u(t)dt, \qquad x \in [a,b].
+\end{equation}
+\begin{ejemplo}
+	Un ejemplo de una ecuación integral de Fredholm de segunda clase puede ser el siguiente:
 	\begin{equation}\label{}
-		6x^2 + 5 = \int_0^x \dfrac{1}{(x-t)^{\scaleto{\dfrac{2}{3}}{12pt}}}u(t)dt,
+		u(x) = \sin x + \dfrac{1}{4}\int_{0}^2 (x-t)u(t)dt, \qquad x \in [0,2].
 	\end{equation}
-	\begin{equation}\label{}
-		u(x) = \cos x + \sqrt{x} + 3\int_0^x \dfrac{1}{(x-t)^{\scaleto{\dfrac{2}{3}}{12pt}}}u(t)dt,
-	\end{equation}
-	respectivamente.
 \end{ejemplo}
 
 \section{Ecuaciones integrales de Fredholm}

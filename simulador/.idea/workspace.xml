@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/capitulo01.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/capitulo01.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/capitulos/conclusiones.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/capitulos/conclusiones.tex" afterDir="false" />
@@ -15,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/../TFG_Memoria/preliminares/summary.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../TFG_Memoria/preliminares/summary.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="965538e9-bb6d-427f-8577-1a468eca29b9" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,10 +144,14 @@
       <workItem from="1708739288933" duration="840000" />
       <workItem from="1710861521441" duration="211000" />
       <workItem from="1711020897549" duration="1157000" />
+<<<<<<< Updated upstream
       <workItem from="1712317651250" duration="15000" />
       <workItem from="1715518560033" duration="848000" />
       <workItem from="1717277426447" duration="87000" />
       <workItem from="1718175129760" duration="757000" />
+=======
+      <workItem from="1712317830949" duration="545000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
