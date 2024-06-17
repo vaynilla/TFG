@@ -575,15 +575,15 @@ que tiene un error de orden $O(h^2)$ cuando $h \rightarrow 0$.
 	\begin{equation}
 		u(rh) = \gamma^m f(0) + (1- 12h/2)^{-1}\sum_{s=0}^{m-1} \gamma^{m-s-1} s\Delta f(sh),
 	\end{equation}
-	donde $\gamma = (1 + 12h/2)/(1-12h/2)$. Tendremos que elegir $h$ de forma que $h \neq 2/12$. El error es de orden $O(h^2)$, se puede ver más detalladamente en \cite{cuadratura}.
-	
-	Vamos a tomar como ejemplo $f(x) = 13e^{-x}-12$, la solución exacta es $u(x) = e^{-x}$. Los resultados obtenidos con el método vienen dados en la \autoref{fig:tabla}.
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.35\textwidth]{tabla}
 		\caption{Resultados del método para $h = 1/20$}
 		\label{fig:tabla}
 	\end{figure}
+	donde $\gamma = (1 + 12h/2)/(1-12h/2)$. Tendremos que elegir $h$ de forma que $h \neq 2/12$. El error es de orden $O(h^2)$, se puede ver más detalladamente en \cite{cuadratura}.
+	
+	Vamos a tomar como ejemplo $f(x) = 13e^{-x}-12$, la solución exacta es $u(x) = e^{-x}$. Los resultados obtenidos con el método vienen dados en la \autoref{fig:tabla}.
 \end{ejemplo}
 
 Aunque no sea objeto de este trabajo, se pueden ver otros métodos interesantes para la resolución de las ecuaciones integrales de Fredholm de segunda clase, como métodos de proyección, el método de Nyström u otros métodos iterativos, para entrar más en detalle y profundizar un poco más, véase \cite{Atkinson} cap $12$.
