@@ -37,18 +37,6 @@ En las ecuaciones integrales de Volterra, uno de los límites de integración es
 		u(x) = 5x + 2\int_0^x (x-t)u(t)dt, \qquad x \in [0,4].
 	\end{equation}	
 \end{ejemplo}
-
-\section{Ecuaciones integrales de Fredholm}
-En las ecuaciones integrales de Fredholm, los límites de integración son fijos. Además, al igual que con las ecuaciones integrales de Volterra, al estudiar las ecuaciones de segunda clase, la función desconocida $u(x)$ aparece tanto dentro como fuera de la integral. De igual forma que hemos hecho con las ecuaciones de Volterra, vamos a definir la ecuación integral de Fredholm de \textit{segunda clase}:
-\begin{equation}\label{}
-	u(x) = f(x) + \int_a^b K(x,t)u(t)dt, \qquad x \in [a,b].
-\end{equation}
-\begin{ejemplo}
-	Un ejemplo de una ecuación integral de Fredholm de segunda clase puede ser el siguiente:
-	\begin{equation}\label{}
-		u(x) = \sin x + \dfrac{1}{4}\int_{0}^2 (x-t)u(t)dt, \qquad x \in [0,2].
-	\end{equation}
-\end{ejemplo}
 \subsection{Ecuaciones integrales singulares}
 \begin{definicion}
 	Diremos que una ecuación integral de Volterra
@@ -86,6 +74,18 @@ se llama \textit{ecuación integral singular de Abel}. Nótese que el núcleo no
 		u(x) = \cos x + \sqrt{x} + 3\int_0^x \dfrac{1}{(x-t)^{\scaleto{\dfrac{2}{3}}{12pt}}}u(t)dt,
 	\end{equation}
 	respectivamente.
+\end{ejemplo}
+
+\section{Ecuaciones integrales de Fredholm}
+En las ecuaciones integrales de Fredholm, los límites de integración son fijos. Además, al igual que con las ecuaciones integrales de Volterra, al estudiar las ecuaciones de segunda clase, la función desconocida $u(x)$ aparece tanto dentro como fuera de la integral. De igual forma que hemos hecho con las ecuaciones de Volterra, vamos a definir la ecuación integral de Fredholm de \textit{segunda clase}:
+\begin{equation}\label{}
+	u(x) = f(x) + \int_a^b K(x,t)u(t)dt, \qquad x \in [a,b].
+\end{equation}
+\begin{ejemplo}
+	Un ejemplo de una ecuación integral de Fredholm de segunda clase puede ser el siguiente:
+	\begin{equation}\label{}
+		u(x) = \sin x + \dfrac{1}{4}\int_{0}^2 (x-t)u(t)dt, \qquad x \in [0,2].
+	\end{equation}
 \end{ejemplo}
 
 \section{Ecuaciones integrales de Volterra-Fredholm}

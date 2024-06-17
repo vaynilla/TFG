@@ -138,12 +138,13 @@ El método de aproximaciones sucesivas también se puede aplicar a sistemas de e
 donde $\textbf{u}(x)$ es un vector de funciones que deseas encontrar, $\textbf{f}(x)$ es un vector de funciones conocidas, y $\textbf{K}(x,t)$ es la matriz de funciones núcleo, todos ellos continuos. Además, necesitaremos una función vectorial con las aproximaciones iniciales de cada ecuación, que denotaremos como $\textbf{u}_0$. Veamos un ejemplo:
 \begin{ejemplo}
 	Consideramos el siguiente sistema:
-	\begin{equation}
-		\left\lbrace\begin{array}{c}y(x) = 1 + \displaystyle \int_0^x (\dfrac{1}{8}y(t)\dfrac{-1}{6}v(t))dt \\ v(x) = 3+ \displaystyle \int_0^x (\dfrac{1}{7}y(t)-\dfrac{1}{8}v(t))dt \end{array}\right.,
-	\end{equation}
+	\[ \begin{dcases}
+		y(x) = 1 + \displaystyle \int_0^x (\dfrac{1}{8}y(t)-\dfrac{1}{6}v(t))dt \\
+		v(x) = 3+ \displaystyle \int_0^x (\dfrac{1}{7}y(t)-\dfrac{1}{8}v(t))dt \;
+	\end{dcases} \]%
 	donde tenemos los siguientes vectores:
 	\begin{equation}
-		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ 3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}[2]	\dfrac{1}{8} & \dfrac{-1}{6} \\ \dfrac{ 1}{7} & \dfrac{-1}{8}	\end{pmatrix},
+		\textbf{u}(x) = \begin{pmatrix}	y(x) \\ v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\ 3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}[2]	\dfrac{1}{8} & -\dfrac{1}{6} \\ \dfrac{ 1}{7} & -\dfrac{1}{8}	\end{pmatrix},
 	\end{equation}
 	Además tenemos el vector de aproximaciones iniciales para ambas ecuaciones:
 	\begin{equation}
