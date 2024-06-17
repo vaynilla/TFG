@@ -66,12 +66,16 @@ Ecuación integral de Fredholm de segunda clase:
 \begin{frame}{Existencia y unicidad de solución}
 \begin{itemize}
 	\item Teorema de la serie geométrica
-	\item Generalización del teorema
+	\item Generalización del teorema\\
 \end{itemize}
+\vspace*{0.5cm}
+\begin{equation*}
+	(I-L)u = f
+\end{equation*}
 \vspace*{0.5cm}
 \centering
 $\Downarrow$
-\vspace*{0.5cm}
+\vspace*{0.2cm}
 \begin{itemize}
 	\item Toda ecuación integral lineal de Volterra de segunda clase tiene solución única, trabajando en un contexto continuo.
 \end{itemize}
@@ -108,8 +112,11 @@ $\Downarrow$
 		v(x) = 3+ \displaystyle \int_0^x (\dfrac{1}{7}y(t)-\dfrac{1}{8}v(t))dt \;
 	\end{dcases} \]%
 	\begin{equation*}
-		\textbf{u}(x) = \begin{pmatrix}	y(x) \\[6pt] v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\[6pt] 3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	\dfrac{1}{8} & -\dfrac{1}{6} \\[9pt] \dfrac{1}{7} & -\dfrac{1}{8}	\end{pmatrix}.
+		\textbf{u}(x) = \begin{pmatrix}	y(x) \\[6pt] v(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	1 \\[6pt] 3	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	\dfrac{1}{8} & -\dfrac{1}{6} \\[9pt] \dfrac{1}{7} & -\dfrac{1}{8}	\end{pmatrix},
 	\end{equation*}
+\begin{equation*}
+	\textbf{u}_0 = \begin{pmatrix}	0 \\ 1	\end{pmatrix}.
+\end{equation*}
 	La fórmula iterativa viene dada por:
 	\begin{equation*}
 		\textbf{u}_{n+1}(x) = \textbf{f}(x) + \int_0^x \textbf{K}(x,t)\textbf{u}_n(t)dt, \qquad n \geqslant 0.
@@ -155,25 +162,6 @@ donde
 		\centering
 		\includegraphics[width=0.8\textwidth]{graf_sol3}
 	\end{figure}
-\end{frame}
-\section{Arquitectura Software}
-\begin{frame}{Arquitectura Software}
-\begin{itemize}
-	\item Monolítica
-	\item Cliente-Servidor
-	\item Microservicios
-	\item Orientada a servicios (SOA)
-	\item REST
-\end{itemize}
-\begin{figure}
-	\centering
-	\begin{subfigure}[t]{0.45\textwidth}
-		\includegraphics[width=1.1\textwidth]{microservicios}
-	\end{subfigure}
-	\begin{subfigure}[b]{0.45\textwidth}
-		\includegraphics[width=1.1\textwidth]{2niveles}
-	\end{subfigure}
-\end{figure}
 \end{frame}
 \section{Diseño e implementación}
 \begin{frame}{Diseño e implementación}

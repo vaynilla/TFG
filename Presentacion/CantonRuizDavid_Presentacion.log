@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.9.14)  17 JUN 2024 11:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.9.14)  17 JUN 2024 12:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1112,17 +1112,17 @@ athkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<react.jpg, id=147, 1204.5pt x 667.49374pt>
+<react.jpg, id=141, 1204.5pt x 667.49374pt>
 File: react.jpg Graphic file (type jpg)
 <use react.jpg>
 Package pdftex.def Info: react.jpg  used on input line 47.
 (pdftex.def)             Requested size: 92.1879pt x 51.07838pt.
-<python.png, id=148, 3854.4pt x 2168.1pt>
+<python.png, id=142, 3854.4pt x 2168.1pt>
 File: python.png Graphic file (type png)
 <use python.png>
 Package pdftex.def Info: python.png  used on input line 47.
 (pdftex.def)             Requested size: 92.1879pt x 51.84027pt.
-<edificio_6habs.png, id=149, 625.58719pt x 547.2947pt>
+<edificio_6habs.png, id=143, 625.58719pt x 547.2947pt>
 File: edificio_6habs.png Graphic file (type png)
 <use edificio_6habs.png>
 Package pdftex.def Info: edificio_6habs.png  used on input line 47.
@@ -1135,7 +1135,7 @@ Package pdftex.def Info: edificio_6habs.png  used on input line 47.
 ] [5
 
 ]
-Overfull \hbox (12.55403pt too wide) detected at line 88
+Overfull \hbox (12.55403pt too wide) detected at line 92
 []\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95 x\OT1/cmss/m/n/10.95 ) = []
  \OML/cmm/m/it/10.95 ;  []\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95 x\O
 T1/cmss/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 ;  []\OT1/cmss/m/n/10.95 (\OT1/mat
@@ -1146,78 +1146,55 @@ cmss/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 :
 [6
 
 ]
-<suma_parcial_sol.png, id=266, 481.8pt x 359.84438pt>
+<suma_parcial_sol.png, id=260, 481.8pt x 359.84438pt>
 File: suma_parcial_sol.png Graphic file (type png)
 <use suma_parcial_sol.png>
-Package pdftex.def Info: suma_parcial_sol.png  used on input line 104.
+Package pdftex.def Info: suma_parcial_sol.png  used on input line 108.
 (pdftex.def)             Requested size: 153.64493pt x 114.75172pt.
  [7
 
  <./suma_parcial_sol.png (PNG copy)>] [8
 
 ]
-<comp_sol_ej43.png, id=324, 481.8pt x 359.84438pt>
+<comp_sol_ej43.png, id=318, 481.8pt x 359.84438pt>
 File: comp_sol_ej43.png Graphic file (type png)
 <use comp_sol_ej43.png>
-Package pdftex.def Info: comp_sol_ej43.png  used on input line 124.
+Package pdftex.def Info: comp_sol_ej43.png  used on input line 131.
 (pdftex.def)             Requested size: 245.83282pt x 183.60605pt.
  [9
 
  <./comp_sol_ej43.png (PNG copy)>] [10
 
 ]
-<edificio_3habs.png, id=378, 411.78844pt x 363.60844pt>
+<edificio_3habs.png, id=372, 411.78844pt x 363.60844pt>
 File: edificio_3habs.png Graphic file (type png)
 <use edificio_3habs.png>
-Package pdftex.def Info: edificio_3habs.png  used on input line 149.
+Package pdftex.def Info: edificio_3habs.png  used on input line 156.
 (pdftex.def)             Requested size: 122.91406pt x 108.53409pt.
 
-Overfull \hbox (2.06358pt too wide) detected at line 149
+Overfull \hbox (2.06358pt too wide) detected at line 156
 [][]
  []
 
 [11
 
  <./edificio_3habs.png>]
-<graf_sol3.png, id=407, 481.8pt x 359.84438pt>
+<graf_sol3.png, id=401, 481.8pt x 359.84438pt>
 File: graf_sol3.png Graphic file (type png)
 <use graf_sol3.png>
-Package pdftex.def Info: graf_sol3.png  used on input line 158.
+Package pdftex.def Info: graf_sol3.png  used on input line 165.
 (pdftex.def)             Requested size: 245.83282pt x 183.60605pt.
  [12
 
  <./graf_sol3.png (PNG copy)>]
-<microservicios.png, id=435, 483.30562pt x 291.33844pt>
-File: microservicios.png Graphic file (type png)
-<use microservicios.png>
-Package pdftex.def Info: microservicios.png  used on input line 177.
-(pdftex.def)             Requested size: 152.10828pt x 91.69206pt.
-
-Overfull \hbox (13.82878pt too wide) in paragraph at lines 177--177
-[][] 
- []
-
-<2niveles.png, id=436, 340.27126pt x 138.5175pt>
-File: 2niveles.png Graphic file (type png)
-<use 2niveles.png>
-Package pdftex.def Info: 2niveles.png  used on input line 177.
-(pdftex.def)             Requested size: 152.10828pt x 61.92014pt.
-
-Overfull \hbox (13.82878pt too wide) in paragraph at lines 177--177
-[][] 
- []
-
-[13
-
- <./microservicios.png> <./2niveles.png>]
-<diagrama.png, id=466, 1017.8025pt x 400.49625pt>
+<diagrama.png, id=429, 1017.8025pt x 400.49625pt>
 File: diagrama.png Graphic file (type png)
 <use diagrama.png>
-Package pdftex.def Info: diagrama.png  used on input line 186.
+Package pdftex.def Info: diagrama.png  used on input line 174.
 (pdftex.def)             Requested size: 307.28987pt x 120.91368pt.
- [14
+ [13
 
- <./diagrama.png>] [15
+ <./diagrama.png>] [14
 
 ]
 \tf@nav=\write6
@@ -1229,28 +1206,20 @@ Package pdftex.def Info: diagrama.png  used on input line 186.
 \tf@snm=\write8
 \openout8 = `CantonRuizDavid_Presentacion.snm'.
 
-
-(CantonRuizDavid_Presentacion.aux)
+ (CantonRuizDavid_Presentacion.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-
-
-Package rerunfilecheck Warning: File `CantonRuizDavid_Presentacion.out' has cha
-nged.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `CantonRuizDavid_Presentacion.out':
-(rerunfilecheck)             Before: CC7008D0998B1ABB544AF6A1195CA93B;2093
-(rerunfilecheck)             After:  4D70511C51A69DA748E7C3D630C75A68;2084.
+Package rerunfilecheck Info: File `CantonRuizDavid_Presentacion.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: BE3E6096EEEBDE49ABF43A1B4792F06A;1933.
  ) 
 Here is how much of TeX's memory you used:
- 24449 strings out of 475214
- 481500 string characters out of 5754295
- 1935801 words of memory out of 5000000
- 45452 multiletter control sequences out of 15000+600000
+ 24417 strings out of 475214
+ 480952 string characters out of 5754295
+ 1933801 words of memory out of 5000000
+ 45423 multiletter control sequences out of 15000+600000
  566912 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,453b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1270,9 +1239,9 @@ cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/346
 33/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
 C:/Users/34633/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
 mbols/msam10.pfb>
-Output written on CantonRuizDavid_Presentacion.pdf (15 pages, 653740 bytes).
+Output written on CantonRuizDavid_Presentacion.pdf (14 pages, 605642 bytes).
 PDF statistics:
- 585 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 549 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
+ 219 words of extra memory for PDF output out of 10000 (max. 10000000)
 
