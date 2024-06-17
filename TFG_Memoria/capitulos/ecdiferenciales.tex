@@ -66,13 +66,7 @@ La solución de este PVI viene dada por el punto fijo del operador lineal y cont
 		\textbf{T}: (\mathcal{C}[0,B], \R^n) \longrightarrow \mathcal{C}([0,B],\R^n) \\  \textbf{x} \longmapsto \textbf{Tx}:[0,B] \longrightarrow \R^n \\  \qquad \qquad \qquad \qquad \qquad \textbf{Tx}(t)= \textbf{x}_\textbf{0} + \int_0^t (\textbf{A}(s)\textbf{x}(s)+\textbf{b}(s))ds.
 	\end{array}
 \end{equation}
-Cuando hablamos de hacer una integral compuesta por vectores, la haremos componente a componente, es decir,
-\begin{equation}
-	\int_0^t \textbf{y}(s)ds = \begin{pmatrix}
-	\displaystyle	\int_0^t y_1(s)ds \\ \displaystyle \int_0^t y_2(s)ds \\ \vdots \\ \displaystyle \int_0^t y_n(s)ds
-	\end{pmatrix},
-\end{equation}
-donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s)) \in \mathcal{C}([0,B],\R^n)$. Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
+Luego al igual que en el caso escalar, la solución del PVI es un caso particular de la ecuación de Volterra de segunda clase
 \begin{equation}
 	\textbf{x}(t) = \textbf{f}(t) + \int_0^t \textbf{K}(t,s)\textbf{x}(s)ds.
 \end{equation}

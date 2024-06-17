@@ -20,7 +20,7 @@ Este teorema tiene sentido incluso para espacios métricos completos, pero nosot
 
 Como notación, utilizaremos $\mathcal{L}(X)$ para referirnos al espacio de todos los operadores lineales de $X$ en sí mismo, de igual forma $\mathcal{L}(X,Y)$ será el espacio de todos los operadores lineales de $X$ en $Y$, ambos dotados de su norma usual. Ahora sí, podemos enunciar y demostrar el teorema de la serie geométrica:
 \begin{teorema}\label{teorema}
-	Sea $X$ un espacio de Banach y $L \in \mathcal{L}(X)$. Suponemos
+	Sean $X$ un espacio de Banach y $L \in \mathcal{L}(X)$. Suponemos
 	\begin{equation}
 		\lVert L \rVert < 1.
 	\end{equation}
@@ -324,7 +324,7 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 \begin{ejemplo}
 	Vamos a examinar si la ecuación integral
 	\begin{equation}\label{eq:ej1}
-		\lambda u(x) - \int_{0}^{1} \dfrac{\cos(xt)}{2}u(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1
+		u(x) - \dfrac{1}{\lambda} \int_{0}^{1} \dfrac{\cos(xt)}{2}u(t)dt = \dfrac{f(x)}{\lambda}, \qquad 0 \leqslant x \leqslant 1
 	\end{equation}
 	tiene solución, con $\lambda \neq 0$. De la discusión del corolario~\eqref{ej:1}, si
 	\begin{equation}\label{ej:2}
@@ -334,7 +334,7 @@ Podemos resumir el teorema anterior en una frase: \textit{Un operador cercano a 
 	
 	Para obtener más valores de $\lambda$ para los cuales nuestra ecuación tiene solución única, aplicamos el teorema de perturbación. Ya que $\cos(xt) \approx xt$ para valores pequeños de $|xt|$, comparamos la ecuación con
 	\begin{equation}\label{eq:ej2}
-		\lambda v(x) - \int_{0}^{1} \dfrac{xt}{2}v(t)dt = f(x), \qquad 0 \leqslant x \leqslant 1.
+		v(x) - \dfrac{1}{\lambda}\int_{0}^{1} \dfrac{xt}{2}v(t)dt = \dfrac{f(x)}{\lambda}, \qquad 0 \leqslant x \leqslant 1.
 	\end{equation}
 	Siguiendo la notación el teorema de perturbación, la ecuación~\eqref{eq:ej1} sería $Mu = f$, y~\eqref{eq:ej2} sería $Lv = f$. El espacio de Banach es $X = \mathcal{C}[0,1]$ con la norma $\lVert \cdot \rVert_\infty$, y $L,M \in \mathcal{L}(X)$.
 	
@@ -373,6 +373,13 @@ donde \textbf{u} es el vector formado por todas las funciones continuas que quer
 \begin{equation}
 	\textbf{u}(x) = \begin{pmatrix}	u_1(x) \\ u_2(x) \\ \vdots \\ u_n(x)	\end{pmatrix}, \qquad \textbf{f}(x) = \begin{pmatrix}	f_1(x) \\ f_2(x) \\ \vdots \\ f_n(x)	\end{pmatrix}, \qquad \textbf{K}(x,t) = \begin{pmatrix}	K_1(x,t) \\ K_2(x,t) \\ \vdots \\ K_n(x,t)	\end{pmatrix}.
 \end{equation}
+Cuando hablamos de hacer una integral compuesta por vectores, la haremos componente a componente, es decir,
+\begin{equation}
+	\int_0^t \textbf{y}(s)ds = \begin{pmatrix}
+		\displaystyle	\int_0^t y_1(s)ds \\ \displaystyle \int_0^t y_2(s)ds \\ \vdots \\ \displaystyle \int_0^t y_n(s)ds
+	\end{pmatrix},
+\end{equation}
+donde $\textbf{y}(s) = (y_1(s),y_2(s),...,y_n(s)) \in \mathcal{C}([0,B],\R^n)$.
 \begin{corolario}
 	Todo sistema de ecuaciones integrales lineales de Volterra de segunda clase en ambiente continuo tiene solución única.
 \end{corolario}
@@ -388,9 +395,8 @@ donde \textbf{u} es el vector formado por todas las funciones continuas que quer
 			\qquad \qquad \qquad \qquad \qquad \textbf{L}\textbf{u}(x) \mapsto \displaystyle \int_{0}^{x} \textbf{K}(x,t)\textbf{u}(t)dt, \qquad x \in [0,B].
 		\end{array}
 	\end{equation}
-	Así, podemos escribir la ecuación como $(\textbf{I}-\textbf{L})\textbf{u} = \textbf{f}$.
-	Vamos a comprobar que verifica las hipótesis de la generalización del teorema de la serie geométrica, es decir, que para algún entero $n \geqslant 1$ se cumple $\lVert \textbf{L}^n \rVert < 1$.\\
-	Establecemos la desigualdad
+	Ahora podemos escribir la ecuación como $(\textbf{I}-\textbf{L})\textbf{u} = \textbf{f}$.
+	Vamos a comprobar que para algún entero $n \geqslant 1$ se cumple $\lVert \textbf{L}^n \rVert < 1$. Es decir, verifica las hipótesis de la generalización del teorema de la serie geométrica. Establecemos la desigualdad
 	\begin{equation}
 		n \geqslant 1 \Rightarrow \lVert \textbf{L}^n \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!},
 	\end{equation}
@@ -398,46 +404,15 @@ donde \textbf{u} es el vector formado por todas las funciones continuas que quer
 	\begin{equation}\label{eq:ref2}
 		n \geqslant 1, \textbf{u} \in \mathcal{C}([0,B],\R^n) \Rightarrow \lVert \textbf{L}^n\textbf{u} \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\lVert \textbf{u} \rVert_\infty.
 	\end{equation}
-	En efecto, para $n = 1$, si $0 \leqslant x \leqslant B$, entonces
-	\begin{equation}
-		\begin{split}
-			\lVert \textbf{L}\textbf{u}(x) \rVert_\infty & \leqslant \int_{0}^{x} \lVert \textbf{K}(x,t)\textbf{u}(t)\rVert_\infty dt \\
-			& \leqslant \int_{0}^{x} \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty dt\\
-			& = \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty \int_{0}^{x}dt\\
-			& = \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty x.
-		\end{split}
-	\end{equation}
-	Así pues,
-	\begin{equation}\label{eq:demvolt1_2}
-		\lVert \textbf{L}\textbf{u}(x)\rVert_\infty \leqslant \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty x.
-	\end{equation}
-	Para $n = 2$, si $0 \leqslant x \leqslant B$, tenemos
-	\begin{equation}
-		\begin{split}
-			\lVert \textbf{L}^2\textbf{u}(x)\rVert_\infty & \leqslant \int_{0}^{x}\lVert \textbf{K}(x,t)\textbf{L}\textbf{u}(t)\rVert_\infty tdt \\
-			& \leqslant \int_{0}^{x} \lVert \textbf{K} \rVert_\infty \lVert \textbf{K} \rVert_\infty \lVert \textbf{u} \rVert_\infty tdt\\
-			& =  \lVert \textbf{K} \rVert_\infty^2 \lVert \textbf{u} \rVert_\infty \int_{0}^{x}tdt \\
-			& = \lVert \textbf{K} \rVert_\infty^2 \lVert \textbf{u} \rVert_\infty \dfrac{x^2}{2},
-		\end{split}
-	\end{equation}
-	donde en la segunda desigualdad hemos utilizado~\eqref{eq:demvolt1_2}. Inductivamente deducimos
-	\begin{equation}
-		\left.\begin{split}
-			n \geqslant 1, \qquad & \textbf{u} \in \mathcal{C}([0,B],\R^n)\\
-			& x \in [0,B]
-		\end{split}\right\rbrace \Rightarrow \lVert \textbf{L}^n\textbf{u}(x)\rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nx^n}{n!}\lVert \textbf{u} \rVert_\infty,
-	\end{equation}
-	de donde se tiene~\eqref{eq:ref2} y, por tanto,
-	\begin{equation}\label{eq:demvolt2_2}
-		\lVert \textbf{L}^n \rVert_\infty \leqslant \dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}.
-	\end{equation}
-	Como la sucesión $\{\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}$ es convergente, $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!} = e^{\lVert \textbf{K} \rVert_\infty B}$), la desigualdad~\eqref{eq:demvolt2_2} da $\lVert \textbf{L}^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert \textbf{L}^n \rVert < 1$.
-	Ahora estamos en condición de aplicar la generalización del teorema de la serie geométrica que vimos anteriormente, ya que aunque estemos en caso vectorial, el resultado es análogo y por tanto sabemos que existe el operador inverso $(\textbf{I}-\textbf{L})^{-1}$ en $\mathcal{C}([0,B],\R^n)$, y además su inverso se puede expresar como la suma de una serie geométrica convergente, por tanto, la solución única $\textbf{u}$ viene dada por:
+	Los cálculos para $n = 1$ y $n = 2$ son análogos al caso escalar cambiando la notación.\\
+	
+	Como la sucesión $\{\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}\}$ converge a $0$ (la serie $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!}$ es convergente, $\displaystyle \sum_{n=0}^{\infty}\dfrac{\lVert \textbf{K} \rVert_\infty^nB^n}{n!} = e^{\lVert \textbf{K} \rVert_\infty B}$), obtenemos $\lVert \textbf{L}^n \rVert \rightarrow 0$ y, por tanto, a partir de un $n$ en adelante, $\lVert \textbf{L}^n \rVert < 1$.
+	Ahora podemos aplicar la generalización del teorema de la serie geométrica que vimos anteriormente, aún estando en caso vectorial, el resultado es análogo y por tanto sabemos que existe el operador inverso $(\textbf{I}-\textbf{L})^{-1}$ en $\mathcal{C}([0,B],\R^n)$, y además, podemos expresar su inverso como la suma de una serie geométrica convergente, por tanto, la solución única $\textbf{u}$ viene dada por:
 	\begin{equation}
 		\textbf{u} = (\textbf{I}-\textbf{L})^{-1}\textbf{f}.
 	\end{equation}
 \end{proof}
-Las consideraciones hechas en caso escalar relativas a la aproximación $\displaystyle \sum_{j=0}^{n}\textbf{L}^j\textbf{f}$ de la solución $\displaystyle \sum_{j=0}^{\infty}\textbf{L}^j\textbf{f}$ son igualmente válidas aquí, gracias a la acotación~\eqref{eq:demvolt2_2}.
+Las aclaraciones hechas en caso escalar relativas a la aproximación $\displaystyle \sum_{j=0}^{n}\textbf{L}^j\textbf{f}$ de la solución $\displaystyle \sum_{j=0}^{\infty}\textbf{L}^j\textbf{f}$ son igualmente válidas aquí.
 
 \endinput
 %------------------------------------------------------------------------------------
